@@ -103,8 +103,8 @@ public class loginpage extends javax.swing.JFrame {
         String password = txtPass.getText();
         if(username.equals("admin") && password.equals("1234")){
             JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
-            menupage menu = new menupage();
-            menu.setVisible(true);
+            lamlayout layout = new lamlayout();
+            layout.setVisible(true);
             dispose();
         }
         else

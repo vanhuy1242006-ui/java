@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package batdau.hocptpmud;
+import java.awt.*;
+import javax.swing.*;
+
 
 /**
  *
@@ -13,9 +16,33 @@ public class homepanel extends javax.swing.JPanel {
     /**
      * Creates new form homepanel
      */
+    private Image backgroundImage;
+    
     public homepanel() {
         initComponents();
+        java.net.URL url =
+            getClass().getResource("/images/Picture1.png");
+
+
+    if(url != null){
+        backgroundImage = new ImageIcon(url).getImage();
     }
+    else{
+        System.out.println("Khong tim thay anh");
+    }
+    }
+
+    
+    
+
+@Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    if (backgroundImage != null){
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+    
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +55,21 @@ public class homepanel extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
 
-        jButton1.setText("home");
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(232, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
                 .addComponent(jButton1)
-                .addGap(92, 92, 92))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(68, 68, 68)
                 .addComponent(jButton1)
                 .addContainerGap(213, Short.MAX_VALUE))
         );
