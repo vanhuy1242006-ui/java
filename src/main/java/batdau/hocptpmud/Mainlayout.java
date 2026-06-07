@@ -9,14 +9,14 @@ import java.awt.CardLayout;
  *
  * @author loan phuong
  */
-public class lamlayout extends javax.swing.JFrame {
+public class Mainlayout extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(lamlayout.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Mainlayout.class.getName());
     CardLayout card;
     /**
      * Creates new form lamlayout
      */
-    public lamlayout() {
+    public Mainlayout() {
         initComponents();
 
         
@@ -178,7 +178,7 @@ card.show(content2, "setting");
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new lamlayout().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Mainlayout().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
