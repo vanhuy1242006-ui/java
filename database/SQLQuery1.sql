@@ -1,0 +1,6 @@
+SELECT TOP (1000) [UserID]
+      ,[Username]
+      ,[PasswordHash]
+      ,[FullName]
+      ,[Email]
+  FROM [CookingApp].[dbo].[Users]
