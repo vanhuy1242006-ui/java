@@ -11,7 +11,7 @@ import java.awt.Color;
  * @author loan phuong
  */
 public class Mainlayout extends javax.swing.JFrame {
-    
+    //duc ga ưa
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Mainlayout.class.getName());
     CardLayout card;
     /**
