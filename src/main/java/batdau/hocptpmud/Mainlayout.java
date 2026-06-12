@@ -20,7 +20,7 @@ public class Mainlayout extends javax.swing.JFrame {
     public Mainlayout() {
         initComponents();
         
-         setSize(960, 640);      // kích thước mong muốn
+    // kích thước mong muốn
     setLocationRelativeTo(null);
         menu1.setBackground(new Color(220,220,220));
         
@@ -102,7 +102,7 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                 .addComponent(btnhome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnsv, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,7 +115,7 @@ public class Mainlayout extends javax.swing.JFrame {
         content2.setLayout(content2Layout);
         content2Layout.setHorizontalGroup(
             content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGap(0, 643, Short.MAX_VALUE)
         );
         content2Layout.setVerticalGroup(
             content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
