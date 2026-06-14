@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package batdau.hocptpmud;
+import javax.swing.*;
 
 /**
  *
@@ -29,6 +30,11 @@ public class Dangxuat extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
 
         jButton1.setText("Đăng xuất");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -48,6 +54,15 @@ public class Dangxuat extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loginpage login = new loginpage();
+        login.setVisible(true);
+          JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    frame.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public static void main(String[] args) {
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
