@@ -16,6 +16,7 @@ public class Mainlayout extends javax.swing.JFrame {
     //duc ga ưa
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Mainlayout.class.getName());
     CardLayout card;
+
     /**
      * Creates new form lamlayout
      */
@@ -29,8 +30,9 @@ public class Mainlayout extends javax.swing.JFrame {
 
     btnHome.setIcon(new ImageIcon(img));
         
+        menu1.setOpaque(true);
+        menu1.setBackground(new Color(255, 253, 245));
 
-        menu1.setBackground(new Color(220,220,220));
         
         card = new CardLayout();
         content2.setLayout(card);
@@ -63,28 +65,39 @@ public class Mainlayout extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btn1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn1.setText("Công thức của tôi");
+        btn1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        btn1.setContentAreaFilled(false);
+        btn1.setFocusPainted(false);
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
             }
         });
 
+        btn2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn2.setText("Thêm công thức");
+        btn2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        btn2.setContentAreaFilled(false);
+        btn2.setFocusPainted(false);
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
             }
         });
 
+        btn3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn3.setText("Đăng xuất");
+        btn3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        btn3.setContentAreaFilled(false);
+        btn3.setFocusPainted(false);
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -101,7 +114,11 @@ public class Mainlayout extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setText("Hôm nay ăn gì");
+        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        jButton2.setContentAreaFilled(false);
+        jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -124,9 +141,8 @@ public class Mainlayout extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1))
                 .addContainerGap())
         );
         menu1Layout.setVerticalGroup(
@@ -140,9 +156,9 @@ public class Mainlayout extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -151,7 +167,7 @@ public class Mainlayout extends javax.swing.JFrame {
         content2.setLayout(content2Layout);
         content2Layout.setHorizontalGroup(
             content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 661, Short.MAX_VALUE)
         );
         content2Layout.setVerticalGroup(
             content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
