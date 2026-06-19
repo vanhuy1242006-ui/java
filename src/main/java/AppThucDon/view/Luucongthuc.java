@@ -3,47 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package AppThucDon.view;
-import java.awt.*;
-import javax.swing.*;
-
 
 /**
  *
  * @author loan phuong
  */
-public class homepanel extends javax.swing.JPanel {
+public class Luucongthuc extends javax.swing.JPanel {
 
     /**
-     * Creates new form homepanel
+     * Creates new form Luucongthuc
      */
-    private Image backgroundImage;
-    
-    public homepanel() {
+    public Luucongthuc() {
         initComponents();
-        java.net.URL url =
-            getClass().getResource("/images/Picture1.png");
-
-
-    if(url != null){
-        backgroundImage = new ImageIcon(url).getImage();
     }
-    else{
-        System.out.println("Khong tim thay anh");
-    }
-    }
-
-    
-    
-
-@Override
-protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    if (backgroundImage != null){
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-    
-    }
-}
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,32 +26,30 @@ protected void paintComponent(Graphics g) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        jButton1.setText("jButton1");
+        jLabel1.setText("Hiện công thức đã lưu ở dạng phóng to");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jButton1)
-                .addContainerGap(554, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jButton1)
-                .addContainerGap(535, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
-
 }
