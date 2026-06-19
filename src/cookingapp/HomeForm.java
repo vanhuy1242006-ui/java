@@ -4,21 +4,45 @@
  */
 package cookingapp;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Admin
  */
 public class HomeForm extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HomeForm.class.getName());
 
-    /**
-     * Creates new form HomeForm
-     */
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HomeForm.class.getName());
+    
+
+    private void loadRecipes() {
+
+        pnRecipes.removeAll();
+
+        for (int i = 1;
+                i <= 5;
+                i++) {
+
+            RecipePanel recipe
+                    = new RecipePanel();
+
+            pnRecipes.add(
+                    recipe
+            );
+
+        }
+
+        pnRecipes.revalidate();
+
+        pnRecipes.repaint();
+
+    }
+
     public HomeForm() {
         initComponents();
-        setSize(AppConfig.WIDTH, AppConfig.HEIGHT);
-        setLocationRelativeTo(null);
+        
+        loadRecipes();
+
     }
 
     /**
@@ -30,31 +54,112 @@ public class HomeForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
+        btnLogin1 = new javax.swing.JButton();
+        btnLogin2 = new javax.swing.JButton();
+        btnLogin3 = new javax.swing.JButton();
+        lblAvatar = new javax.swing.JLabel();
+        scrollRecipes = new javax.swing.JScrollPane();
+        pnRecipes = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
+        txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtUsername.addActionListener(this::txtUsernameActionPerformed);
+
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogin.setText("Thêm Công Thức");
+        btnLogin.addActionListener(this::btnLoginActionPerformed);
+
+        btnLogin1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogin1.setText("Hôm nay ăn gì ?");
+        btnLogin1.addActionListener(this::btnLogin1ActionPerformed);
+
+        btnLogin2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogin2.setText("Kho Lưu Trữ");
+        btnLogin2.addActionListener(this::btnLogin2ActionPerformed);
+
+        btnLogin3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogin3.setText("User");
+        btnLogin3.addActionListener(this::btnLogin3ActionPerformed);
+
+        lblAvatar.setBackground(new java.awt.Color(153, 153, 153));
+        lblAvatar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAvatar.setText("Chưa chọn ảnh");
+        lblAvatar.setMaximumSize(new java.awt.Dimension(150, 150));
+        lblAvatar.setMinimumSize(new java.awt.Dimension(150, 150));
+        lblAvatar.setOpaque(true);
+        lblAvatar.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        pnRecipes.setLayout(new javax.swing.BoxLayout(pnRecipes, javax.swing.BoxLayout.Y_AXIS));
+        scrollRecipes.setViewportView(pnRecipes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsername)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                            .addComponent(btnLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogin2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogin3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollRecipes, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(btnLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogin3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(scrollRecipes, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin1ActionPerformed
+
+    private void btnLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin2ActionPerformed
+
+    private void btnLogin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,6 +187,13 @@ public class HomeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin1;
+    private javax.swing.JButton btnLogin2;
+    private javax.swing.JButton btnLogin3;
+    private javax.swing.JLabel lblAvatar;
+    private javax.swing.JPanel pnRecipes;
+    private javax.swing.JScrollPane scrollRecipes;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
