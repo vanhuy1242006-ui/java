@@ -1,4 +1,4 @@
-package batdau.hocptpmud;
+package AppThucDon.view;
 
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
