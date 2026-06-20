@@ -4,6 +4,10 @@
  */
 package AppThucDon.view;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import javax.swing.BoxLayout;
+
 /**
  *
  * @author loan phuong
@@ -15,6 +19,19 @@ public class Luucongthuc extends javax.swing.JPanel {
      */
     public Luucongthuc() {
         initComponents();
+        jScrollPane1.setBorder(null);
+        pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
+        for (int i = 1; i <= 10; i++) {
+    Phongto p = new Phongto();
+    Dimension d = p.getPreferredSize();
+p.setMaximumSize(new Dimension(Integer.MAX_VALUE, d.height));
+p.setAlignmentX(Component.LEFT_ALIGNMENT);
+    pnlDaydu.add(p);
+}
+    pnlDaydu.revalidate();
+    pnlDaydu.repaint();
+    jScrollPane1.setHorizontalScrollBarPolicy(
+        javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     }
 
     /**
@@ -26,30 +43,27 @@ public class Luucongthuc extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlDaydu = new javax.swing.JPanel();
 
-        jLabel1.setText("Hiện công thức đã lưu ở dạng phóng to");
+        pnlDaydu.setLayout(new javax.swing.BoxLayout(pnlDaydu, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPane1.setViewportView(pnlDaydu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(267, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pnlDaydu;
     // End of variables declaration//GEN-END:variables
 }

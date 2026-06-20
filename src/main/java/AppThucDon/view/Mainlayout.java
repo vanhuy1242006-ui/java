@@ -41,6 +41,7 @@ public class Mainlayout extends javax.swing.JFrame {
         content2.add(new Congthucmoi(), "Ctmoi");
         content2.add(new Dangxuat(), "setting");
         content2.add(new Goiyct(), "Goiy");
+        content2.add(new Luucongthuc(), "Luuct");
         
         card.show(content2, "Home");
     }
@@ -195,7 +196,7 @@ public class Mainlayout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-
+        card.show(content2, "Luuct");
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
