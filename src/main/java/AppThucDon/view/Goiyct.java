@@ -4,6 +4,10 @@
  */
 package AppThucDon.view;
 
+import java.awt.CardLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author loan phuong
@@ -15,6 +19,38 @@ public class Goiyct extends javax.swing.JPanel {
      */
     public Goiyct() {
         initComponents();
+        Phongto pnlPhongto = new Phongto(this);
+        this.add(jScrollPane1, "GOIY");
+        this.add(pnlPhongto, "PHONGTO");
+        CardLayout cl = (CardLayout) this.getLayout();
+        cl.show(this, "GOIY");
+        
+        for(int i = 1; i <= 10; i++){
+     thunho card = new thunho(
+            "Món " + i,
+            "Tác giả " + i,
+            "4." + i%5 + "⭐",
+            "30 phút",
+            "Nguyên liệu...",
+            "Công thức..."
+    );
+
+
+
+card.addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("Da click");
+        
+        CardLayout cl = (CardLayout) Goiyct.this.getLayout();
+            cl.show(Goiyct.this, "PHONGTO");
+    }
+});
+    panelGoiy.add(card);
+}
+panelGoiy.revalidate();
+panelGoiy.repaint();
+
     }
 
     /**
@@ -26,19 +62,20 @@ public class Goiyct extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelGoiy = new javax.swing.JPanel();
+
+        setLayout(new java.awt.CardLayout());
+
+        panelGoiy.setLayout(new java.awt.GridLayout(0, 2, 5, 20));
+        jScrollPane1.setViewportView(panelGoiy);
+
+        add(jScrollPane1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelGoiy;
     // End of variables declaration//GEN-END:variables
 }

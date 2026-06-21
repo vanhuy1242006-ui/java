@@ -65,14 +65,14 @@ protected void paintComponent(Graphics g) {
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addComponent(jButton1)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addContainerGap(554, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jButton1)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addContainerGap(535, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
