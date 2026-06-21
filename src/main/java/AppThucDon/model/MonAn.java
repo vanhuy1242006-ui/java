@@ -14,6 +14,7 @@ public class MonAn {
 	private String LoaiMon ;
 	private String NguyenLieu;
 	private double ThoiGian;
+        private double DanhGia;
 	private String LinkAnh;
 	private String MoTa;
 
@@ -57,6 +58,14 @@ public class MonAn {
         this.ThoiGian = ThoiGian;
     }
 
+    public double getDanhGia() {
+        return DanhGia;
+    }
+
+    public void setDanhGia(double DanhGia) {
+        this.DanhGia = DanhGia;
+    }
+
     public String getLinkAnh() {
         return LinkAnh;
     }
@@ -72,4 +81,5 @@ public class MonAn {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
+        
 }

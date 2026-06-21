@@ -26,10 +26,10 @@ public class Database {
             
             // 3. Thực hiện kết nối
             conn = DriverManager.getConnection(url);
-            System.out.println("🎉 Kết nối Cơ sở dữ liệu thành công!");
+            System.out.println("Ket noi thanh cong!");
             
         } catch (SQLException e) {
-            System.out.println("❌ Lỗi kết nối: " + e.getMessage());
+            System.out.println("Loi ket noi: " + e.getMessage());
         }
         return conn;
     }
@@ -39,10 +39,10 @@ public class Database {
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.close();
-                System.out.println("🔌 Đã đóng kết nối an toàn.");
+                System.out.println("Da dong ket noi an toan");
             }
         } catch (SQLException e) {
-            System.out.println("❌ Lỗi khi đóng kết nối: " + e.getMessage());
+            System.out.println("Loi khi dong ket noi: " + e.getMessage());
         }
     }
 }
