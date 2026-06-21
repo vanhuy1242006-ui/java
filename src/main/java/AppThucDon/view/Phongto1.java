@@ -10,14 +10,16 @@ import java.awt.CardLayout;
  *
  * @author loan phuong
  */
-public class Phongto extends javax.swing.JPanel {
+public class Phongto1 extends javax.swing.JPanel {
 
     /**
      * Creates new form Phongto
      */
     private Goiyct parent;
-
-    public Phongto(Goiyct parent) {
+    public Phongto1() {
+    initComponents();
+}
+    public Phongto1(Goiyct parent) {
         initComponents();
         this.parent = parent;
     }
@@ -45,7 +47,6 @@ public class Phongto extends javax.swing.JPanel {
         btnXuatfile = new javax.swing.JButton();
         txtDanhgia = new javax.swing.JTextField();
         btnLuudanhgia = new javax.swing.JButton();
-        btnQuaylai = new javax.swing.JButton();
 
         jLabel4.setText("Mô tả công thức");
 
@@ -87,13 +88,6 @@ public class Phongto extends javax.swing.JPanel {
 
         btnLuudanhgia.setText("jButton1");
 
-        btnQuaylai.setText("Quay lai");
-        btnQuaylai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuaylaiActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,11 +107,9 @@ public class Phongto extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnQuaylai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTenmon))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtDanhgia)
@@ -129,7 +121,7 @@ public class Phongto extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnLuucongthuc, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
                                     .addComponent(jScrollPane2))))
                         .addContainerGap())))
         );
@@ -137,11 +129,9 @@ public class Phongto extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnQuaylai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,16 +159,10 @@ public class Phongto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
-    private void btnQuaylaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuaylaiActionPerformed
-          CardLayout cl = (CardLayout) parent.getLayout();
-    cl.show(parent, "GOIY");
-    }//GEN-LAST:event_btnQuaylaiActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuucongthuc;
     private javax.swing.JButton btnLuudanhgia;
-    private javax.swing.JButton btnQuaylai;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

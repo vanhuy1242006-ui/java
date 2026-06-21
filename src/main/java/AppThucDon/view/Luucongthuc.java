@@ -22,7 +22,7 @@ public class Luucongthuc extends javax.swing.JPanel {
         jScrollPane1.setBorder(null);
         pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
         for (int i = 1; i <= 10; i++) {
-    Phongto p = new Phongto();
+    Phongto1 p = new Phongto1();
     Dimension d = p.getPreferredSize();
 p.setMaximumSize(new Dimension(Integer.MAX_VALUE, d.height));
 p.setAlignmentX(Component.LEFT_ALIGNMENT);
