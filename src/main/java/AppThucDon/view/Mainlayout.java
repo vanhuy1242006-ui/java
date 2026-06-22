@@ -22,6 +22,20 @@ public class Mainlayout extends javax.swing.JFrame {
      */
     public Mainlayout() {
         initComponents();
+        btnHome.setOpaque(true);
+    jButton2.setOpaque(true);
+    btn1.setOpaque(true);
+    btn2.setOpaque(true);
+    btn3.setOpaque(true);
+
+    btnHome.setContentAreaFilled(true);
+    jButton2.setContentAreaFilled(true);
+    btn1.setContentAreaFilled(true);
+    btn2.setContentAreaFilled(true);
+    btn3.setContentAreaFilled(true);
+
+    resetMenu();
+    setSelected(btnHome);
         ImageIcon icon = new ImageIcon(
             getClass().getResource("/images/Rauma.png"));
 
@@ -31,7 +45,7 @@ public class Mainlayout extends javax.swing.JFrame {
     btnHome.setIcon(new ImageIcon(img));
         
         menu1.setOpaque(true);
-        menu1.setBackground(new Color(255, 253, 245));
+
 
         
         card = new CardLayout();
@@ -63,12 +77,18 @@ public class Mainlayout extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         content2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 233, 240));
+
+        menu1.setBackground(new java.awt.Color(255, 248, 240));
+        menu1.setForeground(new java.awt.Color(255, 102, 102));
 
         btn1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn1.setForeground(new java.awt.Color(153, 153, 153));
         btn1.setText("Công thức của tôi");
-        btn1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        btn1.setBorder(null);
         btn1.setContentAreaFilled(false);
         btn1.setFocusPainted(false);
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,8 +98,9 @@ public class Mainlayout extends javax.swing.JFrame {
         });
 
         btn2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn2.setForeground(new java.awt.Color(153, 153, 153));
         btn2.setText("Thêm công thức");
-        btn2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        btn2.setBorder(null);
         btn2.setContentAreaFilled(false);
         btn2.setFocusPainted(false);
         btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +111,7 @@ public class Mainlayout extends javax.swing.JFrame {
 
         btn3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn3.setText("Đăng xuất");
-        btn3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        btn3.setBorder(null);
         btn3.setContentAreaFilled(false);
         btn3.setFocusPainted(false);
         btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -116,8 +137,9 @@ public class Mainlayout extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(153, 153, 153));
         jButton2.setText("Hôm nay ăn gì");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(0, 0, 0)));
+        jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +161,8 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jButton1.setText("tìm kiếm");
+
         javax.swing.GroupLayout menu1Layout = new javax.swing.GroupLayout(menu1);
         menu1.setLayout(menu1Layout);
         menu1Layout.setHorizontalGroup(
@@ -146,17 +170,18 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGroup(menu1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(menu1Layout.createSequentialGroup()
-                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1))
+                    .addComponent(jTextField1)
+                    .addGroup(menu1Layout.createSequentialGroup()
+                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -165,16 +190,18 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGroup(menu1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addComponent(content2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
@@ -197,10 +224,14 @@ public class Mainlayout extends javax.swing.JFrame {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         card.show(content2, "Luuct");
+        resetMenu();
+        setSelected(btn1);
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         card.show(content2, "Ctmoi");
+        resetMenu();
+        setSelected(btn2);
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
@@ -213,12 +244,38 @@ public class Mainlayout extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         card.show(content2, "Goiy");
+            resetMenu();
+    setSelected(jButton2);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         card.show(content2, "Home");
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void resetMenu() {
+        Color bg = new Color(255, 248, 240);
+        Color text = new Color(51, 51, 51);
+        
+        btnHome.setBackground(bg);
+        btnHome.setForeground(text);
+        
+        jButton2.setBackground(bg);
+        jButton2.setForeground(text);
+        
+        btn1.setBackground(bg);
+        btn1.setForeground(text);
+        
+        btn2.setBackground(bg);
+        btn2.setForeground(text);
+
+        btn3.setBackground(bg);
+        btn3.setForeground(text);
+}
+    private void setSelected(javax.swing.JButton btn) {
+    btn.setBackground(new Color(255,229,204));
+    btn.setForeground(new Color(255,122,0));
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -250,6 +307,7 @@ public class Mainlayout extends javax.swing.JFrame {
     private javax.swing.JButton btn3;
     private javax.swing.JButton btnHome;
     private javax.swing.JPanel content2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel menu1;

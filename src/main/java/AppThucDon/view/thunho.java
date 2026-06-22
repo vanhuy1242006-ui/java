@@ -50,7 +50,7 @@ public class thunho extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(0, 204, 153));
+        setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 204, 153));
 
         lbAnh.setText("Ảnh");
