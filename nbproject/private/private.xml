@@ -3,13 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/CookingApp.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/JFrameLoginForm.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/JFameSignup.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/HomeForm.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/AppConfig.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/RecipePanel.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/Mainlayout.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/Luucongthuc.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/Phongto.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/Phongto1.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/RoundedPanel.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/SearchTextField.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/thunho.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/Goiyct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/Congthucmoi.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/client/Account.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/client/ClientConnection.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/model/User.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/UserPanel.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/EditProfileFirstTime.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/JFrameLoginForm.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/CurrentUser.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/sever/ClientHandler.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/sever/UserDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/CookingApp/src/cookingapp/JFameSignup.java</file>
         </group>
     </open-files>
 </project-private>

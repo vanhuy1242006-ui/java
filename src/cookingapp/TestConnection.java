@@ -1,5 +1,6 @@
 package cookingapp;
 
+import cookingapp.DBConnection;
 import java.sql.Connection;
 
 public class TestConnection {

@@ -38,17 +38,52 @@ constructor nhận username
                 null
         );
 
-        this.username
-                = username;
+        this.username = username;
 
-        System.out.println(
-                username
+        // load dữ liệu cũ
+        txtDisplayName.setText(
+                CurrentUser.displayName
         );
 
-    }
+        txtBio.setText(
+                CurrentUser.bio
+        );
 
-    public EditProfileFirstTime() {
-        initComponents();
+        avatarPath
+                = CurrentUser.avatar;
+
+        try {
+
+            if (avatarPath != null
+                    && !avatarPath.isEmpty()) {
+
+                ImageIcon icon
+                        = new ImageIcon(
+                                avatarPath
+                        );
+
+                Image img
+                        = icon.getImage()
+                                .getScaledInstance(
+                                        150,
+                                        150,
+                                        Image.SCALE_SMOOTH
+                                );
+
+                lblAvatar.setText("");
+
+                lblAvatar.setIcon(
+                        new ImageIcon(img)
+                );
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 
     /**
@@ -106,7 +141,7 @@ constructor nhận username
         btnSave.addActionListener(this::btnSaveActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Edit Your Bro Files");
+        jLabel1.setText("Edit Your ProFiles");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,7 +166,7 @@ constructor nhận username
                     .addGroup(layout.createSequentialGroup()
                         .addGap(327, 327, 327)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 259, Short.MAX_VALUE))
+                .addGap(0, 348, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,19 +298,28 @@ constructor nhận username
 
             ps.executeUpdate();
 
+            CurrentUser.displayName
+                    = txtDisplayName.getText();
+
+            CurrentUser.bio
+                    = txtBio.getText();
+
+            CurrentUser.avatar
+                    = avatarPath;
+
             JOptionPane.showMessageDialog(
                     this,
                     "Lưu thành công!"
             );
 
-            HomeForm home
-                    = new HomeForm();
+            Mainlayout main
+                    = new Mainlayout();
 
-            home.setVisible(
+            main.setVisible(
                     true
             );
 
-            this.dispose();
+            dispose();
 
         } catch (Exception e) {
 
@@ -306,7 +350,9 @@ constructor nhận username
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new EditProfileFirstTime().setVisible(true));
+        java.awt.EventQueue.invokeLater(()
+                -> new EditProfileFirstTime("test").setVisible(true)
+        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

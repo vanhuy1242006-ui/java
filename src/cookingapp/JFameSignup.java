@@ -4,9 +4,14 @@
  */
 package cookingapp;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import cookingapp.model.User;
+
+import cookingapp.network.Request;
+
+import cookingapp.network.Response;
+
+import cookingapp.network.Client;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -150,148 +155,101 @@ public class JFameSignup extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQLActionPerformed
-        JFrameLoginForm jp = new JFrameLoginForm();
-        jp.setVisible(true);
+        JFrameLoginForm form
+                = new JFrameLoginForm();
+
+        form.setVisible(
+                true
+        );
 
         this.dispose();
     }//GEN-LAST:event_txtQLActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        try {
+        User user
+                = new User();
 
-            Connection conn
-                    = DBConnection.getConnection();
+        user.setUsername(
+                txtUsername.getText()
+        );
 
-            String username
-                    = txtUsername.getText();
+        user.setEmail(
+                txtEmail.getText()
+        );
 
-            String email
-                    = txtEmail.getText();
+        user.setPassword(
+                txtPassword.getText()
+        );
 
-            String password
-                    = new String(
-                            txtPassword.getPassword()
-                    );
-
-            String confirm
-                    = new String(
-                            txtConfirmPassword.getPassword()
-                    );
-
-            // Kiểm tra trống
-            if (username.isEmpty()
-                    || email.isEmpty()
-                    || password.isEmpty()) {
-
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Nhập đầy đủ thông tin!"
+        Request req
+                = new Request(
+                        "REGISTER",
+                        user
                 );
 
-                return;
-            }
-
-            // Kiểm tra nhập lại mật khẩu
-            if (!password.equals(confirm)) {
-
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Mật khẩu không khớp!"
+        Response res
+                = Client.send(
+                        req
                 );
 
-                return;
-            }
-
-            // Kiểm tra tồn tại
-            String check
-                    = "SELECT * FROM Users "
-                    + "WHERE Username=? "
-                    + "OR Email=?";
-
-            PreparedStatement psCheck
-                    = conn.prepareStatement(check);
-
-            psCheck.setString(1, username);
-
-            psCheck.setString(2, email);
-
-            ResultSet rs
-                    = psCheck.executeQuery();
-
-            if (rs.next()) {
-
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Tài khoản hoặc Email đã tồn tại!"
-                );
-
-                return;
-
-            }
-
-            // INSERT
-            String sql
-                    = "INSERT INTO Users"
-                    + "(Username,PasswordHash,Email)"
-                    + "VALUES(?,?,?)";
-
-            PreparedStatement ps
-                    = conn.prepareStatement(sql);
-
-            ps.setString(1, username);
-
-            ps.setString(2, password);
-
-            ps.setString(3, email);
-
-            ps.executeUpdate();
+        if (res != null
+                && res.getStatus()
+                        .equals(
+                                "SUCCESS"
+                        )) {
 
             JOptionPane.showMessageDialog(
                     this,
-                    "Đăng kí thành công!"
+                    "Đăng ký thành công"
             );
 
-            EditProfileFirstTime edit
+            EditProfileFirstTime form
                     = new EditProfileFirstTime(
-                            username
+                            txtUsername.getText()
                     );
 
-            edit.setVisible(
+            form.setVisible(
                     true
             );
 
             this.dispose();
-        } catch (Exception e) {
 
-            e.printStackTrace();
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Đăng ký thất bại"
+            );
 
         }
+
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /**
+         * @param args the command line arguments
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+        public static void main(String args[]) {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+             */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
                 }
+            } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+                logger.log(java.util.logging.Level.SEVERE, null, ex);
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+            //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JFameSignup().setVisible(true));
-    }
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(() -> new JFameSignup().setVisible(true));
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
