@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package AppThucDon.view;
+
+import AppThucDon.dao.FormDangNhap.CurrentUser;
+import AppThucDon.dao.FormDangNhap.UserPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -14,6 +17,7 @@ import java.util.*;
  * @author loan phuong
  */
 public class Mainlayout extends javax.swing.JFrame {
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Mainlayout.class.getName());
     CardLayout card;
 
@@ -23,40 +27,46 @@ public class Mainlayout extends javax.swing.JFrame {
     public Mainlayout() {
         initComponents();
         btnHome.setOpaque(true);
-    jButton2.setOpaque(true);
-    btn1.setOpaque(true);
-    btn2.setOpaque(true);
-    btn3.setOpaque(true);
+        jButton2.setOpaque(true);
+        btn1.setOpaque(true);
+        btn2.setOpaque(true);
+        btn3.setOpaque(true);
 
-    btnHome.setContentAreaFilled(true);
-    jButton2.setContentAreaFilled(true);
-    btn1.setContentAreaFilled(true);
-    btn2.setContentAreaFilled(true);
-    btn3.setContentAreaFilled(true);
+        btnHome.setContentAreaFilled(true);
+        jButton2.setContentAreaFilled(true);
+        btn1.setContentAreaFilled(true);
+        btn2.setContentAreaFilled(true);
+        btn3.setContentAreaFilled(true);
 
-    resetMenu();
-    setSelected(btnHome);
+        resetMenu();
+        setSelected(btnHome);
         ImageIcon icon = new ImageIcon(
-            getClass().getResource("/images/Rauma.png"));
+                getClass().getResource("/images/Rauma.png"));
 
-    Image img = icon.getImage().getScaledInstance(
-            100, 100, Image.SCALE_SMOOTH);
+        Image img = icon.getImage().getScaledInstance(
+                100, 100, Image.SCALE_SMOOTH);
 
-    btnHome.setIcon(new ImageIcon(img));
-        
+        btnHome.setIcon(new ImageIcon(img));
+
         menu1.setOpaque(true);
 
-
-        
         card = new CardLayout();
         content2.setLayout(card);
-        
+
         content2.add(new homepanel(), "Home");
         content2.add(new Congthucmoi(), "Ctmoi");
-        content2.add(new Dangxuat(), "setting");
+        content2.add(
+                new UserPanel(
+                        CurrentUser.username,
+                        CurrentUser.displayName,
+                        CurrentUser.avatar,
+                        CurrentUser.bio
+                ),
+                "setting"
+        );
         content2.add(new Goiyct(), "Goiy");
         content2.add(new Luucongthuc(), "Luuct");
-        
+
         card.show(content2, "Home");
     }
 
@@ -235,7 +245,7 @@ public class Mainlayout extends javax.swing.JFrame {
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        card.show(content2, "setting");       
+        card.show(content2, "setting");
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -244,8 +254,8 @@ public class Mainlayout extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         card.show(content2, "Goiy");
-            resetMenu();
-    setSelected(jButton2);
+        resetMenu();
+        setSelected(jButton2);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -255,27 +265,28 @@ public class Mainlayout extends javax.swing.JFrame {
     private void resetMenu() {
         Color bg = new Color(255, 248, 240);
         Color text = new Color(51, 51, 51);
-        
+
         btnHome.setBackground(bg);
         btnHome.setForeground(text);
-        
+
         jButton2.setBackground(bg);
         jButton2.setForeground(text);
-        
+
         btn1.setBackground(bg);
         btn1.setForeground(text);
-        
+
         btn2.setBackground(bg);
         btn2.setForeground(text);
 
         btn3.setBackground(bg);
         btn3.setForeground(text);
-}
+    }
+
     private void setSelected(javax.swing.JButton btn) {
-    btn.setBackground(new Color(255,229,204));
-    btn.setForeground(new Color(255,122,0));
-}
-    
+        btn.setBackground(new Color(255, 229, 204));
+        btn.setForeground(new Color(255, 122, 0));
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -298,7 +309,6 @@ public class Mainlayout extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
