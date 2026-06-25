@@ -4,7 +4,8 @@
  */
 package AppThucDon.view;
 import javax.swing.table.*;
-
+import AppThucDon.model.MonAn;
+import AppThucDon.dao.MonAnDAO;
 /**
  *
  * @author loan phuong
@@ -37,20 +38,20 @@ public class Congthucmoi extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        txtTenMon = new javax.swing.JTextField();
+        txtTenmon = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        cbLoaiMon = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        txtThoiGian = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtMoTa = new javax.swing.JTextArea();
+        jTextArea1 = new javax.swing.JTextArea();
         btnLuu = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnAnh = new javax.swing.JButton();
-        scrollNguyenLieu = new javax.swing.JScrollPane();
-        tblNguyenLieu = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Tên món ăn");
@@ -59,21 +60,21 @@ public class Congthucmoi extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Loại món ăn");
 
-        cbLoaiMon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cbLoaiMon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Chọn loại món ăn ---", "Salad", "Nước chấm", "Món chính", "Món ăn kèm", "Món canh", "Món tráng miệng", "Đồ uống", "Đồ ăn nhẹ" }));
-        cbLoaiMon.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        cbLoaiMon.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Chọn loại món ăn ---", "Salad", "Nước chấm", "Món chính", "Món ăn kèm", "Món canh", "Món tráng miệng", "Đồ uống", "Đồ ăn nhẹ" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbLoaiMonActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Thời gian nấu");
 
-        txtMoTa.setColumns(20);
-        txtMoTa.setRows(5);
-        jScrollPane2.setViewportView(txtMoTa);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         btnLuu.setText("Luu");
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
@@ -91,9 +92,9 @@ public class Congthucmoi extends javax.swing.JPanel {
 
         btnAnh.setText("Chọn ảnh");
 
-        tblNguyenLieu.setColumns(20);
-        tblNguyenLieu.setRows(5);
-        scrollNguyenLieu.setViewportView(tblNguyenLieu);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,10 +110,10 @@ public class Congthucmoi extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtThoiGian)
+                        .addComponent(jTextField1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scrollNguyenLieu)
+                    .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,8 +128,8 @@ public class Congthucmoi extends javax.swing.JPanel {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbLoaiMon, 0, 560, Short.MAX_VALUE)
-                            .addComponent(txtTenMon))))
+                            .addComponent(jComboBox1, 0, 560, Short.MAX_VALUE)
+                            .addComponent(txtTenmon))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,17 +137,17 @@ public class Congthucmoi extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbLoaiMon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollNguyenLieu, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtThoiGian, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,62 +167,77 @@ public class Congthucmoi extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbLoaiMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLoaiMonActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbLoaiMonActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        try {
-    // 1. Lấy dữ liệu từ các ô nhập
-    String tenMon = txtTenMon.getText().trim(); 
-    if (tenMon.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập tên món ăn!");
-        return; 
-    }
-
-    String loaiMon = cbLoaiMon.getSelectedItem().toString();
-
-    String thoiGianStr = txtThoiGian.getText().trim();
-    double thoiGian = 0;
+                                      
     try {
-        thoiGian = Double.parseDouble(thoiGianStr);
-    } catch (NumberFormatException e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Thời gian nấu phải là số!");
-        return;
-    }
+        // 1. Khớp chính xác biến lấy dữ liệu tên món
+        String tenMon = txtTenmon.getText().trim(); 
+        if (tenMon.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập tên món ăn!");
+            return; 
+        }
 
-    String moTa = txtMoTa.getText().trim();
+        // Khớp chính xác Combobox chọn loại món
+        String loaiMon = jComboBox1.getSelectedItem().toString();
+        if (jComboBox1.getSelectedIndex() == 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng chọn loại món ăn hợp lệ!");
+            return;
+        }
 
-    // 2. Xử lý bảng Nguyên liệu thành 1 chuỗi dài
-  String nguyenLieu = tblNguyenLieu.getText().trim();
-    // 3. Đóng gói vào Model
-    AppThucDon.model.MonAn monMoi = new AppThucDon.model.MonAn();
-    monMoi.setTenMon(tenMon);
-    monMoi.setLoaiMon(loaiMon);
-    monMoi.setNguyenLieu(nguyenLieu);
-    monMoi.setThoiGian(thoiGian);
-    monMoi.setMoTa(moTa);
-    monMoi.setDanhGia(0.0); // Món mới mặc định 0 sao
+        // Khớp chính xác ô lấy thời gian nấu (jTextField1)
+        String thoiGianStr = jTextField1.getText().trim();
+        double thoiGian = 0;
+        try {
+            thoiGian = Double.parseDouble(thoiGianStr);
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Thời gian nấu phải là số!");
+            return;
+        }
 
-    // 4. Gọi DAO lưu vào SQL Server
-    AppThucDon.dao.MonAnDAO dao = new AppThucDon.dao.MonAnDAO();
-    boolean isSuccess = dao.insert(monMoi);
+        // Khớp chính xác ô mô tả công thức (jTextArea1)
+        String moTa = jTextArea1.getText().trim();
 
-    if (isSuccess) {
-        javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
-        // Tự động xóa trắng các ô sau khi lưu
-        txtTenMon.setText("");
-        txtThoiGian.setText("");
-        txtMoTa.setText("");
-        cbLoaiMon.setSelectedIndex(0);
+        // Khớp ô nhập nguyên liệu (jTextArea2)
+        String nguyenLieu = jTextArea2.getText().trim();
+
+        // 2. Đóng gói dữ liệu vào đối tượng Model
+        MonAn monMoi = new MonAn();
+        monMoi.setTenMon(tenMon);
+        monMoi.setLoaiMon(loaiMon);
+        monMoi.setNguyenLieu(nguyenLieu);
+        monMoi.setThoiGian(thoiGian);
+        monMoi.setMoTa(moTa);
+        monMoi.setDanhGia(0.0); // Món mới mặc định 0 sao
+        
+    // 🌟 KIỂM TRA VÀ SET ID USER CURRENT: Nếu khác -1 thì lấy, còn không mặc định là 1
+    if (AppThucDon.model.User.idUserHienTai != -1) {
+        monMoi.setMaNguoiTao(AppThucDon.model.User.idUserHienTai);
     } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "❌ Thêm thất bại, xem lại Console!");
+        monMoi.setMaNguoiTao(1); // Mặc định là 1 nếu chưa đăng nhập (khi ấn Shift + F6 test giao diện)
     }
 
-} catch (Exception e) {
-    javax.swing.JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
-    e.printStackTrace();
-}
+        // 3. Gọi DAO thực hiện lưu vào SQL Server
+        MonAnDAO dao = new MonAnDAO(); // Viết ngắn gọn như này thôi là sạch lỗi!
+        boolean isSuccess = dao.insert(monMoi);
+
+        if (isSuccess) {
+            javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
+            // Tự động xóa trắng các ô nhập liệu sau khi lưu
+            txtTenmon.setText("");
+            jTextField1.setText("");
+            jTextArea1.setText("");
+            jTextArea2.setText("");
+            jComboBox1.setSelectedIndex(0);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "❌ Thêm thất bại, hãy xem lỗi ở Console!");
+        }
+    } catch (Exception ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Lỗi hệ thống: " + ex.getMessage());
+    }      // TODO add your handling code h
     }//GEN-LAST:event_btnLuuActionPerformed
 
 
@@ -229,17 +245,17 @@ public class Congthucmoi extends javax.swing.JPanel {
     private javax.swing.JButton btnAnh;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnLuu;
-    private javax.swing.JComboBox<String> cbLoaiMon;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane scrollNguyenLieu;
-    private javax.swing.JTextArea tblNguyenLieu;
-    private javax.swing.JTextArea txtMoTa;
-    private javax.swing.JTextField txtTenMon;
-    private javax.swing.JTextField txtThoiGian;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtTenmon;
     // End of variables declaration//GEN-END:variables
 }

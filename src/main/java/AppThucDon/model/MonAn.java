@@ -17,6 +17,24 @@ public class MonAn {
         private double DanhGia;
 	private String LinkAnh;
 	private String MoTa;
+        private int MaNguoiTao;
+        private String TenNguoiTao;
+
+    public int getMaNguoiTao() {
+        return MaNguoiTao;
+    }
+
+    public void setMaNguoiTao(int MaNguoiTao) {
+        this.MaNguoiTao = MaNguoiTao;
+    }
+
+    public String getTenNguoiTao() {
+        return TenNguoiTao;
+    }
+
+    public void setTenNguoiTao(String TenNguoiTao) {
+        this.TenNguoiTao = TenNguoiTao;
+    }
 
     public int getMaMon() {
         return MaMon;
