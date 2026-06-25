@@ -27,6 +27,7 @@ public class Main {
     java.awt.EventQueue.invokeLater(() -> {
     Mainlayout frame = new Mainlayout();
     frame.setVisible(true); 
+    
     });
     
     System.out.println("Đang kiểm tra kết nối...");
