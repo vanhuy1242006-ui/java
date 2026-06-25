@@ -43,10 +43,11 @@ public class Phongto1 extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnLuucongthuc = new javax.swing.JButton();
+        btnSuact = new javax.swing.JButton();
         btnXuatfile = new javax.swing.JButton();
-        txtDanhgia = new javax.swing.JTextField();
-        btnLuudanhgia = new javax.swing.JButton();
+        btnXoact = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 153, 51));
 
         jLabel4.setText("Mô tả công thức");
 
@@ -75,8 +76,10 @@ public class Phongto1 extends javax.swing.JPanel {
 
         jLabel5.setText("Thời gian cook :");
 
-        btnLuucongthuc.setText("Lưu vào tôi");
+        btnSuact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSuact.setText("Sửa công thức");
 
+        btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnXuatfile.setText("Xuất file");
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,9 +87,8 @@ public class Phongto1 extends javax.swing.JPanel {
             }
         });
 
-        txtDanhgia.setText("jTextField1");
-
-        btnLuudanhgia.setText("jButton1");
+        btnXoact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoact.setText("Xóa công thức");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,15 +113,13 @@ public class Phongto1 extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtTenmon))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtDanhgia)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnLuudanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnLuucongthuc, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnXoact, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnSuact, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
                                     .addComponent(jScrollPane2))))
@@ -147,10 +147,9 @@ public class Phongto1 extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLuucongthuc, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(btnSuact, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDanhgia)
-                    .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnXoact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -161,8 +160,8 @@ public class Phongto1 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLuucongthuc;
-    private javax.swing.JButton btnLuudanhgia;
+    private javax.swing.JButton btnSuact;
+    private javax.swing.JButton btnXoact;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -173,7 +172,6 @@ public class Phongto1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tblNguyenlieu;
-    private javax.swing.JTextField txtDanhgia;
     private javax.swing.JTextField txtTenmon;
     // End of variables declaration//GEN-END:variables
 }

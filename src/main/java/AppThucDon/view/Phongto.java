@@ -15,9 +15,9 @@ public class Phongto extends javax.swing.JPanel {
     /**
      * Creates new form Phongto
      */
-    private Goiyct parent;
+    private javax.swing.JPanel parent;
 
-    public Phongto(Goiyct parent) {
+    public Phongto(javax.swing.JPanel parent) {
         initComponents();
         this.parent = parent;
     }
@@ -41,7 +41,7 @@ public class Phongto extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnLuucongthuc = new javax.swing.JButton();
+        btnLuuyeuthich = new javax.swing.JButton();
         btnXuatfile = new javax.swing.JButton();
         txtDanhgia = new javax.swing.JTextField();
         btnLuudanhgia = new javax.swing.JButton();
@@ -72,9 +72,9 @@ public class Phongto extends javax.swing.JPanel {
 
         jLabel3.setText("Đây là loại món ăn :");
 
-        jLabel5.setText("Thời gian cook :");
+        jLabel5.setText("Thời gian nấu ăn :");
 
-        btnLuucongthuc.setText("Lưu vào tôi");
+        btnLuuyeuthich.setText("Lưu yêu thích");
 
         btnXuatfile.setText("Xuất file");
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class Phongto extends javax.swing.JPanel {
 
         txtDanhgia.setText("jTextField1");
 
-        btnLuudanhgia.setText("jButton1");
+        btnLuudanhgia.setText("Đánh giá ct");
 
         btnQuaylai.setText("Quay lai");
         btnQuaylai.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class Phongto extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnLuudanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnLuucongthuc, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jScrollPane2))))
@@ -157,7 +157,7 @@ public class Phongto extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLuucongthuc, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDanhgia)
                     .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -176,8 +176,8 @@ public class Phongto extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLuucongthuc;
     private javax.swing.JButton btnLuudanhgia;
+    private javax.swing.JButton btnLuuyeuthich;
     private javax.swing.JButton btnQuaylai;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;

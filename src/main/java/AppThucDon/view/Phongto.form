@@ -50,7 +50,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="btnLuudanhgia" min="-2" pref="146" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnLuucongthuc" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Component id="btnLuuyeuthich" min="-2" pref="250" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnXuatfile" max="32767" attributes="0"/>
                                   </Group>
@@ -93,7 +93,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnLuucongthuc" pref="58" max="32767" attributes="0"/>
+                  <Component id="btnLuuyeuthich" pref="58" max="32767" attributes="0"/>
                   <Component id="btnXuatfile" max="32767" attributes="0"/>
                   <Component id="txtDanhgia" max="32767" attributes="0"/>
                   <Component id="btnLuudanhgia" max="32767" attributes="0"/>
@@ -168,12 +168,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian cook :"/>
+        <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian n&#x1ea5;u &#x103;n :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnLuucongthuc">
+    <Component class="javax.swing.JButton" name="btnLuuyeuthich">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L&#x1b0;u v&#xe0;o t&#xf4;i"/>
+        <Property name="text" type="java.lang.String" value="L&#x1b0;u y&#xea;u th&#xed;ch"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnXuatfile">
@@ -191,7 +191,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnLuudanhgia">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="&#x110;&#xe1;nh gi&#xe1; ct"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnQuaylai">

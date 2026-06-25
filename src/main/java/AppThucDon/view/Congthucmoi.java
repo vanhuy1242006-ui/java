@@ -13,16 +13,14 @@ import AppThucDon.dao.MonAnDAO;
 
 public class Congthucmoi extends javax.swing.JPanel {
 
-    private final DefaultTableModel model;
+
 
     /**
      * Creates new form studentpanel
      */
     public Congthucmoi() {
         initComponents();
-         model = new DefaultTableModel();
-    model.addColumn("Nguyên liệu");
-    model.addColumn("Số lượng");
+
 
 
     
@@ -61,7 +59,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         jLabel1.setText("Loại món ăn");
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Chọn loại món ăn ---", "Salad", "Nước chấm", "Món chính", "Món ăn kèm", "Món canh", "Món tráng miệng", "Đồ uống", "Đồ ăn nhẹ" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Chọn loại món ăn ---", "Món chính", "Món phụ", "Món canh", "Nước chấm", "Món tráng miệng", "Đồ uống", "Đồ ăn nhanh" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +82,11 @@ public class Congthucmoi extends javax.swing.JPanel {
         });
 
         btnHuy.setText("Huy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Mô tả công thức");
 
@@ -103,10 +106,6 @@ public class Congthucmoi extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHuy, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -118,10 +117,10 @@ public class Congthucmoi extends javax.swing.JPanel {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,7 +128,11 @@ public class Congthucmoi extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1, 0, 560, Short.MAX_VALUE)
-                            .addComponent(txtTenmon))))
+                            .addComponent(txtTenmon)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -227,11 +230,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         if (isSuccess) {
             javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
             // Tự động xóa trắng các ô nhập liệu sau khi lưu
-            txtTenmon.setText("");
-            jTextField1.setText("");
-            jTextArea1.setText("");
-            jTextArea2.setText("");
-            jComboBox1.setSelectedIndex(0);
+            clearForm();
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "❌ Thêm thất bại, hãy xem lỗi ở Console!");
         }
@@ -240,6 +239,17 @@ public class Congthucmoi extends javax.swing.JPanel {
     }      // TODO add your handling code h
     }//GEN-LAST:event_btnLuuActionPerformed
 
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+    clearForm();
+    }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void clearForm() {
+    txtTenmon.setText("");
+    jTextField1.setText("");
+    jTextArea1.setText("");
+    jTextArea2.setText("");
+    jComboBox1.setSelectedIndex(0);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnh;

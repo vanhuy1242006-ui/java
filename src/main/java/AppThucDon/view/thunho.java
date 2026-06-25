@@ -4,6 +4,8 @@
  */
 package AppThucDon.view;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author loan phuong
@@ -29,6 +31,7 @@ public class thunho extends javax.swing.JPanel {
         txtNguyenlieu.setLineWrap(true);
         txtNguyenlieu.setWrapStyleWord(true);
         setPreferredSize(new java.awt.Dimension(373, 390));
+        setMaximumSize(new Dimension(373, 390));
     }
 
     /**

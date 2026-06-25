@@ -27,6 +27,7 @@ public class Luucongthuc extends javax.swing.JPanel {
 p.setMaximumSize(new Dimension(Integer.MAX_VALUE, d.height));
 p.setAlignmentX(Component.LEFT_ALIGNMENT);
     pnlDaydu.add(p);
+    pnlDaydu.add(javax.swing.Box.createVerticalStrut(40));
 }
     pnlDaydu.revalidate();
     pnlDaydu.repaint();

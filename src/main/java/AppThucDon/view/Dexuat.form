@@ -25,9 +25,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelGoiy">
+        <Container class="javax.swing.JPanel" name="panelDexuat">
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="2"/>
+            <Property name="horizontalGap" type="int" value="5"/>
+            <Property name="rows" type="int" value="0"/>
+            <Property name="verticalGap" type="int" value="40"/>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>

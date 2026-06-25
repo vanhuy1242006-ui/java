@@ -28,15 +28,19 @@ public class Mainlayout extends javax.swing.JFrame {
         initComponents();
         btnHome.setOpaque(true);
         jButton2.setOpaque(true);
-        btn1.setOpaque(true);
-        btn2.setOpaque(true);
-        btn3.setOpaque(true);
+        btnCuatoi.setOpaque(true);
+        btnThemct.setOpaque(true);
+        btnsetting.setOpaque(true);
+        btnDexuat.setOpaque(true);
+        btnYeuthich.setOpaque(true);
 
         btnHome.setContentAreaFilled(true);
         jButton2.setContentAreaFilled(true);
-        btn1.setContentAreaFilled(true);
-        btn2.setContentAreaFilled(true);
-        btn3.setContentAreaFilled(true);
+        btnCuatoi.setContentAreaFilled(true);
+        btnThemct.setContentAreaFilled(true);
+        btnsetting.setContentAreaFilled(true);
+        btnDexuat.setContentAreaFilled(true);
+        btnYeuthich.setContentAreaFilled(true);
 
         resetMenu();
         setSelected(btnHome);
@@ -66,6 +70,7 @@ public class Mainlayout extends javax.swing.JFrame {
         );
         content2.add(new Goiyct(), "Goiy");
         content2.add(new Luucongthuc(), "Luuct");
+        content2.add(new Dexuat(), "Dexuat");
 
         card.show(content2, "Home");
     }
@@ -80,14 +85,16 @@ public class Mainlayout extends javax.swing.JFrame {
     private void initComponents() {
 
         menu1 = new javax.swing.JPanel();
-        btn1 = new javax.swing.JButton();
-        btn2 = new javax.swing.JButton();
-        btn3 = new javax.swing.JButton();
+        btnCuatoi = new javax.swing.JButton();
+        btnThemct = new javax.swing.JButton();
+        btnsetting = new javax.swing.JButton();
         jTextField1 = new SearchTextField();
         btnHome = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         content2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnTimkiem = new javax.swing.JButton();
+        btnDexuat = new javax.swing.JButton();
+        btnYeuthich = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 233, 240));
@@ -95,38 +102,38 @@ public class Mainlayout extends javax.swing.JFrame {
         menu1.setBackground(new java.awt.Color(255, 248, 240));
         menu1.setForeground(new java.awt.Color(255, 102, 102));
 
-        btn1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn1.setForeground(new java.awt.Color(153, 153, 153));
-        btn1.setText("Công thức của tôi");
-        btn1.setBorder(null);
-        btn1.setContentAreaFilled(false);
-        btn1.setFocusPainted(false);
-        btn1.addActionListener(new java.awt.event.ActionListener() {
+        btnCuatoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCuatoi.setForeground(new java.awt.Color(153, 153, 153));
+        btnCuatoi.setText("Công thức của tôi");
+        btnCuatoi.setBorder(null);
+        btnCuatoi.setContentAreaFilled(false);
+        btnCuatoi.setFocusPainted(false);
+        btnCuatoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1ActionPerformed(evt);
+                btnCuatoiActionPerformed(evt);
             }
         });
 
-        btn2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn2.setForeground(new java.awt.Color(153, 153, 153));
-        btn2.setText("Thêm công thức");
-        btn2.setBorder(null);
-        btn2.setContentAreaFilled(false);
-        btn2.setFocusPainted(false);
-        btn2.addActionListener(new java.awt.event.ActionListener() {
+        btnThemct.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThemct.setForeground(new java.awt.Color(153, 153, 153));
+        btnThemct.setText("Thêm công thức");
+        btnThemct.setBorder(null);
+        btnThemct.setContentAreaFilled(false);
+        btnThemct.setFocusPainted(false);
+        btnThemct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn2ActionPerformed(evt);
+                btnThemctActionPerformed(evt);
             }
         });
 
-        btn3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn3.setText("Đăng xuất");
-        btn3.setBorder(null);
-        btn3.setContentAreaFilled(false);
-        btn3.setFocusPainted(false);
-        btn3.addActionListener(new java.awt.event.ActionListener() {
+        btnsetting.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnsetting.setText("Đăng xuất");
+        btnsetting.setBorder(null);
+        btnsetting.setContentAreaFilled(false);
+        btnsetting.setFocusPainted(false);
+        btnsetting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn3ActionPerformed(evt);
+                btnsettingActionPerformed(evt);
             }
         });
 
@@ -148,7 +155,7 @@ public class Mainlayout extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(153, 153, 153));
-        jButton2.setText("Hôm nay ăn gì");
+        jButton2.setText(" Ăn gì bây giờ?");
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.setFocusPainted(false);
@@ -171,7 +178,27 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton1.setText("tìm kiếm");
+        btnTimkiem.setText("tìm kiếm");
+
+        btnDexuat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDexuat.setText("Đề xuất");
+        btnDexuat.setBorder(null);
+        btnDexuat.setFocusPainted(false);
+        btnDexuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDexuatActionPerformed(evt);
+            }
+        });
+
+        btnYeuthich.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnYeuthich.setText("Yêu thích");
+        btnYeuthich.setBorder(null);
+        btnYeuthich.setFocusPainted(false);
+        btnYeuthich.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYeuthichActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menu1Layout = new javax.swing.GroupLayout(menu1);
         menu1.setLayout(menu1Layout);
@@ -180,17 +207,22 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGroup(menu1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1)
+                        .addComponent(btnsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menu1Layout.createSequentialGroup()
-                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnThemct, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btnYeuthich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnCuatoi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                        .addComponent(btnTimkiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnDexuat, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -203,15 +235,19 @@ public class Mainlayout extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDexuat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCuatoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnYeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnThemct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(btnsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addComponent(content2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
@@ -232,21 +268,23 @@ public class Mainlayout extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+    private void btnCuatoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuatoiActionPerformed
         card.show(content2, "Luuct");
         resetMenu();
-        setSelected(btn1);
-    }//GEN-LAST:event_btn1ActionPerformed
+        setSelected(btnCuatoi);
+    }//GEN-LAST:event_btnCuatoiActionPerformed
 
-    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+    private void btnThemctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemctActionPerformed
         card.show(content2, "Ctmoi");
         resetMenu();
-        setSelected(btn2);
-    }//GEN-LAST:event_btn2ActionPerformed
+        setSelected(btnThemct);
+    }//GEN-LAST:event_btnThemctActionPerformed
 
-    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+    private void btnsettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsettingActionPerformed
         card.show(content2, "setting");
-    }//GEN-LAST:event_btn3ActionPerformed
+        resetMenu();
+        setSelected(btnsetting);
+    }//GEN-LAST:event_btnsettingActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -260,31 +298,44 @@ public class Mainlayout extends javax.swing.JFrame {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         card.show(content2, "Home");
+        resetMenu();
+        setSelected(btnHome);
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void resetMenu() {
-        Color bg = new Color(255, 248, 240);
-        Color text = new Color(51, 51, 51);
+    private void btnDexuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDexuatActionPerformed
+        card.show(content2, "Dexuat");
+        resetMenu();
+        setSelected(btnDexuat);
+    }//GEN-LAST:event_btnDexuatActionPerformed
 
+    private void btnYeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYeuthichActionPerformed
+        
+        resetMenu();
+        setSelected(btnYeuthich);
+    }//GEN-LAST:event_btnYeuthichActionPerformed
+
+    private void resetMenu() {
+        Color bg = new Color(255,248,240);
+        Color text = new Color(51, 51, 51);
         btnHome.setBackground(bg);
         btnHome.setForeground(text);
-
         jButton2.setBackground(bg);
         jButton2.setForeground(text);
-
-        btn1.setBackground(bg);
-        btn1.setForeground(text);
-
-        btn2.setBackground(bg);
-        btn2.setForeground(text);
-
-        btn3.setBackground(bg);
-        btn3.setForeground(text);
+        btnCuatoi.setBackground(bg);
+        btnCuatoi.setForeground(text);
+        btnThemct.setBackground(bg);
+        btnThemct.setForeground(text);
+        btnsetting.setBackground(bg);
+        btnsetting.setForeground(text);
+        btnDexuat.setBackground(bg);
+        btnDexuat.setForeground(text);
+        btnYeuthich.setBackground(bg);
+        btnYeuthich.setForeground(text);
     }
 
     private void setSelected(javax.swing.JButton btn) {
-        btn.setBackground(new Color(255, 229, 204));
-        btn.setForeground(new Color(255, 122, 0));
+        btn.setBackground(new Color(255, 180, 90));
+        btn.setForeground(new Color(51, 51, 51));
     }
 
     /**
@@ -312,12 +363,14 @@ public class Mainlayout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn1;
-    private javax.swing.JButton btn2;
-    private javax.swing.JButton btn3;
+    private javax.swing.JButton btnCuatoi;
+    private javax.swing.JButton btnDexuat;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnThemct;
+    private javax.swing.JButton btnTimkiem;
+    private javax.swing.JButton btnYeuthich;
+    private javax.swing.JButton btnsetting;
     private javax.swing.JPanel content2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel menu1;

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="33" green="99" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -39,16 +44,13 @@
                               <Component id="txtTenmon" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtDanhgia" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" pref="94" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel4" min="-2" pref="94" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="btnLuudanhgia" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnLuucongthuc" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Component id="btnXoact" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnSuact" min="-2" pref="250" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnXuatfile" pref="212" max="32767" attributes="0"/>
                                   </Group>
@@ -88,10 +90,9 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnLuucongthuc" pref="58" max="32767" attributes="0"/>
+                  <Component id="btnSuact" pref="58" max="32767" attributes="0"/>
                   <Component id="btnXuatfile" max="32767" attributes="0"/>
-                  <Component id="txtDanhgia" max="32767" attributes="0"/>
-                  <Component id="btnLuudanhgia" max="32767" attributes="0"/>
+                  <Component id="btnXoact" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -166,27 +167,31 @@
         <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian cook :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnLuucongthuc">
+    <Component class="javax.swing.JButton" name="btnSuact">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L&#x1b0;u v&#xe0;o t&#xf4;i"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="S&#x1eed;a c&#xf4;ng th&#x1ee9;c"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnXuatfile">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t file"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatfileActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDanhgia">
+    <Component class="javax.swing.JButton" name="btnXoact">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnLuudanhgia">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="X&#xf3;a c&#xf4;ng th&#x1ee9;c"/>
       </Properties>
     </Component>
   </SubComponents>
