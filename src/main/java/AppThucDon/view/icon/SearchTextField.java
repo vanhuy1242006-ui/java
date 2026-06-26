@@ -1,4 +1,4 @@
-package AppThucDon.view;
+package AppThucDon.view.icon;
 
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
