@@ -4,6 +4,9 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.dao.FormDangNhap.CurrentUser;
+import AppThucDon.service.YeuThichService;
+import AppThucDon.view.icon.IconTraitim;
 import java.awt.Dimension;
 
 /**
@@ -12,11 +15,14 @@ import java.awt.Dimension;
  */
 public class thunho extends javax.swing.JPanel {
 
+
+    
+private boolean daYeuThich = false;
     /**
      * Creates new form thunho
 
      */
-    public thunho(String tenMon, String tacGia, String sao, String thoiGian, String congThuc, String nguyenLieu) {
+    public thunho(String tenMon, String tacGia, String sao, String thoiGian, String nguyenLieu) {
         initComponents();
         lblTenct.setText(tenMon);
         lblTacgia.setText(tacGia);
@@ -30,7 +36,12 @@ public class thunho extends javax.swing.JPanel {
         txtNguyenlieu.setWrapStyleWord(true);
         setPreferredSize(new java.awt.Dimension(373, 390));
         setMaximumSize(new Dimension(373, 390));
+        
+        
+IconTraitim.setHeart(btnTraitim, daYeuThich);
+
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +59,7 @@ public class thunho extends javax.swing.JPanel {
         lblThoigian = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        btnTraitim = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 204, 153));
@@ -74,7 +85,12 @@ public class thunho extends javax.swing.JPanel {
         txtNguyenlieu.setRows(5);
         jScrollPane1.setViewportView(txtNguyenlieu);
 
-        jButton1.setText("jButton1");
+        btnTraitim.setText("jButton1");
+        btnTraitim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraitimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,14 +104,16 @@ public class thunho extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblSao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbAnh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTenct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTacgia, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                            .addComponent(lblThoigian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTenct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblTacgia, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(lblThoigian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)))))
                 .addContainerGap())
         );
@@ -104,13 +122,13 @@ public class thunho extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTenct, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,9 +139,15 @@ public class thunho extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnTraitimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraitimActionPerformed
+    daYeuThich = !daYeuThich;
+
+    IconTraitim.setHeart(btnTraitim, daYeuThich);
+    }//GEN-LAST:event_btnTraitimActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTraitim;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAnh;
     private javax.swing.JLabel lblSao;

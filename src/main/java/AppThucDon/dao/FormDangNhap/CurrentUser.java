@@ -2,7 +2,7 @@ package AppThucDon.dao.FormDangNhap;
 
 public class CurrentUser {
 
-    public static Integer userId;
+    public static int userId;
 
     public static String username;
 

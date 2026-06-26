@@ -4,6 +4,7 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.dao.FormDangNhap.CurrentUser;
 import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -31,9 +32,8 @@ public class Dexuat extends javax.swing.JPanel {
             "Tác giả " + i,
             "4." + i%5 + "⭐",
             "30 phút",
-            "Nguyên liệu...",
-            "Công thức..."
-    );
+            "Nguyên liệu..."
+     );
 
 
 
