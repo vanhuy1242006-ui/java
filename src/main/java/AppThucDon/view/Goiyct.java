@@ -26,7 +26,7 @@ public class Goiyct extends javax.swing.JPanel {
         new BoxLayout(panelGoiy, BoxLayout.Y_AXIS)
     );
 
-        Phongto pnlPhongto = new Phongto(this);
+        Goiyto pnlPhongto = new Goiyto(this);
         this.add(jScrollPane1, "GOIY");
         this.add(pnlPhongto, "PHONGTO");
         CardLayout cl = (CardLayout) this.getLayout();

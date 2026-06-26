@@ -19,9 +19,9 @@ public class Dexuat extends javax.swing.JPanel {
      */
     public Dexuat() {
         initComponents();
-        Phongto pnlPhongto = new Phongto(this);
+        Dexuatto Dexuatto = new Dexuatto(this);
         this.add(jScrollPane1, "DEXUAT");
-        this.add(pnlPhongto, "PHONGTO");
+        this.add(Dexuatto, "PHONGTO");
         CardLayout cl = (CardLayout) this.getLayout();
         cl.show(this, "DEXUAT");
         

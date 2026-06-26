@@ -10,14 +10,14 @@ import java.awt.CardLayout;
  *
  * @author loan phuong
  */
-public class Phongto extends javax.swing.JPanel {
+public class Goiyto extends javax.swing.JPanel {
 
     /**
-     * Creates new form Phongto
+     * Creates new form Goiyto
      */
     private javax.swing.JPanel parent;
 
-    public Phongto(javax.swing.JPanel parent) {
+    public Goiyto(javax.swing.JPanel parent) {
         initComponents();
         this.parent = parent;
     }

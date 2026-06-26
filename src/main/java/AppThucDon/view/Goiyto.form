@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <Properties>
-    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="33" green="99" red="ff" type="rgb"/>
-    </Property>
-  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -38,21 +33,26 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel2" min="-2" pref="131" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnQuaylai" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtTenmon" max="32767" attributes="0"/>
+                              <Component id="jLabel2" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtTenmon" min="-2" pref="500" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="94" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtDanhgia" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" pref="94" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="btnXoact" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <Component id="btnLuudanhgia" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnLuuyeuthich" min="-2" pref="250" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnSuact" min="-2" pref="250" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnXuatfile" pref="212" max="32767" attributes="0"/>
+                                      <Component id="btnXuatfile" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane2" max="32767" attributes="0"/>
                               </Group>
@@ -68,9 +68,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTenmon" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtTenmon" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnQuaylai" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -90,9 +93,10 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSuact" pref="58" max="32767" attributes="0"/>
+                  <Component id="btnLuuyeuthich" pref="58" max="32767" attributes="0"/>
                   <Component id="btnXuatfile" max="32767" attributes="0"/>
-                  <Component id="btnXoact" max="32767" attributes="0"/>
+                  <Component id="txtDanhgia" max="32767" attributes="0"/>
+                  <Component id="btnLuudanhgia" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -164,35 +168,39 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian cook :"/>
+        <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian n&#x1ea5;u &#x103;n :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSuact">
+    <Component class="javax.swing.JButton" name="btnLuuyeuthich">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="S&#x1eed;a c&#xf4;ng th&#x1ee9;c"/>
+        <Property name="text" type="java.lang.String" value="L&#x1b0;u y&#xea;u th&#xed;ch"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnXuatfile">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t file"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatfileActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnXoact">
+    <Component class="javax.swing.JTextField" name="txtDanhgia">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="X&#xf3;a c&#xf4;ng th&#x1ee9;c"/>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLuudanhgia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#xe1;nh gi&#xe1; ct"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnQuaylai">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quay lai"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuaylaiActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

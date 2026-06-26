@@ -10,16 +10,16 @@ import java.awt.CardLayout;
  *
  * @author loan phuong
  */
-public class Phongto1 extends javax.swing.JPanel {
+public class Hienthicongthuccuatoi extends javax.swing.JPanel {
 
     /**
      * Creates new form Phongto
      */
     private Goiyct parent;
-    public Phongto1() {
+    public Hienthicongthuccuatoi() {
     initComponents();
 }
-    public Phongto1(Goiyct parent) {
+    public Hienthicongthuccuatoi(Goiyct parent) {
         initComponents();
         this.parent = parent;
     }
@@ -115,14 +115,13 @@ public class Phongto1 extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnXoact, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnSuact, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane2))))
+                                .addComponent(jScrollPane2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnXoact, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSuact, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
