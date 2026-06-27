@@ -7,6 +7,7 @@ package AppThucDon.view;
 import AppThucDon.view.icon.SearchTextField;
 import AppThucDon.dao.FormDangNhap.CurrentUser;
 import AppThucDon.dao.FormDangNhap.UserPanel;
+import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -27,6 +28,14 @@ public class Mainlayout extends javax.swing.JFrame {
      */
     public Mainlayout() {
         initComponents();
+        
+        addHoverEffect(btnHome);
+        addHoverEffect(jButton2);
+        addHoverEffect(btnCuatoi);
+        addHoverEffect(btnThemct);
+        addHoverEffect(btnsetting);
+        addHoverEffect(btnDexuat);
+        addHoverEffect(btnYeuthich);
         btnHome.setOpaque(true);
         jButton2.setOpaque(true);
         btnCuatoi.setOpaque(true);
@@ -315,9 +324,10 @@ public class Mainlayout extends javax.swing.JFrame {
         setSelected(btnYeuthich);
     }//GEN-LAST:event_btnYeuthichActionPerformed
 
+    
     private void resetMenu() {
-        Color bg = new Color(255,248,240);
-        Color text = new Color(51, 51, 51);
+        Color bg = menu1.getBackground();
+        Color text = new Color(20, 20, 20);
         btnHome.setBackground(bg);
         btnHome.setForeground(text);
         jButton2.setBackground(bg);
@@ -335,9 +345,37 @@ public class Mainlayout extends javax.swing.JFrame {
     }
 
     private void setSelected(javax.swing.JButton btn) {
-        btn.setBackground(new Color(255, 180, 90));
-        btn.setForeground(new Color(51, 51, 51));
+        btn.setBackground(new Color(255, 120, 0));
+        btn.setForeground(new Color(255, 255, 255));
     }
+    
+        private void addHoverEffect(javax.swing.JButton btn) {
+
+    Color hover = new Color(255, 160, 40);    // làm nút sáng lên khi rê chuột
+
+    Color normal = menu1.getBackground(); // đang áp dụng cho toàn bộ button menu
+
+    btn.setBackground(normal);// 🌫 set nền mặc định
+
+    btn.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            if (btn.getBackground().equals(new Color(255, 120, 0))) {
+                return; // đang selected thì không đổi hover
+            }
+            btn.setBackground(hover);
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            if (btn.getBackground().equals(new Color(255, 120, 0))) {
+                return;
+            }
+            btn.setBackground(normal);
+        }
+    });
+}
 
     /**
      * @param args the command line arguments

@@ -103,15 +103,12 @@
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtDanhgia" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnLuudanhgia" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnXuatfile" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnXuatfile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnLuudanhgia" alignment="3" pref="51" max="32767" attributes="0"/>
+                  <Component id="txtDanhgia" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -199,6 +196,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatfileActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new PillButton()"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDanhgia">
       <Properties>
@@ -212,6 +212,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLuudanhgiaActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new PillButton()"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnQuaylai">
       <Properties>
@@ -220,6 +223,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuaylaiActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new PillButton()"/>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Goiyto_btnQuaylai"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

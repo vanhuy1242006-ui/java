@@ -4,6 +4,7 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 
 /**
@@ -42,10 +43,10 @@ public class Goiyto extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnLuuyeuthich = new javax.swing.JButton();
-        btnXuatfile = new javax.swing.JButton();
+        btnXuatfile = new PillButton();
         txtDanhgia = new javax.swing.JTextField();
-        btnLuudanhgia = new javax.swing.JButton();
-        btnQuaylai = new javax.swing.JButton();
+        btnLuudanhgia = new PillButton();
+        btnQuaylai = new PillButton();
 
         jLabel4.setText("Mô tả công thức");
 
@@ -174,13 +175,11 @@ public class Goiyto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDanhgia)
-                    .addComponent(btnLuudanhgia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(txtDanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
