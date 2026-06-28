@@ -6,15 +6,22 @@ package AppThucDon.dao.FormDangNhap;
 
 import AppThucDon.database.Database;
 import AppThucDon.view.Mainlayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class EditProfileFirstTime extends javax.swing.JFrame {
 
@@ -32,15 +39,73 @@ constructor nhận username
     ) {
 
         initComponents();
+        setTitle("JavaCook - Hồ sơ");
 
-        setSize(
-                1000,
-                900
-        );
+        Image con = new ImageIcon(
+                getClass().getResource("/images/logo.png"))
+                .getImage();
 
-        setLocationRelativeTo(
-                null
-        );
+        setIconImage(con);
+        txtBio.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createLineBorder(new Color(232, 181, 53), 2),
+                        BorderFactory.createEmptyBorder(8, 8, 8, 8)
+                ));
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/ng.png"));
+        Image img = icon.getImage().getScaledInstance(
+                lblAvatar.getWidth(),
+                lblAvatar.getHeight(),
+                Image.SCALE_SMOOTH);
+
+        lblAvatar.setIcon(new ImageIcon(img));
+
+        getContentPane().setBackground(new Color(255, 250, 242));
+
+        btnChooseAvatar.setFocusPainted(false);
+        btnChooseAvatar.setBorderPainted(false);
+        btnChooseAvatar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 34));
+        lblTitle.setForeground(new Color(150, 98, 20));
+        lblDescription.setFont(new Font("Segoe UI", Font.ITALIC, 14));
+        lblDescription.setForeground(new Color(120, 120, 120));
+        lblAvatar.setBorder(
+                BorderFactory.createLineBorder(
+                        new Color(230, 190, 90), 2));
+
+        lblAvatar.setHorizontalAlignment(SwingConstants.CENTER);
+
+        txtDisplayName.setBorder(
+                BorderFactory.createLineBorder(
+                        new Color(232, 181, 53), 2));
+
+        lblAvatar.setText("Chưa chọn ảnh");
+        txtDisplayName.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        txtBio.setLineWrap(true);
+        txtBio.setWrapStyleWord(true);
+        btnChooseAvatar.setBackground(Color.WHITE);
+        btnChooseAvatar.setForeground(new Color(150, 98, 20));
+        btnSave.setBackground(new Color(247, 192, 67));
+        btnSave.setForeground(Color.WHITE);
+        btnSave.setFont(new Font("Segoe UI", Font.BOLD, 16));
+
+        btnSave.setBackground(new Color(255, 206, 84));
+
+        btnSave.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnSave.setBackground(new Color(244, 180, 0));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnSave.setBackground(new Color(255, 206, 84));
+            }
+        });
+
+        setSize(AppConfig.WIDTH, AppConfig.HEIGHT);
+        setLocationRelativeTo(null);
 
         this.username = username;
 
@@ -61,24 +126,17 @@ constructor nhận username
             if (avatarPath != null
                     && !avatarPath.isEmpty()) {
 
-                ImageIcon icon
-                        = new ImageIcon(
-                                avatarPath
-                        );
+                ImageIcon avatarIcon = new ImageIcon(avatarPath);
 
-                Image img
-                        = icon.getImage()
-                                .getScaledInstance(
-                                        150,
-                                        150,
-                                        Image.SCALE_SMOOTH
-                                );
+                Image avatarImg = avatarIcon.getImage().getScaledInstance(
+                        150,
+                        150,
+                        Image.SCALE_SMOOTH
+                );
 
                 lblAvatar.setText("");
 
-                lblAvatar.setIcon(
-                        new ImageIcon(img)
-                );
+                lblAvatar.setIcon(new ImageIcon(avatarImg));
 
             }
 
@@ -99,112 +157,132 @@ constructor nhận username
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        lblAvatar = new javax.swing.JLabel();
-        btnChooseAvatar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lblDisplayName = new javax.swing.JLabel();
         txtDisplayName = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblBio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtBio = new javax.swing.JTextArea();
         btnSave = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblAvatarTitle = new javax.swing.JLabel();
+        lblAvatar = new javax.swing.JLabel();
+        btnChooseAvatar = new javax.swing.JButton();
+        lblBackground = new javax.swing.JLabel();
+        lblDescription = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Chỉnh sửa ảnh đại diện :");
-
-        lblAvatar.setBackground(new java.awt.Color(153, 153, 153));
-        lblAvatar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAvatar.setText("Chưa chọn ảnh");
-        lblAvatar.setMaximumSize(new java.awt.Dimension(150, 150));
-        lblAvatar.setMinimumSize(new java.awt.Dimension(150, 150));
-        lblAvatar.setOpaque(true);
-        lblAvatar.setPreferredSize(new java.awt.Dimension(150, 150));
-
-        btnChooseAvatar.setText("Chọn ảnh");
-        btnChooseAvatar.addActionListener(this::btnChooseAvatarActionPerformed);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Nhập tên người dùng :");
+        lblDisplayName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDisplayName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
+        lblDisplayName.setText("Tên hiển thị");
 
         txtDisplayName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDisplayName.addActionListener(this::txtDisplayNameActionPerformed);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Phần mô tả :");
+        lblBio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblBio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/comment.png"))); // NOI18N
+        lblBio.setText("Giới thiệu bản thân");
 
         txtBio.setColumns(20);
         txtBio.setRows(5);
         jScrollPane1.setViewportView(txtBio);
 
-        btnSave.setText("Lưu ");
+        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSave.setText("Lưu thay đổi");
         btnSave.addActionListener(this::btnSaveActionPerformed);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Edit Your ProFiles");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblTitle.setText("Hoàn thiện hồ sơ");
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAvatarTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAvatarTitle.setText("Ảnh đại diện");
+        jPanel1.add(lblAvatarTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 112, 21));
+
+        lblAvatar.setBackground(new java.awt.Color(153, 153, 153));
+        lblAvatar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAvatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 190, 70), 2));
+        lblAvatar.setMaximumSize(new java.awt.Dimension(150, 150));
+        lblAvatar.setMinimumSize(new java.awt.Dimension(150, 150));
+        lblAvatar.setPreferredSize(new java.awt.Dimension(150, 150));
+        jPanel1.add(lblAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 150, -1));
+
+        btnChooseAvatar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnChooseAvatar.setForeground(new java.awt.Color(255, 209, 92));
+        btnChooseAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/photo-camera-interface-symbol-for-button.png"))); // NOI18N
+        btnChooseAvatar.setText("Chọn ảnh");
+        btnChooseAvatar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnChooseAvatar.addActionListener(this::btnChooseAvatarActionPerformed);
+        jPanel1.add(btnChooseAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 150, 50));
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fb342928-df51-4df9-9354-21d282ce.png"))); // NOI18N
+        lblBackground.setText("jLabel6");
+        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 530, 800));
+
+        lblDescription.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDescription.setText("Cập nhật thông tin của để mọi người biết đến bạn");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(150, 150, 150));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/info.png"))); // NOI18N
+        jLabel1.setText("Thông tin này sẽ hiển thị trên trang cá nhân của bạn.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
+                        .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTitle)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(383, 383, 383)
-                        .addComponent(btnChooseAvatar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 348, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(433, 433, 433))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSave)
-                        .addGap(156, 156, 156))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(188, 188, 188))))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
+                            .addComponent(txtDisplayName)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(2102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnChooseAvatar)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSave)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(lblDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(lblBio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(1885, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,6 +291,79 @@ constructor nhận username
     private void txtDisplayNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisplayNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDisplayNameActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        try {
+
+            Connection conn
+                    = Database.getConnection();
+
+            String sql
+                    = "UPDATE Users "
+                    + "SET "
+                    + "DisplayName=?,"
+                    + "Avatar=?,"
+                    + "Bio=? "
+                    + "WHERE Username=?";
+
+            PreparedStatement ps
+                    = conn.prepareStatement(
+                            sql
+                    );
+
+            ps.setString(
+                    1,
+                    txtDisplayName.getText()
+            );
+
+            ps.setString(
+                    2,
+                    avatarPath
+            );
+
+            ps.setString(
+                    3,
+                    txtBio.getText()
+            );
+
+            ps.setString(
+                    4,
+                    username
+            );
+
+            ps.executeUpdate();
+            CurrentUser.username
+                    = username;
+
+            CurrentUser.displayName
+                    = txtDisplayName.getText();
+
+            CurrentUser.bio
+                    = txtBio.getText();
+
+            CurrentUser.avatar
+                    = avatarPath;
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Lưu thành công!"
+            );
+
+            Mainlayout main
+                    = new Mainlayout();
+
+            main.setVisible(
+                    true
+            );
+
+            dispose();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnChooseAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseAvatarActionPerformed
         try {
@@ -290,79 +441,6 @@ constructor nhận username
         }
     }//GEN-LAST:event_btnChooseAvatarActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        try {
-
-            Connection conn
-                    = Database.getConnection();
-
-            String sql
-                    = "UPDATE Users "
-                    + "SET "
-                    + "DisplayName=?,"
-                    + "Avatar=?,"
-                    + "Bio=? "
-                    + "WHERE Username=?";
-
-            PreparedStatement ps
-                    = conn.prepareStatement(
-                            sql
-                    );
-
-            ps.setString(
-                    1,
-                    txtDisplayName.getText()
-            );
-
-            ps.setString(
-                    2,
-                    avatarPath
-            );
-
-            ps.setString(
-                    3,
-                    txtBio.getText()
-            );
-
-            ps.setString(
-                    4,
-                    username
-            );
-
-            ps.executeUpdate();
-            CurrentUser.username
-                    = username;
-
-            CurrentUser.displayName
-                    = txtDisplayName.getText();
-
-            CurrentUser.bio
-                    = txtBio.getText();
-
-            CurrentUser.avatar
-                    = avatarPath;
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Lưu thành công!"
-            );
-
-            Mainlayout main
-                    = new Mainlayout();
-
-            main.setVisible(
-                    true
-            );
-
-            dispose();
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        }
-    }//GEN-LAST:event_btnSaveActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -394,11 +472,16 @@ constructor nhận username
     private javax.swing.JButton btnChooseAvatar;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAvatar;
+    private javax.swing.JLabel lblAvatarTitle;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblBio;
+    private javax.swing.JLabel lblDescription;
+    private javax.swing.JLabel lblDisplayName;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTextArea txtBio;
     private javax.swing.JTextField txtDisplayName;
     // End of variables declaration//GEN-END:variables
