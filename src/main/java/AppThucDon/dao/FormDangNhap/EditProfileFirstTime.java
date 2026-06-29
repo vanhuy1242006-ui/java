@@ -52,7 +52,7 @@ constructor nhận username
                         BorderFactory.createEmptyBorder(8, 8, 8, 8)
                 ));
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/images/ng.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource(""));
         Image img = icon.getImage().getScaledInstance(
                 lblAvatar.getWidth(),
                 lblAvatar.getHeight(),
@@ -80,7 +80,6 @@ constructor nhận username
                 BorderFactory.createLineBorder(
                         new Color(232, 181, 53), 2));
 
-        lblAvatar.setText("Chưa chọn ảnh");
         txtDisplayName.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         txtBio.setLineWrap(true);
         txtBio.setWrapStyleWord(true);
@@ -191,6 +190,7 @@ constructor nhận username
         jScrollPane1.setViewportView(txtBio);
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diskette.png"))); // NOI18N
         btnSave.setText("Lưu thay đổi");
         btnSave.addActionListener(this::btnSaveActionPerformed);
 
@@ -269,7 +269,7 @@ constructor nhận username
                         .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)

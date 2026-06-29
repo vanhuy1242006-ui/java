@@ -6,10 +6,16 @@ package AppThucDon.dao.FormDangNhap;
 
 import AppThucDon.dao.FormDangNhap.EditProfileFirstTime;
 import AppThucDon.dao.FormDangNhap.JFrameLoginForm;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class UserPanel extends javax.swing.JPanel {
 
@@ -23,6 +29,114 @@ public class UserPanel extends javax.swing.JPanel {
     ) {
 
         initComponents();
+        
+
+        lblDisplayName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUserID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        btnLogout.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                btnLogout.setBackground(
+                        new Color(190, 50, 50));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+                btnLogout.setBackground(
+                        new Color(220, 70, 70));
+
+            }
+
+        });
+
+        
+
+        btnLogout.setFocusPainted(false);
+
+        btnLogout.setBackground(
+                new Color(220, 70, 70));
+
+        btnLogout.setForeground(Color.WHITE);
+
+        btnEdit.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                btnEdit.setBackground(
+                        new Color(255, 245, 220));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+                btnEdit.setBackground(
+                        Color.orange);
+
+            }
+
+        });
+
+        
+
+        btnEdit.setBackground(Color.orange);
+
+        btnEdit.setForeground(
+                new Color(255, 255, 255));
+
+        btnEdit.setFocusPainted(false);
+
+        btnEdit.setBorder(
+                BorderFactory.createLineBorder(
+                        new Color(232, 181, 53), 2, true));
+
+        jScrollPane1.setBorder(null);
+
+        jScrollPane1.getViewport().setBackground(
+                new Color(255, 253, 247));
+
+        txtBio.setEditable(false);
+
+        txtBio.setLineWrap(true);
+
+        txtBio.setWrapStyleWord(true);
+
+        txtBio.setFont(
+                new Font("Segoe UI", Font.PLAIN, 15));
+
+        txtBio.setBackground(
+                new Color(255, 253, 247));
+
+        txtBio.setBorder(
+                BorderFactory.createEmptyBorder(
+                        10, 10, 10, 10));
+
+        lblUserID.setFont(
+                new Font("Segoe UI", Font.PLAIN, 18));
+
+        lblUserID.setForeground(
+                new Color(120, 120, 120));
+
+        lblDisplayName.setFont(
+                new Font("Segoe UI", Font.BOLD, 28));
+
+        lblDisplayName.setForeground(
+                new Color(154, 98, 20));
+
+        lblAvatar.setBorder(
+                BorderFactory.createLineBorder(
+                        new Color(232, 181, 53), 2, true));
+
+        lblAvatar.setHorizontalAlignment(
+                SwingConstants.CENTER);
+
+        lblAvatar.setBackground(Color.WHITE);
 
         txtBio.setEditable(false);
 
@@ -126,78 +240,65 @@ public class UserPanel extends javax.swing.JPanel {
         btnEdit = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         lblUserID = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
-        lblDisplayName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAvatar.setBackground(new java.awt.Color(153, 153, 153));
+        lblDisplayName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        add(lblDisplayName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 310, 41));
+
+        lblAvatar.setBackground(new java.awt.Color(255, 255, 255));
         lblAvatar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAvatar.setText("Chưa chọn ảnh");
         lblAvatar.setMaximumSize(new java.awt.Dimension(150, 150));
         lblAvatar.setMinimumSize(new java.awt.Dimension(150, 150));
         lblAvatar.setOpaque(true);
         lblAvatar.setPreferredSize(new java.awt.Dimension(150, 150));
+        add(lblAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         txtBio.setColumns(20);
         txtBio.setRows(5);
         jScrollPane1.setViewportView(txtBio);
 
-        btnEdit.setText("Edit");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 456, 420, 80));
+
+        btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pencil (1).png"))); // NOI18N
+        btnEdit.setText("Chỉnh sửa hồ sơ");
+        btnEdit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEdit.addActionListener(this::btnEditActionPerformed);
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 190, 61));
 
-        btnLogout.setText("LogOut");
+        btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/door.png"))); // NOI18N
+        btnLogout.setText("Đăng xuất");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
+        add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, 187, 61));
 
-        lblUserID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblUserID.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
+        lblUserID.setForeground(new java.awt.Color(140, 140, 140));
+        add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 350, 280, 41));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(btnLogout))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                        .addComponent(btnEdit)))
-                .addGap(69, 69, 69))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(249, 249, 249)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(btnEdit)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLogout)
-                        .addGap(181, 181, 181))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(189, Short.MAX_VALUE))))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(154, 98, 20));
+        jLabel1.setText("JavaCook Profiles");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 290, 47));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Giới thiệu");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(230, 210, 170));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 443, 420, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nen.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -249,7 +350,11 @@ public class UserPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblDisplayName;
     private javax.swing.JLabel lblUserID;
