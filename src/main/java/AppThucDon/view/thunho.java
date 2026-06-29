@@ -8,6 +8,8 @@ import AppThucDon.dao.FormDangNhap.CurrentUser;
 import AppThucDon.service.YeuThichService;
 import AppThucDon.view.icon.IconTraitim;
 import java.awt.Dimension;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,12 +24,32 @@ private boolean daYeuThich = false;
      * Creates new form thunho
 
      */
-    public thunho(String tenMon, String tacGia, String sao, String thoiGian, String nguyenLieu) {
+    public thunho(String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
         initComponents();
+        
+        String path = "images/" + linkAnh;
+
+java.net.URL url = getClass().getClassLoader().getResource(path);
+
+if (url == null) {
+    System.out.println("Không tìm thấy ảnh: " + path);
+    return;
+}
+
+ImageIcon icon = new ImageIcon(url);
+
+Image img = icon.getImage().getScaledInstance(
+        lblAnh.getWidth(),
+        lblAnh.getHeight(),
+        Image.SCALE_SMOOTH);
+
+lblAnh.setIcon(new ImageIcon(img));
+        
         lblTenct.setText(tenMon);
         lblTacgia.setText(tacGia);
         lblSao.setText(sao);
         lblThoigian.setText(thoiGian);
+        
         
         setPreferredSize(new java.awt.Dimension(373, 390));
         setMaximumSize(new Dimension(373, 390));
@@ -47,7 +69,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbAnh = new javax.swing.JLabel();
+        lblAnh = new javax.swing.JLabel();
         lblTenct = new javax.swing.JLabel();
         lblTacgia = new javax.swing.JLabel();
         lblSao = new javax.swing.JLabel();
@@ -57,7 +79,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 204, 153));
 
-        lbAnh.setText("Ảnh");
+        lblAnh.setText("Ảnh");
 
         lblTenct.setText("Tên món");
         lblTenct.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -86,7 +108,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblSao, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .addComponent(lbAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTenct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -108,7 +130,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
                         .addComponent(lblTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +148,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTraitim;
-    private javax.swing.JLabel lbAnh;
+    private javax.swing.JLabel lblAnh;
     private javax.swing.JLabel lblSao;
     private javax.swing.JLabel lblTacgia;
     private javax.swing.JLabel lblTenct;

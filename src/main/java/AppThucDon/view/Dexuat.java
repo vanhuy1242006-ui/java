@@ -8,6 +8,9 @@ import AppThucDon.dao.FormDangNhap.CurrentUser;
 import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import AppThucDon.service.MonAnService;
+import AppThucDon.model.MonAn;
+import java.util.List;
 
 /**
  *
@@ -26,15 +29,21 @@ public class Dexuat extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) this.getLayout();
         cl.show(this, "DEXUAT");
         
-        for(int i = 1; i <= 10; i++){
-     thunho card = new thunho(
-            "Món " + i,
-            "Tác giả " + i,
-            "4." + i%5 + "⭐",
-            "30 phút",
-            "Nguyên liệu..."
-     );
-
+        MonAnService monanservice = new MonAnService();
+        List<MonAn> danhsach = monanservice.getGoiYMonAn(10);
+        
+        for(MonAn i:danhsach){
+             System.out.println("Đang tạo card: " + i.getTenMon());
+             System.out.println("Link ảnh: " + i.getLinkAnh());
+             thunho card = new thunho(
+                     i.getTenMon(),
+            "Tác giả " + i.getTenNguoiTao(),
+            "4." + i.getDanhGia() + "⭐",
+            " " + i.getThoiGian(),
+              i.getLinkAnh()
+            
+            );
+            System.out.println(i.getTenMon());
 
 
 card.addMouseListener(new MouseAdapter() {

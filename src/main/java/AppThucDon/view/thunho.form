@@ -28,7 +28,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="lblSao" pref="185" max="32767" attributes="0"/>
-                  <Component id="lbAnh" max="32767" attributes="0"/>
+                  <Component id="lblAnh" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -56,7 +56,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnTraitim" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lbAnh" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="lblAnh" min="-2" pref="210" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -69,7 +69,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lbAnh">
+    <Component class="javax.swing.JLabel" name="lblAnh">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x1ea2;nh"/>
       </Properties>
