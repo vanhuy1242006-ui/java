@@ -81,6 +81,7 @@ public class Mainlayout extends javax.swing.JFrame {
         content2.add(new Goiyct(), "Goiy");
         content2.add(new Congthuccuatoi(), "Luuct");
         content2.add(new Dexuat(), "Dexuat");
+        content2.add(new Yeuthich(), "Yeuthich");
 
         card.show(content2, "Home");
     }
@@ -319,7 +320,7 @@ public class Mainlayout extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDexuatActionPerformed
 
     private void btnYeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYeuthichActionPerformed
-        
+        card.show(content2, "Yeuthich");
         resetMenu();
         setSelected(btnYeuthich);
     }//GEN-LAST:event_btnYeuthichActionPerformed

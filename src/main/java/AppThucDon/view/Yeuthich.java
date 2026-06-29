@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package AppThucDon.view;
+import AppThucDon.view.Yeuthichto;
+import java.awt.Component;
+import java.awt.Dimension;
+import javax.swing.Box;
 
 /**
  *
@@ -15,6 +19,33 @@ public class Yeuthich extends javax.swing.JPanel {
      */
     public Yeuthich() {
         initComponents();
+                jScrollPane1.setBorder(null);
+
+
+panelYeuthich.setLayout(
+        new javax.swing.BoxLayout(
+            panelYeuthich,
+            javax.swing.BoxLayout.Y_AXIS
+        )
+    );
+
+for (int i = 0; i < 10; i++) {
+        Yeuthichto p = new Yeuthichto(panelYeuthich);
+
+        p.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        Dimension d = p.getPreferredSize();
+        p.setMaximumSize(
+                new Dimension(Integer.MAX_VALUE, d.height));
+
+        panelYeuthich.add(p);
+        panelYeuthich.add(Box.createVerticalStrut(20));
+        jScrollPane1.setHorizontalScrollBarPolicy(
+    javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    }
+
+panelYeuthich.revalidate();
+panelYeuthich.repaint();
     }
 
     /**
@@ -26,19 +57,27 @@ public class Yeuthich extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelYeuthich = new javax.swing.JPanel();
+
+        panelYeuthich.setLayout(new javax.swing.BoxLayout(panelYeuthich, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPane1.setViewportView(panelYeuthich);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelYeuthich;
     // End of variables declaration//GEN-END:variables
 }
