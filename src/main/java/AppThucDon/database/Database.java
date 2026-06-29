@@ -15,7 +15,7 @@ public class Database {
             String port = "1433";                  // Cổng mặc định của SQL Server
             String dbName = "AppThucDonDB"; // Thay bằng tên DB bạn tạo trong SSMS
             String user = "sa";                    // Tài khoản đăng nhập SQL Server
-            String password = "1";               // Mật khẩu tài khoản sa của bạn
+            String password = "1234";               // Mật khẩu tài khoản sa của bạn
             
             // 2. Tạo chuỗi URL kết nối chuẩn kèm chứng chỉ bảo mật (encrypt=true)
             String url = "jdbc:sqlserver://" + serverName + ":" + port + ";"

@@ -24,39 +24,47 @@ private boolean daYeuThich = false;
      * Creates new form thunho
 
      */
-    public thunho(String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
+public thunho(String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
         initComponents();
         
-        String path = "images/" + linkAnh;
-
-java.net.URL url = getClass().getClassLoader().getResource(path);
-
-if (url == null) {
-    System.out.println("Không tìm thấy ảnh: " + path);
-    return;
-}
-
-ImageIcon icon = new ImageIcon(url);
-
-Image img = icon.getImage().getScaledInstance(
-        lblAnh.getWidth(),
-        lblAnh.getHeight(),
-        Image.SCALE_SMOOTH);
-
-lblAnh.setIcon(new ImageIcon(img));
-        
+        // 1. Gán text trước
         lblTenct.setText(tenMon);
         lblTacgia.setText(tacGia);
         lblSao.setText(sao);
         lblThoigian.setText(thoiGian);
         
-        
         setPreferredSize(new java.awt.Dimension(373, 390));
         setMaximumSize(new Dimension(373, 390));
         
-        
-IconTraitim.setHeart(btnTraitim, daYeuThich);
+        // 2. Xử lý load ảnh an toàn từ resources
+        String path = "images/" + linkAnh;
+        java.net.URL url = getClass().getClassLoader().getResource(path);
 
+        if (url == null) {
+            System.out.println("⚠️ Không tìm thấy ảnh trong resources: " + path);
+            lblAnh.setText("No Image"); // Hiển thị chữ thay thế để không lỗi
+        } else {
+            try {
+                ImageIcon icon = new ImageIcon(url);
+                
+                // Lấy kích thước mong muốn thiết kế (185x210), phòng khi lblAnh chưa render (bằng 0)
+                int targetWidth = lblAnh.getWidth() > 0 ? lblAnh.getWidth() : 185;
+                int targetHeight = lblAnh.getHeight() > 0 ? lblAnh.getHeight() : 210;
+
+                Image img = icon.getImage().getScaledInstance(
+                        targetWidth,
+                        targetHeight,
+                        Image.SCALE_SMOOTH);
+
+                lblAnh.setIcon(new ImageIcon(img));
+                lblAnh.setText(""); // Xóa chữ "Ảnh" mặc định đi
+            } catch (Exception e) {
+                System.out.println("Lỗi xử lý ảnh: " + e.getMessage());
+                lblAnh.setText("Error Image");
+            }
+        }
+        
+        IconTraitim.setHeart(btnTraitim, daYeuThich);
     }
 
 

@@ -51,5 +51,3 @@ INSERT INTO MonAn (TenMon, LoaiMon, NguyenLieu, ThoiGian, DanhGia, LinkAnh, MoTa
 GO
 
 
-TRUNCATE TABLE Users;
-DROP DATABASE AppThucDonDB;

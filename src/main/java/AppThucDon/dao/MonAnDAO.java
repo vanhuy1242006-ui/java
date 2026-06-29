@@ -17,11 +17,11 @@ public class MonAnDAO {
     public List<MonAn> getRecommendedMeals(int limit) {
         List<MonAn> list = new ArrayList<>();
         
-        // Dùng LEFT JOIN để lôi kèm cột HoTen của bảng NguoiDung ra đặt tên là TenNguoiTao
-        String sql = "SELECT TOP (?) m.*, n.HoTen AS TenNguoiTao " +
-                     "FROM MonAn m " +
-                     "LEFT JOIN NguoiDung n ON m.MaNguoiTao = n.MaNguoiDung " +
-                     "ORDER BY NEWID()";
+            // Dùng LEFT JOIN để lôi kèm cột HoTen của bảng NguoiDung ra đặt tên là TenNguoiTao
+            String sql = "SELECT TOP (?) m.*, n.DisplayName AS TenNguoiTao " +
+             "FROM MonAn m " +
+             "LEFT JOIN Users n ON m.MaNguoiTao = n.UserID " +
+             "ORDER BY NEWID()";
         
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
