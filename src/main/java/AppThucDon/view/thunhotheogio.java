@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  *
  * @author loan phuong
  */
-public class thunho extends javax.swing.JPanel {
+public class thunhotheogio extends javax.swing.JPanel {
 
 
     
@@ -24,7 +24,7 @@ private boolean daYeuThich = false;
      * Creates new form thunho
 
      */
-public thunho(String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
+public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
         initComponents();
         
         // 1. Gán text trước
@@ -84,6 +84,7 @@ public thunho(String tenMon, String tacGia, String sao, String thoiGian, String 
         lblThoigian = new javax.swing.JLabel();
         btnTraitim = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 153, 0));
         setForeground(new java.awt.Color(255, 204, 153));
 
         lblAnh.setText("Ảnh");
@@ -141,10 +142,11 @@ public thunho(String tenMon, String tacGia, String sao, String thoiGian, String 
                     .addComponent(lblSao, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(lblTenct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblThoigian, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblThoigian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents

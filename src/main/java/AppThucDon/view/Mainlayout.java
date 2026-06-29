@@ -79,7 +79,7 @@ public class Mainlayout extends javax.swing.JFrame {
                 "setting"
         );
         content2.add(new Goiyct(), "Goiy");
-        content2.add(new Luucongthuc(), "Luuct");
+        content2.add(new Congthuccuatoi(), "Luuct");
         content2.add(new Dexuat(), "Dexuat");
 
         card.show(content2, "Home");

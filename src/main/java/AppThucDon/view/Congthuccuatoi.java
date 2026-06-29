@@ -12,17 +12,17 @@ import javax.swing.BoxLayout;
  *
  * @author loan phuong
  */
-public class Luucongthuc extends javax.swing.JPanel {
+public class Congthuccuatoi extends javax.swing.JPanel {
 
     /**
      * Creates new form Luucongthuc
      */
-    public Luucongthuc() {
+    public Congthuccuatoi() {
         initComponents();
         jScrollPane1.setBorder(null);
         pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
         for (int i = 1; i <= 10; i++) {
-    Hienthicongthuccuatoi p = new Hienthicongthuccuatoi();
+    Congthuccuatoito p = new Congthuccuatoito();
     Dimension d = p.getPreferredSize();
 p.setMaximumSize(new Dimension(Integer.MAX_VALUE, d.height));
 p.setAlignmentX(Component.LEFT_ALIGNMENT);

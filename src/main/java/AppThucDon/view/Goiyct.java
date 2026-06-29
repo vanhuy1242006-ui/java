@@ -34,7 +34,7 @@ public class Goiyct extends javax.swing.JPanel {
         cl.show(this, "GOIY");
         
         for(int i = 1; i <= 10; i++){
-     thunho card = new thunho(
+     thunhotheogio card = new thunhotheogio(
             "Món " + i,
             "Tác giả " + i,
             "4." + i%5 + "⭐",

@@ -11,7 +11,7 @@ public class IconTraitim {
 
     private static ImageIcon loadIcon(String path) {
         ImageIcon icon = new ImageIcon(IconTraitim.class.getResource(path));
-        Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image img = icon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
         return new ImageIcon(img);
     }
 
