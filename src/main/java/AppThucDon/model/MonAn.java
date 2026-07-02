@@ -99,5 +99,18 @@ public class MonAn {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
+    public void hienThiThongTin() {
+    System.out.println("====== THONG TIN MON AN ======");
+    System.out.println("Ma mon: " + this.MaMon);
+    System.out.println("Ten mon: " + this.TenMon);
+    System.out.println("Loai mon: " + this.LoaiMon);
+    System.out.println("Nguyen lieu: " + this.NguyenLieu);
+    System.out.println("Thoi gian nau: " + this.ThoiGian + " phut");
+    System.out.println("Danh gia: " + this.DanhGia + " / 5 sao");
+    System.out.println("Link anh: " + this.LinkAnh);
+    System.out.println("Mo ta: " + this.MoTa);
+    System.out.println("Ma nguoi tao: " + this.MaNguoiTao);
+    System.out.println("==============================");
+}
         
 }

@@ -58,7 +58,7 @@ public class YeuThichService {
         System.out.println("Nghiep vu: Dang lay danh sach mon an yeu thich cua UserID = " + userID);
 
         // Gọi DAO thực hiện truy vấn dữ liệu từ SQL Server
-        YeuThichDAO yeuThichDAO = new YeuThichDAO();
+//        YeuThichDAO yeuThichDAO = new YeuThichDAO();
         return yeuThichDAO.getDanhSachMonYeuThich(userID);
     }
 }

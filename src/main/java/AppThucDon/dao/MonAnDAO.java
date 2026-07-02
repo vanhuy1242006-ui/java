@@ -219,15 +219,81 @@ public class MonAnDAO {
     // =================================================================
     public List<MonAn> getDanhSachMonDaTao(int maNguoiTao) {
         List<MonAn> list = new ArrayList<>();
-        String sql = "SELECT * FROM MonAn WHERE MaNguoiTao = ?";
+
+        // 1. Bước A: Truy vấn tìm AccountType của userID này trước
+        String sqlCheckRole = "SELECT AccountType FROM Users WHERE UserID = ?";
+        String accountType = "";
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement psCheck = conn.prepareStatement(sqlCheckRole)) {
+
+            psCheck.setInt(1, maNguoiTao);
+            try (ResultSet rsCheck = psCheck.executeQuery()) {
+                if (rsCheck.next()) {
+                    accountType = rsCheck.getString("AccountType");
+                }
+            }
+
+            // Nếu không tìm thấy User hoặc User thuộc nhóm 'User' thường -> Trả về list rỗng luôn
+            if (accountType == null || accountType.equalsIgnoreCase("User") || accountType.isEmpty()) {
+                System.out.println("DAO: Tai khoan la User thuong hoac khong hop le -> Khong hien thi mon nao.");
+                return list; 
+            }
+
+            // 2. Bước B: Định hình câu lệnh SQL dựa trên AccountType tìm được
+            String sqlQueryMeals = "";
+            if (accountType.equalsIgnoreCase("Admin")) {
+                // Admin: Lấy toàn bộ món ăn không giới hạn
+                sqlQueryMeals = "SELECT * FROM MonAn";
+            } else if (accountType.equalsIgnoreCase("Chef")) {
+                // Chef: Chỉ lấy các món do chính Chef này tạo ra
+                sqlQueryMeals = "SELECT * FROM MonAn WHERE MaNguoiTao = ?";
+            }
+
+            // 3. Bước C: Thực thi truy vấn lấy danh sách món ăn
+            try (PreparedStatement psQuery = conn.prepareStatement(sqlQueryMeals)) {
+                // Nếu là Chef thì cần truyền thêm tham số MaNguoiTao vào dấu ?
+                if (accountType.equalsIgnoreCase("Chef")) {
+                    psQuery.setInt(1, maNguoiTao);
+                }
+
+                try (ResultSet rs = psQuery.executeQuery()) {
+                    while (rs.next()) {
+                        MonAn monAn = new MonAn();
+                        monAn.setMaMon(rs.getInt("MaMon"));
+                        monAn.setTenMon(rs.getString("TenMon"));
+                        monAn.setLoaiMon(rs.getString("LoaiMon"));
+                        monAn.setNguyenLieu(rs.getString("NguyenLieu"));
+                        monAn.setThoiGian(rs.getDouble("ThoiGian")); 
+                        monAn.setDanhGia(rs.getDouble("DanhGia"));
+                        monAn.setLinkAnh(rs.getString("LinkAnh"));
+                        monAn.setMoTa(rs.getString("MoTa"));
+                        monAn.setMaNguoiTao(rs.getInt("MaNguoiTao"));
+
+                        list.add(monAn);
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Loi getDanhSachMonDaTao: " + e.getMessage());
+        }
+
+        return list;
+    }
+    // =================================================================
+    // 7. HÀM LẤY NGẪU NHIÊN 1 MÓN ĂN THEO LOẠI MÓN (Phục vụ tính năng Ăn gì bây giờ)
+    // =================================================================
+    public MonAn getRandomMonTheoLoai(String loaiMon) {
+        String sql = "SELECT TOP 1 * FROM MonAn WHERE LoaiMon = ? ORDER BY NEWID()";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, maNguoiTao);
+            ps.setString(1, loaiMon);
 
             try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
+                if (rs.next()) {
                     MonAn monAn = new MonAn();
                     monAn.setMaMon(rs.getInt("MaMon"));
                     monAn.setTenMon(rs.getString("TenMon"));
@@ -238,13 +304,12 @@ public class MonAnDAO {
                     monAn.setLinkAnh(rs.getString("LinkAnh"));
                     monAn.setMoTa(rs.getString("MoTa"));
                     monAn.setMaNguoiTao(rs.getInt("MaNguoiTao"));
-
-                    list.add(monAn);
+                    return monAn;
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Loi getDanhSachMonDaTao: " + e.getMessage());
+            System.out.println("Loi getRandomMonTheoLoai: " + e.getMessage());
         }
-        return list;
+        return null; // Trả về null nếu loại món đó chưa có dữ liệu trong DB
     }
 }

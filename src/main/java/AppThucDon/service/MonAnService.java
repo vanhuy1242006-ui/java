@@ -12,7 +12,14 @@ public class MonAnService {
     // =================================================================
     // 1. CHỨC NĂNG: THÊM MỚI MÓN ĂN
     // =================================================================
-    public boolean themMoiMonAn(MonAn monAn) {
+    public boolean themMoiMonAn(MonAn monAn, String accountTypeCurrentUser) {
+    
+        // 🌟 KIỂM TRA PHÂN QUYỀN TRƯỚC: Nếu accountType rỗng hoặc không phải Admin/Chef thì chặn luôn
+        if (accountTypeCurrentUser == null || 
+            (!accountTypeCurrentUser.equalsIgnoreCase("Admin") && !accountTypeCurrentUser.equalsIgnoreCase("Chef"))) {
+            System.out.println("Nghiep vu: Tu choi! Quyen [" + accountTypeCurrentUser + "] khong duoc phep them mon an.");
+            return false;
+        }
         // Kiểm tra tên món không được để trống
         if (monAn.getTenMon() == null || monAn.getTenMon().trim().isEmpty()) {
             System.out.println("Nghiep vu: Ten mon an khong duoc de trong!");
@@ -133,5 +140,50 @@ public class MonAnService {
         System.out.println("Nghiep vu: Dang lay danh sach mon tu tao cua MaNguoiTao = " + maNguoiTao);
         // Hợp lệ thì gọi DAO xử lý
         return monAnDAO.getDanhSachMonDaTao(maNguoiTao);
+    }
+    // =================================================================
+    // 7. CHỨC NĂNG: ĐỀ XUẤT THỰC ĐƠN "ĂN GÌ BÂY GIỜ" THEO THỜI GIAN THỰC
+    // =================================================================
+    public java.util.List<MonAn> goiYAnGiBayGio() {
+        List<MonAn> thucDonDeXuat = new java.util.ArrayList<>();
+
+        // Lấy giờ hiện tại của hệ thống máy tính
+        java.time.LocalTime gioHienTai = java.time.LocalTime.now();
+
+        // Định nghĩa các mốc thời gian: 9:00 AM và 9:00 PM (21:00)
+        java.time.LocalTime batDauBuaChinh = java.time.LocalTime.of(9, 0);
+        java.time.LocalTime ketThucBuaChinh = java.time.LocalTime.of(21, 0);
+
+        System.out.println("Nghiep vu: Thoi gian he thong hien tai la: " + gioHienTai);
+
+        // Kiểm tra nếu nằm trong khoảng từ 9 giờ sáng đến 9 giờ tối
+        if (!gioHienTai.isBefore(batDauBuaChinh) && !gioHienTai.isAfter(ketThucBuaChinh)) {
+            System.out.println("Nghiep vu: Trong gio bua chinh (9AM - 9PM). Dang set up combo 4 mon...");
+
+            // Lấy 1 Món chính
+            MonAn mChinh = monAnDAO.getRandomMonTheoLoai("Món chính");
+            if(mChinh != null) thucDonDeXuat.add(mChinh);
+
+            // Lấy 1 Món phụ
+            MonAn mPhu = monAnDAO.getRandomMonTheoLoai("Món phụ");
+            if(mPhu != null) thucDonDeXuat.add(mPhu);
+
+            // Lấy 1 Món canh
+            MonAn mCanh = monAnDAO.getRandomMonTheoLoai("Món canh");
+            if(mCanh != null) thucDonDeXuat.add(mCanh);
+
+            // Lấy 1 Món tráng miệng
+            MonAn mTrangMieng = monAnDAO.getRandomMonTheoLoai("Món tráng miệng");
+            if(mTrangMieng != null) thucDonDeXuat.add(mTrangMieng);
+
+        } else {
+            // Khung giờ muộn hoặc sáng sớm (9:01 PM - 8:59 AM) -> Ăn đêm / Ăn nhanh
+            System.out.println("Nghiep vu: Ngoai gio bua chinh. Dang de xuat 1 Mon an nhanh...");
+
+            MonAn mAnNhanh = monAnDAO.getRandomMonTheoLoai("Món ăn nhanh");
+            if(mAnNhanh != null) thucDonDeXuat.add(mAnNhanh);
+        }
+
+        return thucDonDeXuat;
     }
 }
