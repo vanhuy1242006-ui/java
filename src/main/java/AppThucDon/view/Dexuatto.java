@@ -4,8 +4,11 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.model.MonAn;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,10 +20,16 @@ public class Dexuatto extends javax.swing.JPanel {
      * Creates new form Goiyto
      */
     private javax.swing.JPanel parent;
+    
 
     public Dexuatto(javax.swing.JPanel parent) {
         initComponents();
         this.parent = parent;
+        txtNguyenlieu.setLineWrap(true);
+txtNguyenlieu.setWrapStyleWord(true);
+
+jTextArea1.setLineWrap(true);
+jTextArea1.setWrapStyleWord(true);
     }
 
     /**
@@ -193,6 +202,50 @@ public class Dexuatto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
+    public void hienThiMonAn(MonAn mon){
+
+    txtTenmon.setText(mon.getTenMon());
+
+    txtNguyenlieu.setText(mon.getNguyenLieu());
+
+    jTextArea1.setText(mon.getMoTa());
+
+    txtDanhgia.setText(
+            String.valueOf(mon.getDanhGia()));
+
+    jLabel3.setText(
+            "Loại món ăn: " + mon.getLoaiMon());
+
+    jLabel5.setText(
+            "Thời gian nấu: "
+            + mon.getThoiGian()
+            + " phút");
+
+    String path = "images/" + mon.getLinkAnh();
+
+    java.net.URL url =
+            getClass()
+            .getClassLoader()
+            .getResource(path);
+
+    if(url != null){
+
+        ImageIcon icon =
+                new ImageIcon(url);
+
+        Image img =
+                icon.getImage()
+                .getScaledInstance(
+                        300,
+                        300,
+                        Image.SCALE_SMOOTH);
+
+        jLabel1.setIcon(
+                new ImageIcon(img));
+
+        jLabel1.setText("");
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuudanhgia;

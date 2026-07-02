@@ -23,9 +23,10 @@ public class Dexuat extends javax.swing.JPanel {
      */
     public Dexuat() {
         initComponents();
-        Dexuatto Dexuatto = new Dexuatto(this);
+        Dexuatto dexuatto = new Dexuatto(this);
+        
         this.add(jScrollPane1, "DEXUAT");
-        this.add(Dexuatto, "PHONGTO");
+        this.add(dexuatto, "PHONGTO");
         CardLayout cl = (CardLayout) this.getLayout();
         cl.show(this, "DEXUAT");
         
@@ -49,7 +50,7 @@ public class Dexuat extends javax.swing.JPanel {
 card.addMouseListener(new MouseAdapter() {
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Da click");
+         dexuatto.hienThiMonAn(i);
         
         CardLayout cl = (CardLayout) Dexuat.this.getLayout();
             cl.show(Dexuat.this, "PHONGTO");
