@@ -51,6 +51,8 @@ public class Congthucmoi extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
 
+        setBackground(new java.awt.Color(253, 246, 237));
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Tên món ăn");
         jLabel2.setToolTipText("");

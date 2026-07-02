@@ -17,7 +17,7 @@ public class Yeuthichto extends javax.swing.JPanel {
      * Creates new form Goiyto
      */
 
-    public Yeuthichto(javax.swing.JPanel parent) {
+    public Yeuthichto() {
         initComponents();
     }
 
@@ -44,6 +44,8 @@ public class Yeuthichto extends javax.swing.JPanel {
         btnLuudanhgia = new PillButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
+
+        setBackground(new java.awt.Color(253, 246, 237));
 
         jLabel4.setText("Mô tả công thức");
 

@@ -30,7 +30,7 @@ panelYeuthich.setLayout(
     );
 
 for (int i = 0; i < 10; i++) {
-        Yeuthichto p = new Yeuthichto(panelYeuthich);
+        Yeuthichto p = new Yeuthichto();
 
         p.setAlignmentX(Component.LEFT_ALIGNMENT);
 

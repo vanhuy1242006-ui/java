@@ -57,6 +57,8 @@ jTextArea1.setWrapStyleWord(true);
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
 
+        setBackground(new java.awt.Color(253, 246, 236));
+
         jLabel4.setText("Mô tả công thức");
 
         jTextArea1.setColumns(20);
