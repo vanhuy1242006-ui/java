@@ -42,7 +42,7 @@
     <Container class="javax.swing.JPanel" name="menu1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f0" green="f8" red="ff" type="rgb"/>
+          <Color blue="ed" green="f6" red="fd" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -60,21 +60,19 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="btnsetting" min="-2" pref="153" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jButton2" min="-2" pref="153" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="btnThemct" min="-2" pref="153" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="btnYeuthich" max="32767" attributes="0"/>
-                                          <Component id="btnCuatoi" alignment="0" pref="153" max="32767" attributes="0"/>
-                                          <Component id="btnTimkiem" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnHome" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="btnThemct" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="btnYeuthich" max="32767" attributes="0"/>
+                                      <Component id="btnCuatoi" alignment="0" pref="153" max="32767" attributes="0"/>
+                                      <Component id="btnTimkiem" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnHome" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="btnDexuat" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="btnDexuat" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="jButton2" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -94,9 +92,9 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnTimkiem" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDexuat" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCuatoi" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -196,7 +194,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value=" &#x102;n g&#xec; b&#xe2;y gi&#x1edd;?"/>
+            <Property name="text" type="java.lang.String" value="  N&#x1ea5;u g&#xec; b&#xe2;y gi&#x1edd;?"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -231,6 +229,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="t&#xec;m ki&#x1ebf;m"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimkiemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDexuat">
           <Properties>
