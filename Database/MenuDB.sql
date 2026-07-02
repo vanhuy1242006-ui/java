@@ -51,8 +51,9 @@ INSERT INTO MonAn (TenMon, LoaiMon, NguyenLieu, ThoiGian, DanhGia, LinkAnh, MoTa
 GO
 
 -- Bước 1: Xóa sạch dữ liệu trong bảng
-DELETE FROM MonAn;
+DELETE FROM TenBangCuaBan;
 
 -- Bước 2: Reset lại giá trị identity về 0 (để bản ghi tiếp theo chèn vào sẽ bắt đầu từ số 1)
-DBCC CHECKIDENT ('MonAn', RESEED, 0);
+DBCC CHECKIDENT ('TenBangCuaBan', RESEED, 0);
+
 

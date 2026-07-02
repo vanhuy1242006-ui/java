@@ -312,4 +312,42 @@ public class MonAnDAO {
         }
         return null; // Trả về null nếu loại món đó chưa có dữ liệu trong DB
     }
+    // =================================================================
+    // 8. HÀM TÌM KIẾM MÓN ĂN THEO TÊN HOẶC MÃ MÓN AN TOÀN (LIKE & OR)
+    // =================================================================
+    public List<MonAn> searchMonAn(String keyword) {
+        List<MonAn> list = new ArrayList<>();
+
+        // Câu lệnh SQL: Tìm gần đúng theo tên HOẶC tìm chính xác theo Mã món nếu keyword là số
+        String sql = "SELECT * FROM MonAn WHERE TenMon LIKE ? OR CAST(MaMon AS VARCHAR) = ?";
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            // Tham số 1: Tìm kiếm gần đúng với LIKE (Ví dụ: %Cơm%)
+            ps.setString(1, "%" + keyword + "%");
+            // Tham số 2: Tìm kiếm chính xác theo chuỗi số của MaMon
+            ps.setString(2, keyword);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    MonAn monAn = new MonAn();
+                    monAn.setMaMon(rs.getInt("MaMon"));
+                    monAn.setTenMon(rs.getString("TenMon"));
+                    monAn.setLoaiMon(rs.getString("LoaiMon"));
+                    monAn.setNguyenLieu(rs.getString("NguyenLieu"));
+                    monAn.setThoiGian(rs.getDouble("ThoiGian")); 
+                    monAn.setDanhGia(rs.getDouble("DanhGia"));
+                    monAn.setLinkAnh(rs.getString("LinkAnh"));
+                    monAn.setMoTa(rs.getString("MoTa"));
+                    monAn.setMaNguoiTao(rs.getInt("MaNguoiTao"));
+
+                    list.add(monAn);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Loi searchMonAn: " + e.getMessage());
+        }
+        return list;
+    }
 }

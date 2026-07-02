@@ -10,8 +10,8 @@ public class YeuThichService {
         this.yeuThichDAO = new YeuThichDAO();
     }
 
-
-    public int NhanYeuThich(int userID, int monAnID) {
+    // chức năng yêu thích món 
+    public int YeuThichMonAn(int userID, int monAnID) {
         // Nghiệp vụ 1: Kiểm tra xem người dùng đã đăng nhập chưa
         if (userID == -1) {
             return -2; // Trả về mã lỗi chưa đăng nhập cho View biết

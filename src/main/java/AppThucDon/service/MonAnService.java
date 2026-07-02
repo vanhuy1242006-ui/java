@@ -186,4 +186,26 @@ public class MonAnService {
 
         return thucDonDeXuat;
     }
+    // =================================================================
+    // 8. CHỨC NĂNG: TÌM KIẾM MÓN ĂN THEO TÊN HOẶC MÃ MÓN
+    // =================================================================
+    public List<MonAn> timKiemMonAn(String keyword) {
+        // 1. Kiểm tra nếu từ khóa trống hoặc chỉ có dấu cách -> Trả về danh sách trống luôn
+        if (keyword == null || keyword.trim().isEmpty()) {
+            System.out.println("Nghiep vu: Tu khoa trong -> Tra ve danh sach trong.");
+            return new java.util.ArrayList<>();
+        }
+
+        // 2. Gọi DAO thực hiện tìm kiếm từ SQL Server
+        List<MonAn> ketQua = monAnDAO.searchMonAn(keyword);
+
+        // 3. Nếu kết quả trả về bị null hoặc không tìm thấy món nào (size == 0)
+        if (ketQua == null || ketQua.isEmpty()) {
+            System.out.println("Nghiep vu: Khong tim thay mon an nao phu hop. Tra ve danh sach trong.");
+            return new java.util.ArrayList<>();
+        }
+
+        // Tìm thấy dữ liệu hợp lệ thì trả về danh sách kết quả
+        return ketQua;
+    }
 }
