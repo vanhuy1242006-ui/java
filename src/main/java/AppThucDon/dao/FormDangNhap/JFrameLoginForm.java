@@ -70,7 +70,7 @@ public class JFrameLoginForm extends javax.swing.JFrame {
         setSize(AppConfig.WIDTH, AppConfig.HEIGHT);
         setLocationRelativeTo(null);
         customUI();
-        conneted();
+        //conneted();
     }
 
     private void customUI() {

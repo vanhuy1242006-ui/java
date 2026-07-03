@@ -77,7 +77,8 @@ public class MonAnDAO {
             psInsert.setDouble(5, monAn.getDanhGia());
             psInsert.setString(6, monAn.getMoTa());
             psInsert.setInt(7, monAn.getMaNguoiTao()); // 🌟 Lưu ID của Admin tạo món vào DB
-            
+            System.out.println("=== INSERT MONAN ===");
+System.out.println("MaNguoiTao = " + monAn.getMaNguoiTao());
             int rows = psInsert.executeUpdate();
             
             if (rows > 0) {

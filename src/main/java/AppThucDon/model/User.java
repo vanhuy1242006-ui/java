@@ -11,7 +11,7 @@ public class User {
     private String accountType;
 
     // Thuộc tính lưu ID user đang đăng nhập
-    public static int idUserHienTai;
+    public static int idUserHienTai = -1;
 
     public User() {
     }

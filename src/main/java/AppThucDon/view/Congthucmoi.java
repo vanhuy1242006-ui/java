@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package AppThucDon.view;
+import AppThucDon.dao.FormDangNhap.CurrentUser;
 import javax.swing.table.*;
 import AppThucDon.model.MonAn;
 import AppThucDon.dao.MonAnDAO;
@@ -10,6 +11,10 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 /**
  *
  * @author loan phuong
@@ -22,7 +27,7 @@ public class Congthucmoi extends javax.swing.JPanel {
     /**
      * Creates new form studentpanel
      */
-    private String duongDanAnh = "";
+    private File anhDaChon = null;
     public Congthucmoi() {
         initComponents();
 
@@ -190,6 +195,7 @@ public class Congthucmoi extends javax.swing.JPanel {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
                                       
     try {
+        System.out.println("Da bam nut Luu");
         // 1. Khớp chính xác biến lấy dữ liệu tên món
         String tenMon = txtTenmon.getText().trim(); 
         if (tenMon.isEmpty()) {
@@ -228,23 +234,49 @@ public class Congthucmoi extends javax.swing.JPanel {
         monMoi.setThoiGian(thoiGian);
         monMoi.setMoTa(moTa);
         monMoi.setDanhGia(0.0); // Món mới mặc định 0 sao
-        monMoi.setLinkAnh(duongDanAnh);
+
         
     // 🌟 KIỂM TRA VÀ SET ID USER CURRENT: Nếu khác -1 thì lấy, còn không mặc định là 1
-    if (AppThucDon.model.User.idUserHienTai != -1) {
-        monMoi.setMaNguoiTao(AppThucDon.model.User.idUserHienTai);
-    } else {
-        monMoi.setMaNguoiTao(1); // Mặc định là 1 nếu chưa đăng nhập (khi ấn Shift + F6 test giao diện)
-    }
+
+        if (CurrentUser.userId <= 0) {
+    JOptionPane.showMessageDialog(
+            this,
+            "Bạn chưa đăng nhập!");
+    return;
+}
+
+monMoi.setMaNguoiTao(CurrentUser.userId);
+
+System.out.println(
+        "MaNguoiTao = "
+        + monMoi.getMaNguoiTao());
+    
+    System.out.println("MaNguoiTao = " + monMoi.getMaNguoiTao());
 
         // 3. Gọi DAO thực hiện lưu vào SQL Server
         MonAnDAO dao = new MonAnDAO(); // Viết ngắn gọn như này thôi là sạch lỗi!
         boolean isSuccess = dao.insert(monMoi);
+        System.out.println("=== DEBUG ===");
+        System.out.println("MaNguoiTao = " + monMoi.getMaNguoiTao());
+        System.out.println("TenMon = " + monMoi.getTenMon());
 
         if (isSuccess) {
-            javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
+
             // Tự động xóa trắng các ô nhập liệu sau khi lưu
+            if (anhDaChon != null) {
+
+                String thuMucAnh =
+                System.getProperty("user.dir") + "\\src\\main\\resources\\images\\";
+
+                Files.copy(
+                anhDaChon.toPath(),
+                Path.of(thuMucAnh + monMoi.getLinkAnh()),
+                StandardCopyOption.REPLACE_EXISTING
+            );
+    }
+    javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
             clearForm();
+            
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "❌ Thêm thất bại, hãy xem lỗi ở Console!");
         }
@@ -270,27 +302,31 @@ JFileChooser chooser = new JFileChooser();
 
     if (ketQua == JFileChooser.APPROVE_OPTION) {
 
-        File file = chooser.getSelectedFile();
+        anhDaChon = chooser.getSelectedFile();
 
-        // lưu đường dẫn
-        duongDanAnh = file.getAbsolutePath();
+btnAnh.setText(anhDaChon.getName());
 
-        // đổi text nút để biết đã chọn
-        btnAnh.setText(file.getName());
+JOptionPane.showMessageDialog(
+        this,
+        "Đã chọn ảnh:\n" + anhDaChon.getName()
+);
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Đã chọn ảnh:\n" + file.getName()
-        );
+        
     }
     }//GEN-LAST:event_btnAnhActionPerformed
 
+    
     private void clearForm() {
     txtTenmon.setText("");
     jTextField1.setText("");
     jTextArea1.setText("");
     jTextArea2.setText("");
     jComboBox1.setSelectedIndex(0);
+        // reset ảnh đã chọn
+    anhDaChon = null;
+
+    // đưa nút chọn ảnh về trạng thái ban đầu
+    btnAnh.setText("Chọn ảnh");
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

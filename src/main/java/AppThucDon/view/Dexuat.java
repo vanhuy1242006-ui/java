@@ -34,8 +34,7 @@ public class Dexuat extends javax.swing.JPanel {
         List<MonAn> danhsach = monanservice.getGoiYMonAn(10);
         
         for(MonAn i:danhsach){
-             System.out.println("Đang tạo card: " + i.getTenMon());
-             System.out.println("Link ảnh: " + i.getLinkAnh());
+
              thunho card = new thunho(
                      i.getTenMon(),
             "Tác giả " + i.getTenNguoiTao(),
@@ -44,7 +43,7 @@ public class Dexuat extends javax.swing.JPanel {
               i.getLinkAnh()
             
             );
-            System.out.println(i.getTenMon());
+            
 
 
 card.addMouseListener(new MouseAdapter() {
