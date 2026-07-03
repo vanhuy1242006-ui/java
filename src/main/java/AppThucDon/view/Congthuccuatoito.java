@@ -63,7 +63,7 @@ public class Congthuccuatoito extends javax.swing.JPanel {
 
         jLabel3.setText("Đây là loại món ăn :");
 
-        jLabel5.setText("Thời gian cook :");
+        jLabel5.setText("Thời gian nấu :");
 
         btnSuact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSuact.setText("Sửa công thức");

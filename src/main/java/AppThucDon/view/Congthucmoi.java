@@ -6,6 +6,10 @@ package AppThucDon.view;
 import javax.swing.table.*;
 import AppThucDon.model.MonAn;
 import AppThucDon.dao.MonAnDAO;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
  * @author loan phuong
@@ -18,6 +22,7 @@ public class Congthucmoi extends javax.swing.JPanel {
     /**
      * Creates new form studentpanel
      */
+    private String duongDanAnh = "";
     public Congthucmoi() {
         initComponents();
 
@@ -95,7 +100,13 @@ public class Congthucmoi extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Phút");
 
+        btnAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/photo-camera-interface-symbol-for-button.png"))); // NOI18N
         btnAnh.setText("Chọn ảnh");
+        btnAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnhActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -119,9 +130,9 @@ public class Congthucmoi extends javax.swing.JPanel {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +144,7 @@ public class Congthucmoi extends javax.swing.JPanel {
                             .addComponent(txtTenmon)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -162,8 +173,8 @@ public class Congthucmoi extends javax.swing.JPanel {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(61, 61, 61)
+                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,6 +228,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         monMoi.setThoiGian(thoiGian);
         monMoi.setMoTa(moTa);
         monMoi.setDanhGia(0.0); // Món mới mặc định 0 sao
+        monMoi.setLinkAnh(duongDanAnh);
         
     // 🌟 KIỂM TRA VÀ SET ID USER CURRENT: Nếu khác -1 thì lấy, còn không mặc định là 1
     if (AppThucDon.model.User.idUserHienTai != -1) {
@@ -244,6 +256,34 @@ public class Congthucmoi extends javax.swing.JPanel {
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
     clearForm();
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void btnAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnhActionPerformed
+JFileChooser chooser = new JFileChooser();
+
+    FileNameExtensionFilter filter =
+            new FileNameExtensionFilter(
+                    "Ảnh", "png");
+
+    chooser.setFileFilter(filter);
+
+    int ketQua = chooser.showOpenDialog(this);
+
+    if (ketQua == JFileChooser.APPROVE_OPTION) {
+
+        File file = chooser.getSelectedFile();
+
+        // lưu đường dẫn
+        duongDanAnh = file.getAbsolutePath();
+
+        // đổi text nút để biết đã chọn
+        btnAnh.setText(file.getName());
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Đã chọn ảnh:\n" + file.getName()
+        );
+    }
+    }//GEN-LAST:event_btnAnhActionPerformed
 
     private void clearForm() {
     txtTenmon.setText("");

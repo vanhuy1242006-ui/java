@@ -141,7 +141,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian cook :"/>
+        <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian n&#x1ea5;u :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSuact">
