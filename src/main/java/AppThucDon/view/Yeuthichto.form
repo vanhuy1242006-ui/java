@@ -163,6 +163,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLuuyeuthich">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#x1b0;u y&#xea;u th&#xed;ch"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLuuyeuthichActionPerformed"/>
       </Events>

@@ -5,7 +5,6 @@ package AppThucDon;
  */
 
 //import java.awt.EventQueue;
-import AppThucDon.dao.FormDangNhap.JFameSignup;
 import AppThucDon.dao.MonAnDAO;
 import AppThucDon.database.Database;
 import AppThucDon.model.MonAn;
@@ -14,7 +13,6 @@ import AppThucDon.view.Mainlayout;
 import java.sql.Connection;
 import java.util.List;
 import AppThucDon.service.MonAnService;
-import AppThucDon.dao.FormDangNhap.JFrameLoginForm;
 
 
 /**
@@ -32,8 +30,7 @@ public class Main {
     }
     // Bật công tắc hiển thị cửa sổ
     java.awt.EventQueue.invokeLater(() -> {
-        
-        JFrameLoginForm frame = new JFrameLoginForm();
+    Mainlayout frame = new Mainlayout();
     frame.setVisible(true); 
     
     });
@@ -45,8 +42,6 @@ public class Main {
         if (conn != null) {
             Database.closeConnection(conn);
         }
-
+        
     }
-    
-    
 }

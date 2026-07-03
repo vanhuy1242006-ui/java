@@ -5,7 +5,6 @@
 package AppThucDon.view;
 
 import AppThucDon.model.MonAn;
-import AppThucDon.view.icon.IconTraitim;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -20,13 +19,11 @@ public class Dexuatto extends javax.swing.JPanel {
     /**
      * Creates new form Goiyto
      */
-    private boolean daYeuThich = false;
     private javax.swing.JPanel parent;
     
 
     public Dexuatto(javax.swing.JPanel parent) {
         initComponents();
-                IconTraitim.setHeart(btnLuuyeuthich, daYeuThich);
         this.parent = parent;
         txtNguyenlieu.setLineWrap(true);
 txtNguyenlieu.setWrapStyleWord(true);
@@ -78,6 +75,7 @@ jTextArea1.setWrapStyleWord(true);
 
         jLabel5.setText("Thời gian nấu ăn :");
 
+        btnLuuyeuthich.setText("Lưu yêu thích");
         btnLuuyeuthich.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLuuyeuthichActionPerformed(evt);
@@ -203,15 +201,7 @@ jTextArea1.setWrapStyleWord(true);
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-        daYeuThich = !daYeuThich; // đảo trạng thái
-
-    // đổi icon
-    IconTraitim.setHeart(btnLuuyeuthich, daYeuThich);
-
-    // nếu muốn hiện tooltip
-    btnLuuyeuthich.setToolTipText(
-            daYeuThich ? "Đã yêu thích" : "Thêm vào yêu thích"
-    );
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
     public void hienThiMonAn(MonAn mon){

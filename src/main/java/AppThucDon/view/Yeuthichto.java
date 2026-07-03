@@ -4,7 +4,6 @@
  */
 package AppThucDon.view;
 
-import AppThucDon.view.icon.IconTraitim;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 
@@ -16,11 +15,52 @@ public class Yeuthichto extends javax.swing.JPanel {
 
     /**
      * Creates new form Goiyto
-     */  private boolean daYeuThich = false;
+     */
 
     public Yeuthichto() {
         initComponents();
-        IconTraitim.setHeart(btnLuuyeuthich, daYeuThich);
+    }
+  
+    public void setMonAn(AppThucDon.model.MonAn monAn) {
+        if (monAn == null) return; // Nếu không có dữ liệu thì bỏ qua
+
+        // 1. Hiển thị tên món ăn vào JTextField
+        txtTenmon.setText(monAn.getTenMon());
+        
+        // 2. Hiển thị loại món ăn vào JLabel
+        jLabel3.setText("Đây là loại món ăn : " + monAn.getLoaiMon());
+        
+        // 3. Hiển thị thời gian nấu vào JLabel
+        jLabel5.setText("Thời gian nấu ăn : " + monAn.getThoiGian() + " phút");
+        
+        // 4. Hiển thị nguyên liệu vào JTextArea
+        txtNguyenlieu.setText(monAn.getNguyenLieu());
+        
+        // 5. Hiển thị mô tả công thức vào JTextArea
+        jTextArea1.setText(monAn.getMoTa());
+        
+        // 6. Hiển thị đánh giá hiện tại (nếu bạn muốn)
+        txtDanhgia.setText(String.valueOf(monAn.getDanhGia()) + " Sao");
+
+        // 7. Xử lý hiển thị ảnh (Vẽ ảnh lên jLabel1)
+        if (monAn.getLinkAnh() != null && !monAn.getLinkAnh().trim().isEmpty()) {
+            try {
+                // Đọc file ảnh từ đường dẫn lưu trong DB
+                javax.swing.ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource(monAn.getLinkAnh()));
+                
+                // Thu nhỏ ảnh cho vừa với khung jLabel1 (300x300 pixel)
+                java.awt.Image img = icon.getImage().getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                
+                // Đặt ảnh đã thu nhỏ vào jLabel1
+                jLabel1.setText(""); // Xóa chữ "xem ảnh" mặc định
+                jLabel1.setIcon(new javax.swing.ImageIcon(img));
+                
+            } catch (Exception e) {
+                // Nếu đường dẫn ảnh bị lỗi (không tìm thấy file), in ra lỗi để debug
+                System.out.println("Không thể tải ảnh cho món " + monAn.getTenMon() + ": " + e.getMessage());
+                jLabel1.setText("Lỗi hiển thị ảnh");
+            }
+        }
     }
 
     /**
@@ -65,6 +105,7 @@ public class Yeuthichto extends javax.swing.JPanel {
 
         jLabel5.setText("Thời gian nấu ăn :");
 
+        btnLuuyeuthich.setText("Lưu yêu thích");
         btnLuuyeuthich.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLuuyeuthichActionPerformed(evt);
@@ -176,15 +217,7 @@ public class Yeuthichto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-    daYeuThich = !daYeuThich; // đảo trạng thái
-
-    // đổi icon
-    IconTraitim.setHeart(btnLuuyeuthich, daYeuThich);
-
-    // nếu muốn hiện tooltip
-    btnLuuyeuthich.setToolTipText(
-            daYeuThich ? "Đã yêu thích" : "Thêm vào yêu thích"
-    );
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
 

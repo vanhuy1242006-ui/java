@@ -3,18 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package AppThucDon.view;
-import AppThucDon.dao.FormDangNhap.CurrentUser;
 import javax.swing.table.*;
 import AppThucDon.model.MonAn;
 import AppThucDon.dao.MonAnDAO;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 /**
  *
  * @author loan phuong
@@ -27,7 +18,6 @@ public class Congthucmoi extends javax.swing.JPanel {
     /**
      * Creates new form studentpanel
      */
-    private File anhDaChon = null;
     public Congthucmoi() {
         initComponents();
 
@@ -105,13 +95,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Phút");
 
-        btnAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/photo-camera-interface-symbol-for-button.png"))); // NOI18N
         btnAnh.setText("Chọn ảnh");
-        btnAnh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnhActionPerformed(evt);
-            }
-        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -135,9 +119,9 @@ public class Congthucmoi extends javax.swing.JPanel {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +133,7 @@ public class Congthucmoi extends javax.swing.JPanel {
                             .addComponent(txtTenmon)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -178,8 +162,8 @@ public class Congthucmoi extends javax.swing.JPanel {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(78, 78, 78)
+                        .addComponent(btnAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,7 +179,6 @@ public class Congthucmoi extends javax.swing.JPanel {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
                                       
     try {
-        System.out.println("Da bam nut Luu");
         // 1. Khớp chính xác biến lấy dữ liệu tên món
         String tenMon = txtTenmon.getText().trim(); 
         if (tenMon.isEmpty()) {
@@ -234,49 +217,22 @@ public class Congthucmoi extends javax.swing.JPanel {
         monMoi.setThoiGian(thoiGian);
         monMoi.setMoTa(moTa);
         monMoi.setDanhGia(0.0); // Món mới mặc định 0 sao
-
         
     // 🌟 KIỂM TRA VÀ SET ID USER CURRENT: Nếu khác -1 thì lấy, còn không mặc định là 1
-
-        if (CurrentUser.userId <= 0) {
-    JOptionPane.showMessageDialog(
-            this,
-            "Bạn chưa đăng nhập!");
-    return;
-}
-
-monMoi.setMaNguoiTao(CurrentUser.userId);
-
-System.out.println(
-        "MaNguoiTao = "
-        + monMoi.getMaNguoiTao());
-    
-    System.out.println("MaNguoiTao = " + monMoi.getMaNguoiTao());
+    if (AppThucDon.model.User.idUserHienTai != -1) {
+        monMoi.setMaNguoiTao(AppThucDon.model.User.idUserHienTai);
+    } else {
+        monMoi.setMaNguoiTao(1); // Mặc định là 1 nếu chưa đăng nhập (khi ấn Shift + F6 test giao diện)
+    }
 
         // 3. Gọi DAO thực hiện lưu vào SQL Server
         MonAnDAO dao = new MonAnDAO(); // Viết ngắn gọn như này thôi là sạch lỗi!
         boolean isSuccess = dao.insert(monMoi);
-        System.out.println("=== DEBUG ===");
-        System.out.println("MaNguoiTao = " + monMoi.getMaNguoiTao());
-        System.out.println("TenMon = " + monMoi.getTenMon());
 
         if (isSuccess) {
-
+            javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
             // Tự động xóa trắng các ô nhập liệu sau khi lưu
-            if (anhDaChon != null) {
-
-                String thuMucAnh =
-                System.getProperty("user.dir") + "\\src\\main\\resources\\images\\";
-
-                Files.copy(
-                anhDaChon.toPath(),
-                Path.of(thuMucAnh + monMoi.getLinkAnh()),
-                StandardCopyOption.REPLACE_EXISTING
-            );
-    }
-    javax.swing.JOptionPane.showMessageDialog(this, "✅ Thêm công thức thành công!");
             clearForm();
-            
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "❌ Thêm thất bại, hãy xem lỗi ở Console!");
         }
@@ -289,44 +245,12 @@ System.out.println(
     clearForm();
     }//GEN-LAST:event_btnHuyActionPerformed
 
-    private void btnAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnhActionPerformed
-JFileChooser chooser = new JFileChooser();
-
-    FileNameExtensionFilter filter =
-            new FileNameExtensionFilter(
-                    "Ảnh", "png");
-
-    chooser.setFileFilter(filter);
-
-    int ketQua = chooser.showOpenDialog(this);
-
-    if (ketQua == JFileChooser.APPROVE_OPTION) {
-
-        anhDaChon = chooser.getSelectedFile();
-
-btnAnh.setText(anhDaChon.getName());
-
-JOptionPane.showMessageDialog(
-        this,
-        "Đã chọn ảnh:\n" + anhDaChon.getName()
-);
-
-        
-    }
-    }//GEN-LAST:event_btnAnhActionPerformed
-
-    
     private void clearForm() {
     txtTenmon.setText("");
     jTextField1.setText("");
     jTextArea1.setText("");
     jTextArea2.setText("");
     jComboBox1.setSelectedIndex(0);
-        // reset ảnh đã chọn
-    anhDaChon = null;
-
-    // đưa nút chọn ảnh về trạng thái ban đầu
-    btnAnh.setText("Chọn ảnh");
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

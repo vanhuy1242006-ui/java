@@ -313,7 +313,11 @@ public class UserPanel extends javax.swing.JPanel {
         if (confirm
                 == JOptionPane.YES_OPTION) {
 
-            CurrentUser.clear();
+            CurrentUser.userId = 0;
+            CurrentUser.username = null;
+            CurrentUser.displayName = null;
+            CurrentUser.avatar = null;
+            CurrentUser.bio = null;
 
             JFrameLoginForm login
                     = new JFrameLoginForm();

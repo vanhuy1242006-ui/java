@@ -17,18 +17,37 @@ public class Timkiem extends javax.swing.JPanel {
      */
     public Timkiem() {
         initComponents();
-        jScrollPane1.setBorder(null);
-        for(int i = 0; i < 5; i++) {
+        jScrollPane1.setBorder(null); // Đã sửa tên đúng và xóa code nháp
+    }
 
-    Yeuthichto p = new Yeuthichto();
+    // =================================================================
+    // HÀM NHẬN DỮ LIỆU TỪ MAINLAYOUT VÀ VẼ LÊN MÀN HÌNH (BƯỚC 3)
+    // =================================================================
+    public void hienThiKetQua(java.util.List<AppThucDon.model.MonAn> danhSach, int soLuong) {
+        panelTimkiem.removeAll(); 
+        
+        // Hiện số lượng
+        javax.swing.JLabel lblKetQua = new javax.swing.JLabel(" Đã tìm thấy " + soLuong + " công thức phù hợp.");
+        lblKetQua.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        lblKetQua.setForeground(new java.awt.Color(255, 120, 0));
+        
+        panelTimkiem.add(lblKetQua);
+        panelTimkiem.add(javax.swing.Box.createVerticalStrut(20)); // Đã viết tên đầy đủ nên chữ Box sẽ không bị đỏ nữa
 
-    panelTimkiem.add(p);
-    panelTimkiem.add(
-            Box.createVerticalStrut(20));
-}
+        // Hiện danh sách món ăn
+        if (soLuong > 0) {
+            for (AppThucDon.model.MonAn monAn : danhSach) {
+                Yeuthichto p = new Yeuthichto();
+                
+                 p.setMonAn(monAn); 
+                
+                panelTimkiem.add(p);
+                panelTimkiem.add(javax.swing.Box.createVerticalStrut(20));
+            }
+        }
 
-panelTimkiem.revalidate();
-panelTimkiem.repaint();
+        panelTimkiem.revalidate();
+        panelTimkiem.repaint();
     }
 
     /**
@@ -43,22 +62,18 @@ panelTimkiem.repaint();
         jScrollPane1 = new javax.swing.JScrollPane();
         panelTimkiem = new javax.swing.JPanel();
 
-        panelTimkiem.setLayout(new javax.swing.BoxLayout(panelTimkiem, javax.swing.BoxLayout.LINE_AXIS));
+        panelTimkiem.setLayout(new javax.swing.BoxLayout(panelTimkiem, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(panelTimkiem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(764, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(614, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

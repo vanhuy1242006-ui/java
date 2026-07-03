@@ -77,8 +77,7 @@ public class MonAnDAO {
             psInsert.setDouble(5, monAn.getDanhGia());
             psInsert.setString(6, monAn.getMoTa());
             psInsert.setInt(7, monAn.getMaNguoiTao()); // 🌟 Lưu ID của Admin tạo món vào DB
-            System.out.println("=== INSERT MONAN ===");
-System.out.println("MaNguoiTao = " + monAn.getMaNguoiTao());
+            
             int rows = psInsert.executeUpdate();
             
             if (rows > 0) {
@@ -320,7 +319,7 @@ System.out.println("MaNguoiTao = " + monAn.getMaNguoiTao());
         List<MonAn> list = new ArrayList<>();
 
         // Câu lệnh SQL: Tìm gần đúng theo tên HOẶC tìm chính xác theo Mã món nếu keyword là số
-        String sql = "SELECT * FROM MonAn WHERE TenMon LIKE ? OR CAST(MaMon AS VARCHAR) = ?";
+        String sql = "SELECT * FROM MonAn WHERE TenMon LIKE ? OR NguyenLieu LIKE ?";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {

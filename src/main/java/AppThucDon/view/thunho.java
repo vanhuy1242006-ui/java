@@ -59,7 +59,7 @@ public thunho(String tenMon, String tacGia, String sao, String thoiGian, String 
                 lblAnh.setIcon(new ImageIcon(img));
                 lblAnh.setText(""); // Xóa chữ "Ảnh" mặc định đi
             } catch (Exception e) {
-               // System.out.println("Lỗi xử lý ảnh: " + e.getMessage());
+                System.out.println("Lỗi xử lý ảnh: " + e.getMessage());
                 lblAnh.setText("Error Image");
             }
         }
