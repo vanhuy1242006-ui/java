@@ -26,7 +26,7 @@ public class Mainlayout extends javax.swing.JFrame {
     CardLayout card;
     private AppThucDon.service.MonAnService monAnService = new AppThucDon.service.MonAnService();
 private Timkiem panelTimkiem;
-
+private Goiytheogio panelGoiy;
     /**
      * Creates new form lamlayout
      */
@@ -82,7 +82,8 @@ private Timkiem panelTimkiem;
                 ),
                 "setting"
         );
-        content2.add(new Goiyct(), "Goiy");
+        panelGoiy = new Goiytheogio();
+        content2.add(new Goiytheogio(), "Goiy");
         content2.add(new Congthuccuatoi(), "Luuct");
         content2.add(new Dexuat(), "Dexuat");
         content2.add(new Yeuthich(), "Yeuthich");
@@ -317,9 +318,16 @@ content2.add(panelTimkiem, "Timkiem");
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        card.show(content2, "Goiy");
-        resetMenu();
-        setSelected(jButton2);
+  System.out.println(panelGoiy);
+    panelGoiy.taiDuLieu();
+
+    card.show(content2, "Goiy");
+
+    content2.revalidate();
+    content2.repaint();
+
+    resetMenu();
+    setSelected(jButton2);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed

@@ -4,11 +4,14 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.model.MonAn;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
+import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -16,14 +19,14 @@ import javax.swing.JOptionPane;
  *
  * @author loan phuong
  */
-public class Goiyto extends javax.swing.JPanel {
+public class Goiytheogioto extends javax.swing.JPanel {
 
     /**
-     * Creates new form Goiyto
+     * Creates new form Goiytheogioto
      */
     private javax.swing.JPanel parent;
 
-    public Goiyto(javax.swing.JPanel parent) {
+    public Goiytheogioto(javax.swing.JPanel parent) {
         initComponents();
         this.parent = parent;
     }
@@ -113,14 +116,14 @@ public class Goiyto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane3)
-                                .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -156,14 +159,16 @@ public class Goiyto extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnQuaylai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -243,8 +248,12 @@ public class Goiyto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnQuaylaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuaylaiActionPerformed
-          CardLayout cl = (CardLayout) parent.getLayout();
-    cl.show(parent, "GOIY");
+if (parent instanceof Goiytheogio) {
+        ((Goiytheogio) parent).taiDuLieu();
+    }
+
+    CardLayout cl = (CardLayout) parent.getLayout();
+    cl.show(parent, "card2");
     }//GEN-LAST:event_btnQuaylaiActionPerformed
 
     private void btnLuudanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuudanhgiaActionPerformed
@@ -255,6 +264,46 @@ public class Goiyto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
+    public void hienThiMonAn(MonAn mon) {
+
+    txtTenmon.setText(mon.getTenMon());
+
+    jLabel3.setText(
+            "Đây là loại món ăn : "
+            + mon.getLoaiMon());
+
+    jLabel5.setText(
+            "Thời gian nấu ăn : "
+            + mon.getThoiGian() + " phút");
+
+    txtNguyenlieu.setText(
+            mon.getNguyenLieu());
+
+    jTextArea1.setText(
+            mon.getMoTa());
+
+    txtDanhgia.setText(
+            String.valueOf(mon.getDanhGia()));
+
+    // load ảnh
+    String path = "images/" + mon.getLinkAnh();
+
+    java.net.URL url =
+            getClass().getClassLoader().getResource(path);
+
+    if (url != null) {
+
+        ImageIcon icon = new ImageIcon(url);
+
+        Image img = icon.getImage().getScaledInstance(
+                494,
+                291,
+                Image.SCALE_SMOOTH);
+
+        jLabel1.setIcon(new ImageIcon(img));
+        jLabel1.setText("");
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuudanhgia;

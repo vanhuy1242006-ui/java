@@ -284,6 +284,7 @@ public class MonAnDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, loaiMon);
+            
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -303,6 +304,7 @@ public class MonAnDAO {
         } catch (SQLException e) {
             System.out.println("Loi getRandomMonTheoLoai: " + e.getMessage());
         }
+        
         return null; // Trả về null nếu loại món đó chưa có dữ liệu trong DB
     }
 

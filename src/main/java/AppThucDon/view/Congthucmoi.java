@@ -72,7 +72,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         jLabel1.setText("Loại món ăn");
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Chọn loại món ăn ---", "Món chính", "Món phụ", "Món canh", "Món tráng miệng", "Đồ ăn nhanh" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Chọn loại món ăn ---", "Món chính", "Món phụ", "Món canh", "Món tráng miệng", "Món ăn nhanh" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
