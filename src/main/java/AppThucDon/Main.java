@@ -13,6 +13,7 @@ import AppThucDon.view.Mainlayout;
 import java.sql.Connection;
 import java.util.List;
 import AppThucDon.service.MonAnService;
+import AppThucDon.dao.FormDangNhap.JFrameLoginForm;
 
 
 /**
@@ -30,7 +31,7 @@ public class Main {
     }
     // Bật công tắc hiển thị cửa sổ
     java.awt.EventQueue.invokeLater(() -> {
-    Mainlayout frame = new Mainlayout();
+    JFrameLoginForm frame = new JFrameLoginForm();
     frame.setVisible(true); 
     
     });
