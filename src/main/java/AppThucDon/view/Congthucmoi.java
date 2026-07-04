@@ -248,18 +248,9 @@ public class Congthucmoi extends javax.swing.JPanel {
 
 monMoi.setMaNguoiTao(CurrentUser.userId);
 
-System.out.println(
-        "MaNguoiTao = "
-        + monMoi.getMaNguoiTao());
-    
-    System.out.println("MaNguoiTao = " + monMoi.getMaNguoiTao());
-
         // 3. Gọi DAO thực hiện lưu vào SQL Server
         MonAnDAO dao = new MonAnDAO(); // Viết ngắn gọn như này thôi là sạch lỗi!
         boolean isSuccess = dao.insert(monMoi);
-        System.out.println("=== DEBUG ===");
-        System.out.println("MaNguoiTao = " + monMoi.getMaNguoiTao());
-        System.out.println("TenMon = " + monMoi.getTenMon());
 
         if (isSuccess) {
 

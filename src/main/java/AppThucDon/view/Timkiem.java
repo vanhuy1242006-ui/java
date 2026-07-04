@@ -4,7 +4,18 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.model.MonAn;
+import java.awt.Component;
+import java.awt.Dimension;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import AppThucDon.view.Timkiemto;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -17,37 +28,68 @@ public class Timkiem extends javax.swing.JPanel {
      */
     public Timkiem() {
         initComponents();
-        jScrollPane1.setBorder(null); // Đã sửa tên đúng và xóa code nháp
+    panelTimkiem.setLayout(
+            new BoxLayout(panelTimkiem, BoxLayout.Y_AXIS));
+
+    jScrollPane1.setHorizontalScrollBarPolicy(
+            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+    jScrollPane1.setVerticalScrollBarPolicy(
+            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
     }
 
     // =================================================================
     // HÀM NHẬN DỮ LIỆU TỪ MAINLAYOUT VÀ VẼ LÊN MÀN HÌNH (BƯỚC 3)
     // =================================================================
     public void hienThiKetQua(java.util.List<AppThucDon.model.MonAn> danhSach, int soLuong) {
-        panelTimkiem.removeAll(); 
-        
-        // Hiện số lượng
-        javax.swing.JLabel lblKetQua = new javax.swing.JLabel(" Đã tìm thấy " + soLuong + " công thức phù hợp.");
-        lblKetQua.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
-        lblKetQua.setForeground(new java.awt.Color(255, 120, 0));
-        
-        panelTimkiem.add(lblKetQua);
-        panelTimkiem.add(javax.swing.Box.createVerticalStrut(20)); // Đã viết tên đầy đủ nên chữ Box sẽ không bị đỏ nữa
+         panelTimkiem.removeAll();
 
-        // Hiện danh sách món ăn
-        if (soLuong > 0) {
-            for (AppThucDon.model.MonAn monAn : danhSach) {
-                Yeuthichto p = new Yeuthichto();
-                
-                 p.setMonAn(monAn); 
-                
-                panelTimkiem.add(p);
-                panelTimkiem.add(javax.swing.Box.createVerticalStrut(20));
-            }
-        }
+     panelTimkiem.removeAll();
 
-        panelTimkiem.revalidate();
-        panelTimkiem.repaint();
+JLabel lblKetQua = new JLabel(
+        "Đã tìm thấy " + soLuong + " công thức phù hợp.",
+        SwingConstants.CENTER);
+
+lblKetQua.setFont(
+        new Font("Segoe UI", Font.BOLD, 22));
+
+lblKetQua.setForeground(
+        new Color(255,120,0));
+
+lblKetQua.setAlignmentX(Component.LEFT_ALIGNMENT);
+lblKetQua.setHorizontalAlignment(SwingConstants.CENTER);
+lblKetQua.setMaximumSize(
+        new Dimension(Integer.MAX_VALUE, 50));
+
+    panelTimkiem.add(lblKetQua);
+    panelTimkiem.add(Box.createVerticalStrut(20));
+
+    for (MonAn monAn : danhSach) {
+
+        Timkiemto p = new Timkiemto();
+
+        p.setMonAn(monAn);
+
+        p.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        Dimension d = p.getPreferredSize();
+
+        p.setMaximumSize(
+                new Dimension(
+                        Integer.MAX_VALUE,
+                        d.height));
+
+        panelTimkiem.add(p);
+        panelTimkiem.add(Box.createVerticalStrut(20));
+    }
+
+    panelTimkiem.revalidate();
+    panelTimkiem.repaint();
+
+    SwingUtilities.invokeLater(() ->
+            jScrollPane1.getVerticalScrollBar()
+                    .setValue(0));
     }
 
     /**
@@ -69,11 +111,11 @@ public class Timkiem extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -7,12 +7,14 @@ package AppThucDon.view;
 import AppThucDon.view.icon.SearchTextField;
 import AppThucDon.dao.FormDangNhap.CurrentUser;
 import AppThucDon.dao.FormDangNhap.UserPanel;
+import AppThucDon.model.MonAn;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.util.*;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -57,7 +59,7 @@ private Timkiem panelTimkiem;
         resetMenu();
         setSelected(btnHome);
         ImageIcon icon = new ImageIcon(
-                getClass().getResource("/images/Rauma.png"));
+                getClass().getResource("/images/logo.png"));
 
         Image img = icon.getImage().getScaledInstance(
                 100, 100, Image.SCALE_SMOOTH);
@@ -84,7 +86,8 @@ private Timkiem panelTimkiem;
         content2.add(new Congthuccuatoi(), "Luuct");
         content2.add(new Dexuat(), "Dexuat");
         content2.add(new Yeuthich(), "Yeuthich");
-        content2.add(new Timkiem(), "Timkiem");
+panelTimkiem = new Timkiem();
+content2.add(panelTimkiem, "Timkiem");
 
         card.show(content2, "Home");
     }
@@ -224,25 +227,30 @@ private Timkiem panelTimkiem;
         menu1Layout.setHorizontalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menu1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnThemct, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnYeuthich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCuatoi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                                    .addComponent(btnTimkiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnDexuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(menu1Layout.createSequentialGroup()
+                                .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnThemct, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(btnYeuthich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnCuatoi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                            .addComponent(btnTimkiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btnDexuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(menu1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         menu1Layout.setVerticalGroup(
@@ -333,24 +341,32 @@ private Timkiem panelTimkiem;
     }//GEN-LAST:event_btnYeuthichActionPerformed
 
     private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
-       panelTimkiem = new Timkiem();
-content2.add(panelTimkiem, "Timkiem");
-       String keyword = jTextField1.getText().trim();
-java.util.List<AppThucDon.model.MonAn> ketQuaTimKiem = monAnService.timKiemMonAn(keyword);
-int soLuong = ketQuaTimKiem.size();
 
-if (panelTimkiem != null) {
-    panelTimkiem.hienThiKetQua(ketQuaTimKiem, soLuong); 
-}
-card.show(content2, "Timkiem");
+   String keyword =
+            jTextField1
+                    .getText()
+                    .trim();
+
+    List<MonAn> ds =
+            monAnService
+                    .timKiemMonAn(
+                            keyword);
+
+    card.show(
+            content2,
+            "Timkiem");
+
+    SwingUtilities.invokeLater(
+            () -> panelTimkiem
+                    .hienThiKetQua(
+                            ds,
+                            ds.size()));
     }//GEN-LAST:event_btnTimkiemActionPerformed
 
     
     private void resetMenu() {
         Color bg = menu1.getBackground();
         Color text = new Color(20, 20, 20);
-        btnHome.setBackground(bg);
-        btnHome.setForeground(text);
         jButton2.setBackground(bg);
         jButton2.setForeground(text);
         btnCuatoi.setBackground(bg);

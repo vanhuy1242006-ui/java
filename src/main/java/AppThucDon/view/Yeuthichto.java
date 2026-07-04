@@ -6,6 +6,12 @@ package AppThucDon.view;
 
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +25,9 @@ public class Yeuthichto extends javax.swing.JPanel {
 
     public Yeuthichto() {
         initComponents();
+            // chiều rộng có thể thay đổi, nhưng chiều cao phải cố định
+    setPreferredSize(new Dimension(760, 610));
+    System.out.println(getPreferredSize());
     }
   
     public void setMonAn(AppThucDon.model.MonAn monAn) {
@@ -59,6 +68,7 @@ public class Yeuthichto extends javax.swing.JPanel {
                 // Nếu đường dẫn ảnh bị lỗi (không tìm thấy file), in ra lỗi để debug
                 System.out.println("Không thể tải ảnh cho món " + monAn.getTenMon() + ": " + e.getMessage());
                 jLabel1.setText("Lỗi hiển thị ảnh");
+                jLabel1.setIcon(null);
             }
         }
     }
@@ -209,7 +219,62 @@ public class Yeuthichto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatfileActionPerformed
-        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+    chooser.setDialogTitle("Lưu công thức");
+
+    int result = chooser.showSaveDialog(this);
+
+    if (result != JFileChooser.APPROVE_OPTION) {
+        return;
+    }
+
+    File file = chooser.getSelectedFile();
+
+    // tự thêm đuôi .txt nếu người dùng chưa nhập
+    if (!file.getName().toLowerCase().endsWith(".txt")) {
+        file = new File(file.getAbsolutePath() + ".txt");
+    }
+
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+
+        bw.write("========== CÔNG THỨC NẤU ĂN ==========");
+        bw.newLine();
+        bw.newLine();
+
+        bw.write("Tên món ăn: " + txtTenmon.getText());
+        bw.newLine();
+
+        bw.write(jLabel3.getText());   // Loại món ăn
+        bw.newLine();
+
+        bw.write(jLabel5.getText());   // Thời gian nấu
+        bw.newLine();
+
+        bw.write("Đánh giá: " + txtDanhgia.getText());
+        bw.newLine();
+        bw.newLine();
+
+        bw.write("NGUYÊN LIỆU");
+        bw.newLine();
+        bw.write(txtNguyenlieu.getText());
+        bw.newLine();
+        bw.newLine();
+
+        bw.write("MÔ TẢ CÔNG THỨC");
+        bw.newLine();
+        bw.write(jTextArea1.getText());
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Xuất file thành công!"
+        );
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Lỗi xuất file: " + e.getMessage()
+        );
+    }
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnLuudanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuudanhgiaActionPerformed

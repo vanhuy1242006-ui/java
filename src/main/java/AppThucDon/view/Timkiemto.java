@@ -4,7 +4,9 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -15,18 +17,60 @@ import javax.swing.JOptionPane;
  *
  * @author loan phuong
  */
-public class Congthuccuatoito extends javax.swing.JPanel {
+public class Timkiemto extends javax.swing.JPanel {
 
     /**
-     * Creates new form Phongto
+     * Creates new form Goiyto
      */
-    private Goiyct parent;
-    public Congthuccuatoito() {
-    initComponents();
-}
-    public Congthuccuatoito(Goiyct parent) {
+
+    public Timkiemto() {
         initComponents();
-        this.parent = parent;
+            // chiều rộng có thể thay đổi, nhưng chiều cao phải cố định
+    setPreferredSize(new Dimension(760, 610));
+    System.out.println(getPreferredSize());
+    }
+  
+    public void setMonAn(AppThucDon.model.MonAn monAn) {
+        if (monAn == null) return; // Nếu không có dữ liệu thì bỏ qua
+
+        // 1. Hiển thị tên món ăn vào JTextField
+        txtTenmon.setText(monAn.getTenMon());
+        
+        // 2. Hiển thị loại món ăn vào JLabel
+        jLabel3.setText("Đây là loại món ăn : " + monAn.getLoaiMon());
+        
+        // 3. Hiển thị thời gian nấu vào JLabel
+        jLabel5.setText("Thời gian nấu ăn : " + monAn.getThoiGian() + " phút");
+        
+        // 4. Hiển thị nguyên liệu vào JTextArea
+        txtNguyenlieu.setText(monAn.getNguyenLieu());
+        
+        // 5. Hiển thị mô tả công thức vào JTextArea
+        jTextArea1.setText(monAn.getMoTa());
+        
+        // 6. Hiển thị đánh giá hiện tại (nếu bạn muốn)
+        txtDanhgia.setText(String.valueOf(monAn.getDanhGia()) + " Sao");
+
+        // 7. Xử lý hiển thị ảnh (Vẽ ảnh lên jLabel1)
+        if (monAn.getLinkAnh() != null && !monAn.getLinkAnh().trim().isEmpty()) {
+            try {
+                // Đọc file ảnh từ đường dẫn lưu trong DB
+                javax.swing.ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource(monAn.getLinkAnh()));
+                
+                // Thu nhỏ ảnh cho vừa với khung jLabel1 (300x300 pixel)
+                java.awt.Image img = icon.getImage().getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                
+                // Đặt ảnh đã thu nhỏ vào jLabel1
+                jLabel1.setText(""); // Xóa chữ "xem ảnh" mặc định
+                jLabel1.setIcon(new javax.swing.ImageIcon(img));
+                
+            } catch (Exception e) {
+                // Nếu đường dẫn ảnh bị lỗi (không tìm thấy file), in ra lỗi để debug
+                System.out.println("Không thể tải ảnh cho món " + monAn.getTenMon() + ": " + e.getMessage());
+                jLabel1.setText("Lỗi hiển thị ảnh");
+                jLabel1.setIcon(null);
+            }
+        }
     }
 
     /**
@@ -46,9 +90,10 @@ public class Congthuccuatoito extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnSuact = new javax.swing.JButton();
-        btnXuatfile = new javax.swing.JButton();
-        btnXoact = new javax.swing.JButton();
+        btnLuuyeuthich = new javax.swing.JButton();
+        btnXuatfile = new PillButton();
+        txtDanhgia = new javax.swing.JTextField();
+        btnLuudanhgia = new PillButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
 
@@ -68,12 +113,15 @@ public class Congthuccuatoito extends javax.swing.JPanel {
 
         jLabel3.setText("Đây là loại món ăn :");
 
-        jLabel5.setText("Thời gian cook :");
+        jLabel5.setText("Thời gian nấu ăn :");
 
-        btnSuact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnSuact.setText("Sửa công thức");
+        btnLuuyeuthich.setText("Lưu yêu thích");
+        btnLuuyeuthich.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuyeuthichActionPerformed(evt);
+            }
+        });
 
-        btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnXuatfile.setText("Xuất file");
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,8 +129,14 @@ public class Congthuccuatoito extends javax.swing.JPanel {
             }
         });
 
-        btnXoact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnXoact.setText("Xóa công thức");
+        txtDanhgia.setText("jTextField1");
+
+        btnLuudanhgia.setText("Đánh giá ct");
+        btnLuudanhgia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuudanhgiaActionPerformed(evt);
+            }
+        });
 
         txtNguyenlieu.setColumns(20);
         txtNguyenlieu.setRows(5);
@@ -107,19 +161,26 @@ public class Congthuccuatoito extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTenmon))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                        .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnXoact, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSuact, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -138,15 +199,21 @@ public class Congthuccuatoito extends javax.swing.JPanel {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3)))
-                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSuact, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnXuatfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(txtDanhgia, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLuudanhgia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -183,7 +250,9 @@ public class Congthuccuatoito extends javax.swing.JPanel {
         bw.write(jLabel5.getText());   // Thời gian nấu
         bw.newLine();
 
-
+        bw.write("Đánh giá: " + txtDanhgia.getText());
+        bw.newLine();
+        bw.newLine();
 
         bw.write("NGUYÊN LIỆU");
         bw.newLine();
@@ -208,10 +277,18 @@ public class Congthuccuatoito extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
+    private void btnLuudanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuudanhgiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLuudanhgiaActionPerformed
+
+    private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLuuyeuthichActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSuact;
-    private javax.swing.JButton btnXoact;
+    private javax.swing.JButton btnLuudanhgia;
+    private javax.swing.JButton btnLuuyeuthich;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -221,6 +298,7 @@ public class Congthuccuatoito extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField txtDanhgia;
     private javax.swing.JTextArea txtNguyenlieu;
     private javax.swing.JTextField txtTenmon;
     // End of variables declaration//GEN-END:variables
