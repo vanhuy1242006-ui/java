@@ -3,7 +3,7 @@ package AppThucDon.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import AppThucDon.database.Database; // Thay bằng file kết nối của bạn
+import AppThucDon.database.Database;
 
 public class YeuThichDAO {
 
@@ -22,7 +22,7 @@ public class YeuThichDAO {
         }
     }
 
-    // 2. Xóa món ăn khỏi danh sách yêu thích (Bỏ thích)
+    // 2. Xóa món ăn khỏi danh sách yêu thích
     public boolean removeYeuThich(int userID, int monAnID) {
         String sql = "DELETE FROM YeuThich WHERE UserID = ? AND MonAnID = ?";
         try {
@@ -37,7 +37,7 @@ public class YeuThichDAO {
         }
     }
 
-    // 3. Kiểm tra xem User hiện tại đã thích món này chưa (Để đổi màu nút bấm)
+    // 3. Kiểm tra xem User hiện tại đã thích món này chưa 
     public boolean isYeuThichExisted(int userID, int monAnID) {
         String sql = "SELECT 1 FROM YeuThich WHERE UserID = ? AND MonAnID = ?";
         try {
@@ -64,15 +64,14 @@ public class YeuThichDAO {
     public boolean insertYeuThich(int userID, int monAnID) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    // =================================================================
+
     // 4. HÀM LẤY DANH SÁCH MÓN ĂN ĐÃ YÊU THÍCH CỦA MỘT USER
-    // =================================================================
     public java.util.List<AppThucDon.model.MonAn> getDanhSachMonYeuThich(int userID) {
         java.util.List<AppThucDon.model.MonAn> list = new java.util.ArrayList<>();
 
-        // Câu lệnh SQL: Lấy thông tin món ăn từ bảng MonAn thông qua bảng trung gian YeuThich
+        //Lấy thông tin món ăn từ bảng MonAn thông qua bảng trung gian YeuThich
         String sql = "SELECT m.* FROM MonAn m " +
-                     "INNER JOIN YeuThich y ON m.MaMon = y.MonAnID " + // Bạn nhớ check lại tên cột MaMon/MonAnID cho chuẩn CSDL nhé
+                     "INNER JOIN YeuThich y ON m.MaMon = y.MaMon " +
                      "WHERE y.UserID = ?";
 
         try (Connection conn = Database.getConnection();

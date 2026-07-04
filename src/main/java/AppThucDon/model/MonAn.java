@@ -9,16 +9,16 @@ package AppThucDon.model;
  * @author ngbad
  */
 public class MonAn {
-    	private int MaMon ;
+    private int MaMon ;
 	private String TenMon ;
 	private String LoaiMon ;
 	private String NguyenLieu;
 	private double ThoiGian;
-        private double DanhGia;
+    private double DanhGia;
 	private String LinkAnh;
 	private String MoTa;
-        private int MaNguoiTao;
-        private String TenNguoiTao;
+    private int MaNguoiTao;
+    private String TenNguoiTao;
 
     public int getMaNguoiTao() {
         return MaNguoiTao;
@@ -99,6 +99,7 @@ public class MonAn {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
+    
     public void hienThiThongTin() {
     System.out.println("====== THONG TIN MON AN ======");
     System.out.println("Ma mon: " + this.MaMon);

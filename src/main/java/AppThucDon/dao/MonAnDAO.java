@@ -11,9 +11,8 @@ import java.util.List;
 
 public class MonAnDAO {
 
-    // =================================================================
-    // 1. HÀM GỢI Ý MÓN ĂN - ĐÃ ĐƯỢC NÂNG CẤP LEFT JOIN LẤY TÊN NGƯỜI TẠO
-    // =================================================================
+
+    // 1. HÀM GỢI Ý MÓN ĂN 
     public List<MonAn> getRecommendedMeals(int limit) {
         List<MonAn> list = new ArrayList<>();
         
@@ -39,8 +38,6 @@ public class MonAnDAO {
                     monAn.setDanhGia(rs.getDouble("DanhGia"));
                     monAn.setLinkAnh(rs.getString("LinkAnh"));
                     monAn.setMoTa(rs.getString("MoTa"));
-                    
-                    // 🌟 Gắp trọn thông tin người tạo đổ vào Object Java chỉ với 1 lần truy vấn
                     monAn.setMaNguoiTao(rs.getInt("MaNguoiTao"));
                     monAn.setTenNguoiTao(rs.getString("TenNguoiTao")); 
                     
@@ -53,11 +50,8 @@ public class MonAnDAO {
         return list;
     }
 
-    // =================================================================
-    // 2. HÀM THÊM MÓN ĂN - ĐÃ SỬA ĐỂ LƯU THÊM MÃ NGƯỜI TẠO (MaNguoiTao)
-    // =================================================================
+    // 2. HÀM THÊM MÓN ĂN
     public boolean insert(MonAn monAn) {
-        // Bổ sung thêm cột MaNguoiTao vào câu lệnh chèn dữ liệu
         String sqlInsert = "INSERT INTO MonAn (TenMon, LoaiMon, NguyenLieu, ThoiGian, DanhGia, MoTa, MaNguoiTao) VALUES (?, ?, ?, ?, ?, ?, ?)";
         String sqlUpdateAnh = "UPDATE MonAn SET LinkAnh = ? WHERE MaMon = ?";
         
@@ -68,15 +62,19 @@ public class MonAnDAO {
         
         try {
             conn = Database.getConnection();
-            psInsert = conn.prepareStatement(sqlInsert, java.sql.Statement.RETURN_GENERATED_KEYS);
+            conn.setAutoCommit(false); // Bật Transaction để kiểm soát dữ liệu an toàn
             
+            psInsert = conn.prepareStatement(sqlInsert, java.sql.Statement.RETURN_GENERATED_KEYS);
             psInsert.setString(1, monAn.getTenMon());
             psInsert.setString(2, monAn.getLoaiMon());
             psInsert.setString(3, monAn.getNguyenLieu());
             psInsert.setDouble(4, monAn.getThoiGian());
             psInsert.setDouble(5, monAn.getDanhGia());
             psInsert.setString(6, monAn.getMoTa());
-            psInsert.setInt(7, monAn.getMaNguoiTao()); // 🌟 Lưu ID của Admin tạo món vào DB
+            
+            // In ra console để kiểm tra xem ID này có tồn tại trong bảng Người dùng chưa
+            System.out.println("DEBUG: MaNguoiTao dang insert la -> " + monAn.getMaNguoiTao());
+            psInsert.setInt(7, monAn.getMaNguoiTao()); 
             
             int rows = psInsert.executeUpdate();
             
@@ -94,11 +92,15 @@ public class MonAnDAO {
                     monAn.setMaMon(idVuaSinhRa);
                     monAn.setLinkAnh(tenAnhTheoId);
                     
+                    conn.commit(); // Hoàn tất thành công toàn bộ quá trình
                     System.out.println("DAO: Them thanh cong mon an co ID la " + idVuaSinhRa);
                     return true;
                 }
             }
         } catch (SQLException e) {
+            if (conn != null) {
+                try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); } // Quay xe nếu lỗi
+            }
             System.out.println("Loi insert tu dong tang: " + e.getMessage());
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception e) {}
@@ -109,9 +111,7 @@ public class MonAnDAO {
         return false;
     }
 
-    // =================================================================
     // 3. HÀM CẬP NHẬT THÔNG TIN MÓN ĂN
-    // =================================================================
     public boolean update(MonAn monAn) {
         String sql = "UPDATE MonAn SET TenMon=?, LoaiMon=?, NguyenLieu=?, ThoiGian=?, DanhGia=?, LinkAnh=?, MoTa=?, MaNguoiTao=? WHERE MaMon=?";
         
@@ -135,9 +135,7 @@ public class MonAnDAO {
         return false;
     }
 
-    // =================================================================
     // 4. HÀM XÓA MÓN ĂN
-    // =================================================================
     public boolean delete(int maMon) {
         String sql = "DELETE FROM MonAn WHERE MaMon=?";
         
@@ -152,9 +150,7 @@ public class MonAnDAO {
         return false;
     }
 
-    // =================================================================
     // 5. HÀM ĐẾM TỔNG SỐ LƯỢNG MÓN ĂN
-    // =================================================================
     public int countAll() {
         String sql = "SELECT COUNT(*) FROM MonAn";
         try (Connection conn = Database.getConnection();
@@ -169,7 +165,7 @@ public class MonAnDAO {
         }
         return 0; 
     }
-    // 🌟 HÀM XỬ LÝ ĐÁNH GIÁ THEO CÔNG THỨC: (CŨ + MỚI) / 2
+    // 6. HÀM XỬ LÝ ĐÁNH GIÁ THEO CÔNG THỨC
     public boolean DanhGiaMonAn(int maMon, double soSaoMoi) {
         // 1. Câu lệnh lấy điểm hiện tại
         String sqlSelect = "SELECT DanhGia FROM MonAn WHERE MonAnID = ?";
@@ -179,7 +175,7 @@ public class MonAnDAO {
         try {
             Connection conn = Database.getConnection();
             
-            // --- BƯỚC A: LẤY ĐIỂM ĐÁNH GIÁ HIỆN TẠI VỀ ---
+            //LẤY ĐIỂM ĐÁNH GIÁ HIỆN TẠI VỀ
             PreparedStatement psSelect = conn.prepareStatement(sqlSelect);
             psSelect.setInt(1, maMon);
             ResultSet rs = psSelect.executeQuery();
@@ -189,20 +185,20 @@ public class MonAnDAO {
                 danhGiaHienTai = rs.getDouble("DanhGia");
             }
             
-            // --- BƯỚC B: TÍNH TOÁN THEO CÔNG THỨC CỦA BẠN ---
+            // TÍNH TOÁN ĐÁNH GIÁ THEO CÔNG THỨC 
             double danhGiaCapNhat = 0.0;
+            // Nếu món ăn chưa có ai đánh giá (bằng 0), thì lấy luôn số sao mới
             if (danhGiaHienTai == 0.0) {
-                // Nếu món ăn chưa có ai đánh giá (bằng 0), thì lấy luôn số sao mới
                 danhGiaCapNhat = soSaoMoi;
             } else {
                 // Nếu đã có điểm cũ, áp dụng công thức: (Cũ + Mới) / 2
                 danhGiaCapNhat = (danhGiaHienTai + soSaoMoi) / 2.0;
                 
-                // Làm tròn đến 1 chữ số thập phân (ví dụ: 4.25 -> 4.3) cho đẹp giao diện
+                // Làm tròn đến 1 chữ số thập phân 
                 danhGiaCapNhat = Math.round(danhGiaCapNhat * 10.0) / 10.0;
             }
             
-            // --- BƯỚC C: CẬP NHẬT ĐIỂM MỚI VÀO DATABASE ---
+            //CẬP NHẬT ĐIỂM MỚI VÀO DATABASE ---
             PreparedStatement psUpdate = conn.prepareStatement(sqlUpdate);
             psUpdate.setDouble(1, danhGiaCapNhat);
             psUpdate.setInt(2, maMon);
@@ -214,13 +210,12 @@ public class MonAnDAO {
             return false;
         }
     }
-    // =================================================================
+
     // 6. HÀM LẤY DANH SÁCH MÓN ĂN DO CHÍNH USER ĐÓ TỰ TẠO
-    // =================================================================
     public List<MonAn> getDanhSachMonDaTao(int maNguoiTao) {
         List<MonAn> list = new ArrayList<>();
 
-        // 1. Bước A: Truy vấn tìm AccountType của userID này trước
+        // Truy vấn tìm AccountType của userID này trước
         String sqlCheckRole = "SELECT AccountType FROM Users WHERE UserID = ?";
         String accountType = "";
 
@@ -240,7 +235,7 @@ public class MonAnDAO {
                 return list; 
             }
 
-            // 2. Bước B: Định hình câu lệnh SQL dựa trên AccountType tìm được
+            //  Định hình câu lệnh SQL dựa trên AccountType tìm được
             String sqlQueryMeals = "";
             if (accountType.equalsIgnoreCase("Admin")) {
                 // Admin: Lấy toàn bộ món ăn không giới hạn
@@ -250,7 +245,7 @@ public class MonAnDAO {
                 sqlQueryMeals = "SELECT * FROM MonAn WHERE MaNguoiTao = ?";
             }
 
-            // 3. Bước C: Thực thi truy vấn lấy danh sách món ăn
+            // Thực thi truy vấn lấy danh sách món ăn
             try (PreparedStatement psQuery = conn.prepareStatement(sqlQueryMeals)) {
                 // Nếu là Chef thì cần truyền thêm tham số MaNguoiTao vào dấu ?
                 if (accountType.equalsIgnoreCase("Chef")) {
@@ -281,9 +276,7 @@ public class MonAnDAO {
 
         return list;
     }
-    // =================================================================
-    // 7. HÀM LẤY NGẪU NHIÊN 1 MÓN ĂN THEO LOẠI MÓN (Phục vụ tính năng Ăn gì bây giờ)
-    // =================================================================
+    // 7. HÀM LẤY NGẪU NHIÊN 1 MÓN ĂN THEO LOẠI MÓN
     public MonAn getRandomMonTheoLoai(String loaiMon) {
         String sql = "SELECT TOP 1 * FROM MonAn WHERE LoaiMon = ? ORDER BY NEWID()";
 
@@ -312,9 +305,8 @@ public class MonAnDAO {
         }
         return null; // Trả về null nếu loại món đó chưa có dữ liệu trong DB
     }
-    // =================================================================
+
     // 8. HÀM TÌM KIẾM MÓN ĂN THEO TÊN HOẶC MÃ MÓN AN TOÀN (LIKE & OR)
-    // =================================================================
     public List<MonAn> searchMonAn(String keyword) {
         List<MonAn> list = new ArrayList<>();
 
@@ -324,9 +316,9 @@ public class MonAnDAO {
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            // Tham số 1: Tìm kiếm gần đúng với LIKE (Ví dụ: %Cơm%)
+            // Tìm kiếm gần đúng với LIKE (Ví dụ: %Cơm%)
             ps.setString(1, "%" + keyword + "%");
-            // Tham số 2: Tìm kiếm chính xác theo chuỗi số của MaMon
+            // Tìm kiếm chính xác theo chuỗi số của MaMon
             ps.setString(2, keyword);
 
             try (ResultSet rs = ps.executeQuery()) {

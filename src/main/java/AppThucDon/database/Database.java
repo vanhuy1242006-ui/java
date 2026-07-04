@@ -10,12 +10,12 @@ public class Database {
     public static Connection getConnection() {
         Connection conn = null;
         try {
-            // 1. Cấu hình các thông số kết nối (HÃY SỬA LẠI CHO ĐÚNG VỚI MÁY BẠN)
+            // 1. Cấu hình các thông số kết nối 
             String serverName = "localhost";        // Hoặc tên máy của bạn
             String port = "1433";                  // Cổng mặc định của SQL Server
-            String dbName = "AppThucDonDB"; // Thay bằng tên DB bạn tạo trong SSMS
+            String dbName = "AppThucDonDB";        // tên DB  trong SSMS
             String user = "sa";                    // Tài khoản đăng nhập SQL Server
-            String password = "1";               // Mật khẩu tài khoản sa của bạn
+            String password = "1";                  // Mật khẩu tài khoản sa 
             
             // 2. Tạo chuỗi URL kết nối chuẩn kèm chứng chỉ bảo mật (encrypt=true)
             String url = "jdbc:sqlserver://" + serverName + ":" + port + ";"
@@ -34,7 +34,7 @@ public class Database {
         return conn;
     }
     
-    // Hàm này dùng để đóng kết nối khi đã xử lý xong dữ liệu (giúp tối ưu hệ thống)
+    // Hàm này dùng để đóng kết nối khi đã xử lý xong dữ liệu 
     public static void closeConnection(Connection conn) {
         try {
             if (conn != null && !conn.isClosed()) {

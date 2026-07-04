@@ -9,12 +9,10 @@ public class MonAnService {
     // Khởi tạo đối tượng DAO để tương tác với Database
     private MonAnDAO monAnDAO = new MonAnDAO();
 
-    // =================================================================
     // 1. CHỨC NĂNG: THÊM MỚI MÓN ĂN
-    // =================================================================
     public boolean themMoiMonAn(MonAn monAn, String accountTypeCurrentUser) {
     
-        // 🌟 KIỂM TRA PHÂN QUYỀN TRƯỚC: Nếu accountType rỗng hoặc không phải Admin/Chef thì chặn luôn
+        //KIỂM TRA PHÂN QUYỀN TRƯỚC: Nếu accountType rỗng hoặc không phải Admin/Chef thì chặn luôn
         if (accountTypeCurrentUser == null || 
             (!accountTypeCurrentUser.equalsIgnoreCase("Admin") && !accountTypeCurrentUser.equalsIgnoreCase("Chef"))) {
             System.out.println("Nghiep vu: Tu choi! Quyen [" + accountTypeCurrentUser + "] khong duoc phep them mon an.");
@@ -48,9 +46,7 @@ public class MonAnService {
         return monAnDAO.insert(monAn);
     }
 
-    // =================================================================
     // 2. CHỨC NĂNG: CẬP NHẬT THÔNG TIN MÓN ĂN
-    // =================================================================
     public boolean capNhatMonAn(MonAn monAn) {
         // Kiểm tra tên món không được để trống
         if (monAn.getTenMon() == null || monAn.getTenMon().trim().isEmpty()) {
@@ -73,9 +69,7 @@ public class MonAnService {
         return monAnDAO.update(monAn);
     }
     
-    // =================================================================
     // 3. CHỨC NĂNG: XÓA MÓN ĂN Theo MaMon
-    // =================================================================
     public boolean xoaMonAn(int maMon) {
         // Kiểm tra mã món ăn hợp lệ trước khi xóa
         if (maMon <= 0) {
@@ -85,9 +79,7 @@ public class MonAnService {
         return monAnDAO.delete(maMon);
     }
     
-    // =================================================================
     // 4. CHỨC NĂNG: LẤY DANH SÁCH GỢI Ý MÓN ĂN
-    // =================================================================
     public List<MonAn> getGoiYMonAn(int soLuong) {
         // Gọi DAO để lấy tổng số món ăn hiện tại trong database
         int tongSoMonTrongDb = monAnDAO.countAll();
@@ -108,9 +100,7 @@ public class MonAnService {
         return monAnDAO.getRecommendedMeals(soLuong);
     } 
 
-    // =================================================================
-    // 5. CHỨC NĂNG: ĐÁNH GIÁ MÓN ĂN (Tính điểm trung bình cộng cuốn chiếu)
-    // =================================================================
+    // 5. CHỨC NĂNG: ĐÁNH GIÁ MÓN ĂN 
     public boolean danhGiaMonAn(int maMon, double soSaoMoi) {
         // Kiểm tra mã món ăn truyền vào phải hợp lệ
         if (maMon <= 0) {
@@ -127,9 +117,7 @@ public class MonAnService {
         System.out.println("Nghiep vu: Du lieu hop le, dang chuyen xuong DAO de tinh toan");
         return monAnDAO.DanhGiaMonAn(maMon, soSaoMoi);
     }
-    // =================================================================
-    // 6. CHỨC NĂNG: LẤY DANH SÁCH MÓN ĂN DO USER ĐÃ TẠO/THÊM
-    // =================================================================
+    // 6. CHỨC NĂNG: LẤY DANH SÁCH MÓN ĂN DO USER ĐÃ THÊM
     public List<MonAn> layDanhSachMonDaTao(int maNguoiTao) {
         // Kiểm tra nghiệp vụ: Nếu chưa đăng nhập (ID <= 0 hoặc bằng -1), trả về danh sách rỗng luôn
         if (maNguoiTao <= 0) {
@@ -141,16 +129,15 @@ public class MonAnService {
         // Hợp lệ thì gọi DAO xử lý
         return monAnDAO.getDanhSachMonDaTao(maNguoiTao);
     }
-    // =================================================================
+
     // 7. CHỨC NĂNG: ĐỀ XUẤT THỰC ĐƠN "ĂN GÌ BÂY GIỜ" THEO THỜI GIAN THỰC
-    // =================================================================
     public java.util.List<MonAn> goiYAnGiBayGio() {
         List<MonAn> thucDonDeXuat = new java.util.ArrayList<>();
 
         // Lấy giờ hiện tại của hệ thống máy tính
         java.time.LocalTime gioHienTai = java.time.LocalTime.now();
 
-        // Định nghĩa các mốc thời gian: 9:00 AM và 9:00 PM (21:00)
+        // Định nghĩa các mốc thời gian
         java.time.LocalTime batDauBuaChinh = java.time.LocalTime.of(9, 0);
         java.time.LocalTime ketThucBuaChinh = java.time.LocalTime.of(21, 0);
 
@@ -186,17 +173,16 @@ public class MonAnService {
 
         return thucDonDeXuat;
     }
-    // =================================================================
+
     // 8. CHỨC NĂNG: TÌM KIẾM MÓN ĂN THEO TÊN HOẶC MÃ MÓN
-    // =================================================================
     public List<MonAn> timKiemMonAn(String keyword) {
-        // 1. Kiểm tra nếu từ khóa trống hoặc chỉ có dấu cách -> Trả về danh sách trống luôn
+        //Kiểm tra nếu từ khóa trống hoặc chỉ có dấu cách -> Trả về danh sách trống luôn
         if (keyword == null || keyword.trim().isEmpty()) {
             System.out.println("Nghiep vu: Tu khoa trong -> Tra ve danh sach trong.");
             return new java.util.ArrayList<>();
         }
 
-        // 2. Gọi DAO thực hiện tìm kiếm từ SQL Server
+        //Gọi DAO thực hiện tìm kiếm từ SQL Server
         List<MonAn> ketQua = monAnDAO.searchMonAn(keyword);
 
         // 3. Nếu kết quả trả về bị null hoặc không tìm thấy món nào (size == 0)
