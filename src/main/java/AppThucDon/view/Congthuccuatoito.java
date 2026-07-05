@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import AppThucDon.view.icon.PillButton;
-
+import AppThucDon.model.MonAn;
 /**
  *
  * @author loan phuong
@@ -21,6 +21,7 @@ public class Congthuccuatoito extends javax.swing.JPanel {
     /**
      * Creates new form Phongto
      */
+
     private Goiytheogio parent;
     public Congthuccuatoito() {
     initComponents();
@@ -210,7 +211,13 @@ public class Congthuccuatoito extends javax.swing.JPanel {
         );
     }
     }//GEN-LAST:event_btnXuatfileActionPerformed
-
+    public void setData(MonAn mon) {
+    txtTenmon.setText(mon.getTenMon());
+    txtNguyenlieu.setText(mon.getNguyenLieu()); // nếu có field này
+    jTextArea1.setText(mon.getMoTa()); // mô tả
+    jLabel5.setText("Thời gian cook: " + mon.getThoiGian() + " phút");
+    jLabel3.setText("Loại món: " + mon.getLoaiMon());
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSuact;

@@ -4,9 +4,13 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.model.MonAn;
+import AppThucDon.service.MonAnService;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.BoxLayout;
+import AppThucDon.view.Congthuccuatoito;
 
 /**
  *
@@ -16,23 +20,30 @@ public class Congthuccuatoi extends javax.swing.JPanel {
 
     /**
      * Creates new form Luucongthuc
-     */
-    public Congthuccuatoi() {
+     */private MonAnService service = new MonAnService();
+    public Congthuccuatoi(int maNguoiTao) {
         initComponents();
-        jScrollPane1.setBorder(null);
-        pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
-        for (int i = 1; i <= 10; i++) {
-    Congthuccuatoito p = new Congthuccuatoito();
-    Dimension d = p.getPreferredSize();
-p.setMaximumSize(new Dimension(Integer.MAX_VALUE, d.height));
-p.setAlignmentX(Component.LEFT_ALIGNMENT);
-    pnlDaydu.add(p);
-    pnlDaydu.add(javax.swing.Box.createVerticalStrut(40));
-}
+         jScrollPane1.setBorder(null);
+    pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
+
+    List<MonAn> danhSach = service.layDanhSachMonDaTao(maNguoiTao);
+
+    for (MonAn mon : danhSach) {
+        Congthuccuatoito p = new Congthuccuatoito();
+
+        // 👉 truyền data vào panel con (bước 2)
+        p.setData(mon);
+
+        Dimension d = p.getPreferredSize();
+        p.setMaximumSize(new Dimension(Integer.MAX_VALUE, d.height));
+        p.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        pnlDaydu.add(p);
+        pnlDaydu.add(javax.swing.Box.createVerticalStrut(20));
+    }
+
     pnlDaydu.revalidate();
     pnlDaydu.repaint();
-    jScrollPane1.setHorizontalScrollBarPolicy(
-        javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     }
 
     /**
