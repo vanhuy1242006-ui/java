@@ -23,12 +23,7 @@ import AppThucDon.dao.FormDangNhap.JFrameLoginForm;
 public class Main {
     
     public static void main(String args[]) {
-    MonAnService monanservice = new MonAnService();
-    List<MonAn> monan = new java.util.ArrayList<>();
-    monan = monanservice.goiYAnGiBayGio();
-    for(MonAn i : monan){
-        i.hienThiThongTin();
-    }
+
     // Bật công tắc hiển thị cửa sổ
     java.awt.EventQueue.invokeLater(() -> {
     JFrameLoginForm frame = new JFrameLoginForm();
@@ -36,7 +31,7 @@ public class Main {
     
     });
     
-    System.out.println("Đang kiểm tra kết nối...");
+    System.out.println("Dang kiem tra ket noi....");
         Connection conn = Database.getConnection();
         
         // Nếu kết nối thành công thì đóng lại luôn để test

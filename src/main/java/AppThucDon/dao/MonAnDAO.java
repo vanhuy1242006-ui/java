@@ -276,15 +276,19 @@ public class MonAnDAO {
 
         return list;
     }
-    // 7. HÀM LẤY NGẪU NHIÊN 1 MÓN ĂN THEO LOẠI MÓN
+    // 7. HÀM LẤY NGẪU NHIÊN 1 MÓN ĂN THEO LOẠI MÓN 
     public MonAn getRandomMonTheoLoai(String loaiMon) {
-        String sql = "SELECT TOP 1 * FROM MonAn WHERE LoaiMon = ? ORDER BY NEWID()";
+        // Sử dụng LEFT JOIN để lấy luôn DisplayName từ bảng Users dựa vào MaNguoiTao = UserID
+        String sql = "SELECT TOP 1 m.*, u.DisplayName AS TenNguoiTao " +
+                     "FROM MonAn m " +
+                     "LEFT JOIN Users u ON m.MaNguoiTao = u.UserID " +
+                     "WHERE m.LoaiMon = ? " +
+                     "ORDER BY NEWID()";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, loaiMon);
-            
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -298,13 +302,16 @@ public class MonAnDAO {
                     monAn.setLinkAnh(rs.getString("LinkAnh"));
                     monAn.setMoTa(rs.getString("MoTa"));
                     monAn.setMaNguoiTao(rs.getInt("MaNguoiTao"));
+                    String tenNguoiTao = rs.getString("TenNguoiTao");
+                    monAn.setTenNguoiTao(tenNguoiTao != null ? tenNguoiTao : "Hệ thống");
+
                     return monAn;
                 }
             }
         } catch (SQLException e) {
             System.out.println("Loi getRandomMonTheoLoai: " + e.getMessage());
         }
-        
+
         return null; // Trả về null nếu loại món đó chưa có dữ liệu trong DB
     }
 

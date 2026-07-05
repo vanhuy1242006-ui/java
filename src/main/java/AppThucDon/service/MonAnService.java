@@ -132,7 +132,7 @@ public class MonAnService {
     }
 
     // 7. CHỨC NĂNG: ĐỀ XUẤT THỰC ĐƠN "ĂN GÌ BÂY GIỜ" THEO THỜI GIAN THỰC
-    public java.util.List<MonAn> goiYAnGiBayGio() {
+    public List<MonAn> goiYAnGiBayGio() {
         List<MonAn> thucDonDeXuat = new java.util.ArrayList<>();
 
         // Lấy giờ hiện tại của hệ thống máy tính
