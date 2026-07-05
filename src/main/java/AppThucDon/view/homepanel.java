@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package AppThucDon.view;
+
+import AppThucDon.dao.FormDangNhap.CurrentUser;
 import java.awt.*;
 import javax.swing.*;
 
@@ -17,33 +19,50 @@ public class homepanel extends javax.swing.JPanel {
      * Creates new form homepanel
      */
     private Image backgroundImage;
-    
-    public homepanel() {
+    private Mainlayout main;
+
+    public homepanel(Mainlayout main) {
         initComponents();
-        java.net.URL url =
-            getClass().getResource("/images/Picture1.png");
+        this.main = main;
 
+        btnBatDau.setBackground(new Color(247, 192, 67));
+        btnBatDau.setForeground(Color.WHITE);
+        btnBatDau.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        btnBatDau.setFocusPainted(false);
+        btnBatDau.setBorderPainted(false);
+        btnBatDau.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-    if(url != null){
-        backgroundImage = new ImageIcon(url).getImage();
+        btnBatDau.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBatDau.setBackground(new Color(232, 181, 53));
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBatDau.setBackground(new Color(247, 192, 67));
+            }
+        });
+
+        java.net.URL url
+                = getClass().getResource("/images/Picture1.png");
+
+        if (url != null) {
+            backgroundImage = new ImageIcon(url).getImage();
+        } else {
+            System.out.println("Khong tim thay anh");
+        }
     }
-    else{
-        System.out.println("Khong tim thay anh");
-    }
-    }
 
-    
-    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (backgroundImage != null) {
+            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
 
-@Override
-protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    if (backgroundImage != null){
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-    
+        }
     }
-}
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,32 +73,80 @@ protected void paintComponent(Graphics g) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnBatDau = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        lblWelcome = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        jButton1.setText("jButton1");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jButton1)
-                .addContainerGap(554, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jButton1)
-                .addContainerGap(535, Short.MAX_VALUE))
-        );
+        btnBatDau.setText("Bắt đầu ngay");
+        btnBatDau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatDauActionPerformed(evt);
+            }
+        });
+        add(btnBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 311, 180, 60));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Cảm ơn bạn đã gia nhập JavaCook");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 290, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Hãy bắt đầu hành trình nấy ăn ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("tuyệt vời cùng chúng tôi");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/circle.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(220, 220, 220));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 180, 10));
+
+        jSeparator2.setForeground(new java.awt.Color(220, 220, 220));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 170, 10));
+
+        lblWelcome.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(110, 75, 25));
+        lblWelcome.setText("Chào mừng bạn!");
+        add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(165, 102, 18));
+        jLabel6.setText("JavaCook");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 160, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nen2 (1) (1) (1).png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 620));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBatDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatDauActionPerformed
+        
+
+       main.openDexuat();
+    }//GEN-LAST:event_btnBatDauActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBatDau;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblWelcome;
     // End of variables declaration//GEN-END:variables
-
 
 }

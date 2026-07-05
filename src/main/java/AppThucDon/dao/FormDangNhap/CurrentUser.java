@@ -11,5 +11,7 @@ public class CurrentUser {
     public static String avatar;
 
     public static String bio;
+    
+    public static String AccountType;
 
 }

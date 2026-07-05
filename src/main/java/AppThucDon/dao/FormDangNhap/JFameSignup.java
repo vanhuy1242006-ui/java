@@ -379,8 +379,8 @@ public class JFameSignup extends javax.swing.JFrame {
             // INSERT
             String sql
                     = "INSERT INTO Users"
-                    + "(Username,PasswordHash,Email)"
-                    + "VALUES(?,?,?)";
+                    + "(Username,PasswordHash,Email,AccountType)"
+                    + "VALUES(?,?,?,?)";
 
             PreparedStatement ps
                     = conn.prepareStatement(sql);
@@ -390,6 +390,8 @@ public class JFameSignup extends javax.swing.JFrame {
             ps.setString(2, password);
 
             ps.setString(3, email);
+            
+            ps.setString(4, "Chef");
 
             ps.executeUpdate();
 

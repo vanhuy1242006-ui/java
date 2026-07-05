@@ -25,14 +25,15 @@ public class Mainlayout extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Mainlayout.class.getName());
     CardLayout card;
     private AppThucDon.service.MonAnService monAnService = new AppThucDon.service.MonAnService();
-private Timkiem panelTimkiem;
-private Goiytheogio panelGoiy;
+    private Timkiem panelTimkiem;
+    private Goiytheogio panelGoiy;
+
     /**
      * Creates new form lamlayout
      */
     public Mainlayout() {
         initComponents();
-        
+
         addHoverEffect(btnHome);
         addHoverEffect(jButton2);
         addHoverEffect(btnCuatoi);
@@ -71,7 +72,7 @@ private Goiytheogio panelGoiy;
         card = new CardLayout();
         content2.setLayout(card);
 
-        content2.add(new homepanel(), "Home");
+        content2.add(new homepanel(this), "Home");
         content2.add(new Congthucmoi(), "Ctmoi");
         content2.add(
                 new UserPanel(
@@ -88,10 +89,15 @@ private Goiytheogio panelGoiy;
         content2.add(new Congthuccuatoi(maNguoiDangNhap), "Luuct");
         content2.add(new Dexuat(), "Dexuat");
         content2.add(new Yeuthich(), "Yeuthich");
-panelTimkiem = new Timkiem();
-content2.add(panelTimkiem, "Timkiem");
+        panelTimkiem = new Timkiem();
+        content2.add(panelTimkiem, "Timkiem");
 
         card.show(content2, "Home");
+
+    }
+
+    public void openDexuat() {
+        card.show(content2, "Dexuat");
     }
 
     /**
@@ -319,16 +325,16 @@ content2.add(panelTimkiem, "Timkiem");
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  System.out.println(panelGoiy);
-    panelGoiy.taiDuLieu();
+        System.out.println(panelGoiy);
+        panelGoiy.taiDuLieu();
 
-    card.show(content2, "Goiy");
+        card.show(content2, "Goiy");
 
-    content2.revalidate();
-    content2.repaint();
+        content2.revalidate();
+        content2.repaint();
 
-    resetMenu();
-    setSelected(jButton2);
+        resetMenu();
+        setSelected(jButton2);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -351,28 +357,27 @@ content2.add(panelTimkiem, "Timkiem");
 
     private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
 
-   String keyword =
-            jTextField1
-                    .getText()
-                    .trim();
+        String keyword
+                = jTextField1
+                        .getText()
+                        .trim();
 
-    List<MonAn> ds =
-            monAnService
-                    .timKiemMonAn(
-                            keyword);
+        List<MonAn> ds
+                = monAnService
+                        .timKiemMonAn(
+                                keyword);
 
-    card.show(
-            content2,
-            "Timkiem");
+        card.show(
+                content2,
+                "Timkiem");
 
-    SwingUtilities.invokeLater(
-            () -> panelTimkiem
-                    .hienThiKetQua(
-                            ds,
-                            ds.size()));
+        SwingUtilities.invokeLater(
+                () -> panelTimkiem
+                        .hienThiKetQua(
+                                ds,
+                                ds.size()));
     }//GEN-LAST:event_btnTimkiemActionPerformed
 
-    
     private void resetMenu() {
         Color bg = menu1.getBackground();
         Color text = new Color(20, 20, 20);
@@ -394,34 +399,34 @@ content2.add(panelTimkiem, "Timkiem");
         btn.setBackground(new Color(255, 120, 0));
         btn.setForeground(new Color(255, 255, 255));
     }
-    
-        private void addHoverEffect(javax.swing.JButton btn) {
 
-    Color hover = new Color(255, 160, 40);    // làm nút sáng lên khi rê chuột
+    private void addHoverEffect(javax.swing.JButton btn) {
 
-    Color normal = menu1.getBackground(); // đang áp dụng cho toàn bộ button menu
+        Color hover = new Color(255, 160, 40);    // làm nút sáng lên khi rê chuột
 
-    btn.setBackground(normal);// 🌫 set nền mặc định
+        Color normal = menu1.getBackground(); // đang áp dụng cho toàn bộ button menu
 
-    btn.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn.setBackground(normal);// 🌫 set nền mặc định
 
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            if (btn.getBackground().equals(new Color(255, 120, 0))) {
-                return; // đang selected thì không đổi hover
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (btn.getBackground().equals(new Color(255, 120, 0))) {
+                    return; // đang selected thì không đổi hover
+                }
+                btn.setBackground(hover);
             }
-            btn.setBackground(hover);
-        }
 
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            if (btn.getBackground().equals(new Color(255, 120, 0))) {
-                return;
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if (btn.getBackground().equals(new Color(255, 120, 0))) {
+                    return;
+                }
+                btn.setBackground(normal);
             }
-            btn.setBackground(normal);
-        }
-    });
-}
+        });
+    }
 
     /**
      * @param args the command line arguments
