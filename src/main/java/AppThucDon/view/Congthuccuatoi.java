@@ -22,19 +22,27 @@ public class Congthuccuatoi extends javax.swing.JPanel {
     /**
      * Creates new form Luucongthuc
      */private MonAnService service = new MonAnService();
+     private int maNguoiTao;
     public Congthuccuatoi(int maNguoiTao) {
-        initComponents();
-         jScrollPane1.setBorder(null);
-         jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-         
+    initComponents();
+    this.maNguoiTao = maNguoiTao;
+
+    jScrollPane1.setBorder(null);
+    jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
     pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
+
+    loadDanhSach(); // ⭐ gọi lần đầu
+    }
+
+    public void loadDanhSach() {
+
+    pnlDaydu.removeAll(); // ⭐ quan trọng: xóa UI cũ
 
     List<MonAn> danhSach = service.layDanhSachMonDaTao(maNguoiTao);
 
     for (MonAn mon : danhSach) {
-        Congthuccuatoito p = new Congthuccuatoito();
-
-        // 👉 truyền data vào panel con (bước 2)
+        Congthuccuatoito p = new Congthuccuatoito(this);
         p.setData(mon);
 
         Dimension d = p.getPreferredSize();
@@ -47,8 +55,7 @@ public class Congthuccuatoi extends javax.swing.JPanel {
 
     pnlDaydu.revalidate();
     pnlDaydu.repaint();
-    }
-
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

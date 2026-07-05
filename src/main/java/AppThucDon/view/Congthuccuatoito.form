@@ -179,6 +179,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="X&#xf3;a c&#xf4;ng th&#x1ee9;c"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoactActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new PillButton()"/>
       </AuxValues>

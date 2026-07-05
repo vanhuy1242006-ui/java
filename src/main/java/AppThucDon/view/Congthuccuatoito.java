@@ -12,6 +12,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import AppThucDon.view.icon.PillButton;
 import AppThucDon.model.MonAn;
+import AppThucDon.service.MonAnService;
+import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.io.File;
@@ -26,17 +28,33 @@ public class Congthuccuatoito extends javax.swing.JPanel {
      * Creates new form Phongto
      */
 
-    private Goiytheogio parent;
+    
+    private MonAn monAnHienTai;
+    private Congthuccuatoi parent;
+private MonAnService service = new MonAnService();
+
     public Congthuccuatoito() {
     initComponents();
-                    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    jScrollPane3.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    txtNguyenlieu.setLineWrap(true);
-    txtNguyenlieu.setWrapStyleWord(true);
-    jTextArea1.setLineWrap(true);
-    jTextArea1.setWrapStyleWord(true);
+    
+    
+txtNguyenlieu.setLineWrap(true);
+txtNguyenlieu.setWrapStyleWord(true);
+
+jTextArea1.setLineWrap(true);
+jTextArea1.setWrapStyleWord(true);
+
+jScrollPane3.setViewportView(txtNguyenlieu);
+jScrollPane2.setViewportView(jTextArea1);
+
+txtNguyenlieu.setMinimumSize(new Dimension(0, 0));
+jTextArea1.setMinimumSize(new Dimension(0, 0));
+
+jScrollPane2.setPreferredSize(new Dimension(0, 120));
+jScrollPane3.setPreferredSize(new Dimension(0, 120));
+    txtNguyenlieu.setColumns(1);
+jTextArea1.setColumns(1);
 }
-    public Congthuccuatoito(Goiytheogio parent) {
+    public Congthuccuatoito(Congthuccuatoi parent) {
         initComponents();
         this.parent = parent;
 
@@ -96,6 +114,11 @@ public class Congthuccuatoito extends javax.swing.JPanel {
 
         btnXoact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnXoact.setText("Xóa công thức");
+        btnXoact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoactActionPerformed(evt);
+            }
+        });
 
         txtNguyenlieu.setColumns(20);
         txtNguyenlieu.setRows(5);
@@ -222,7 +245,22 @@ public class Congthuccuatoito extends javax.swing.JPanel {
         );
     }
     }//GEN-LAST:event_btnXuatfileActionPerformed
+
+    private void btnXoactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoactActionPerformed
+        btnXoact.addActionListener(e -> xoaCongThuc());
+    }//GEN-LAST:event_btnXoactActionPerformed
+    
+    
     public void setData(MonAn mon) {
+        txtNguyenlieu.setLineWrap(true);
+txtNguyenlieu.setWrapStyleWord(true);
+
+jTextArea1.setLineWrap(true);
+jTextArea1.setWrapStyleWord(true);
+
+// ⭐ QUAN TRỌNG
+
+        this.monAnHienTai = mon;
     txtTenmon.setText(mon.getTenMon());
     txtNguyenlieu.setText(mon.getNguyenLieu()); // nếu có field này
     jTextArea1.setText(mon.getMoTa()); // mô tả
@@ -251,6 +289,33 @@ public class Congthuccuatoito extends javax.swing.JPanel {
                 new ImageIcon(img));
 
         jLabel1.setText("");
+    }
+}
+    
+    private void xoaCongThuc() {
+
+    if (monAnHienTai == null) return;
+
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Bạn có chắc muốn xóa không?",
+            "Xóa",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm != JOptionPane.YES_OPTION) return;
+
+    boolean ok = service.xoaMonAn(monAnHienTai.getMaMon());
+
+    if (ok) {
+        JOptionPane.showMessageDialog(this, "Đã xóa!");
+
+        // ⭐ reload toàn bộ list
+        if (parent != null) {
+            parent.loadDanhSach();
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Xóa thất bại!");
     }
 }
 
