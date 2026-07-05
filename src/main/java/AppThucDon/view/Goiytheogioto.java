@@ -5,6 +5,7 @@
 package AppThucDon.view;
 
 import AppThucDon.model.MonAn;
+import AppThucDon.service.MonAnService;
 import AppThucDon.view.icon.IconTraitim;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
@@ -26,6 +27,8 @@ public class Goiytheogioto extends javax.swing.JPanel {
     /**
      * Creates new form Goiytheogioto
      */private boolean liked = false;
+     private MonAn monHienTai;
+private MonAnService service = new MonAnService();
     private javax.swing.JPanel parent;
 
     public Goiytheogioto(javax.swing.JPanel parent) {
@@ -275,7 +278,28 @@ if (parent instanceof Goiytheogio) {
     }//GEN-LAST:event_btnQuaylaiActionPerformed
 
     private void btnLuudanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuudanhgiaActionPerformed
-        // TODO add your handling code here:
+        try {
+
+        double sao = Double.parseDouble(txtDanhgia.getText());
+
+        if(service.danhGiaMonAn(monHienTai.getMaMon(), sao)){
+
+            JOptionPane.showMessageDialog(this, "Đánh giá thành công");
+
+            if(parent instanceof Goiytheogio){
+                ((Goiytheogio) parent).taiDuLieu();
+            }
+
+        }else{
+
+            JOptionPane.showMessageDialog(this, "Đánh giá thất bại");
+        }
+
+    }catch(NumberFormatException e){
+
+        JOptionPane.showMessageDialog(this,
+                "Điểm đánh giá phải từ 1 đến 5");
+    }
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
@@ -285,7 +309,7 @@ if (parent instanceof Goiytheogio) {
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
     public void hienThiMonAn(MonAn mon) {
-
+ this.monHienTai = mon;
     txtTenmon.setText(mon.getTenMon());
 
     jLabel3.setText(

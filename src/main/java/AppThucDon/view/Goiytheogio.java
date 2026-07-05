@@ -40,7 +40,7 @@ private Goiytheogioto pnlPhongto;
     cl.show(this, "card2");
 
     taiDuLieu();
-    System.out.println("Goiytheogio = " + this);
+    
 }    
     
     public void taiDuLieu() {
@@ -50,13 +50,13 @@ private Goiytheogioto pnlPhongto;
     MonAnService service = new MonAnService();
 
     List<MonAn> ds = service.goiYAnGiBayGio();
-System.out.println("So mon = " + ds.size());
+
     for (MonAn mon : ds) {
 
         thunhotheogio card = new thunhotheogio(
                 mon.getTenMon(),
                 mon.getTenNguoiTao(),
-                mon.getDanhGia() + "⭐",
+                mon.getDanhGia() + "Sao",
                 mon.getThoiGian() + " phút",
                 mon.getLinkAnh()
         );
@@ -79,7 +79,7 @@ System.out.println("So mon = " + ds.size());
         panelGoiy.add(card);
         panelGoiy.add(Box.createVerticalStrut(40));
     }
-System.out.println("Component = " + panelGoiy.getComponentCount());
+
     panelGoiy.revalidate();
     panelGoiy.repaint();
 }

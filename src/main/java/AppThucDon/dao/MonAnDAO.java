@@ -168,9 +168,9 @@ public class MonAnDAO {
     // 6. HÀM XỬ LÝ ĐÁNH GIÁ THEO CÔNG THỨC
     public boolean DanhGiaMonAn(int maMon, double soSaoMoi) {
         // 1. Câu lệnh lấy điểm hiện tại
-        String sqlSelect = "SELECT DanhGia FROM MonAn WHERE MonAnID = ?";
+        String sqlSelect = "SELECT DanhGia FROM MonAn WHERE MaMon = ?";
         // 2. Câu lệnh cập nhật điểm mới
-        String sqlUpdate = "UPDATE MonAn SET DanhGia = ? WHERE MonAnID = ?";
+        String sqlUpdate = "UPDATE MonAn SET DanhGia = ? WHERE MaMon = ?";
         
         try {
             Connection conn = Database.getConnection();

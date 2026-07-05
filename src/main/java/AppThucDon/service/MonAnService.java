@@ -43,6 +43,7 @@ public class MonAnService {
         }
 
         // Nếu vượt qua tất cả các vòng kiểm tra thì gọi DAO để lưu
+        
         return monAnDAO.insert(monAn);
     }
 
@@ -150,10 +151,6 @@ public class MonAnService {
             // Lấy 1 Món chính
             MonAn mChinh = monAnDAO.getRandomMonTheoLoai("Món chính");
             if(mChinh != null) thucDonDeXuat.add(mChinh);
-
-            // Lấy 1 Món phụ
-            MonAn mPhu = monAnDAO.getRandomMonTheoLoai("Món phụ");
-            if(mPhu != null) thucDonDeXuat.add(mPhu);
 
             // Lấy 1 Món canh
             MonAn mCanh = monAnDAO.getRandomMonTheoLoai("Món canh");

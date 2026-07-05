@@ -107,7 +107,6 @@ private boolean liked = false;
         btnLuuyeuthich = new javax.swing.JButton();
         btnXuatfile = new PillButton();
         txtDanhgia = new javax.swing.JTextField();
-        btnLuudanhgia = new PillButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
 
@@ -147,13 +146,8 @@ private boolean liked = false;
             }
         });
 
-        btnLuudanhgia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnLuudanhgia.setText("Đánh giá ct");
-        btnLuudanhgia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuudanhgiaActionPerformed(evt);
-            }
-        });
+        txtDanhgia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDanhgia.setText("Công thức này được đánh giá: ");
 
         txtNguyenlieu.setColumns(20);
         txtNguyenlieu.setRows(5);
@@ -187,9 +181,7 @@ private boolean liked = false;
                                         .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(10, 10, 10))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtDanhgia)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
@@ -231,8 +223,7 @@ private boolean liked = false;
                         .addGap(8, 8, 8)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnXuatfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(txtDanhgia, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLuudanhgia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDanhgia, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -296,10 +287,6 @@ private boolean liked = false;
     }
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
-    private void btnLuudanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuudanhgiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLuudanhgiaActionPerformed
-
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
                     liked = !liked;
 
@@ -308,7 +295,6 @@ private boolean liked = false;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLuudanhgia;
     private javax.swing.JButton btnLuuyeuthich;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;

@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-
+import AppThucDon.service.MonAnService;
 /**
  *
  * @author loan phuong
@@ -25,7 +25,9 @@ public class Dexuatto extends javax.swing.JPanel {
      * Creates new form Goiyto
      */private boolean liked = false;
     private javax.swing.JPanel parent;
-    
+
+private MonAn monHienTai;
+private MonAnService service = new MonAnService();
 
     public Dexuatto(javax.swing.JPanel parent) {
         initComponents();
@@ -77,7 +79,8 @@ jTextArea1.setWrapStyleWord(true);
 
         setBackground(new java.awt.Color(253, 246, 236));
 
-        jLabel4.setText("Mô tả công thức");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Công thức");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -266,12 +269,33 @@ jTextArea1.setWrapStyleWord(true);
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnQuaylaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuaylaiActionPerformed
-          CardLayout cl = (CardLayout) parent.getLayout();
-    cl.show(parent, "DEXUAT");
+ if(parent instanceof Dexuat){
+    ((Dexuat) parent).taiDuLieu();
+}
+
+CardLayout cl = (CardLayout) parent.getLayout();
+cl.show(parent, "DEXUAT");
     }//GEN-LAST:event_btnQuaylaiActionPerformed
 
     private void btnLuudanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuudanhgiaActionPerformed
-        // TODO add your handling code here:
+        try {
+
+        double sao = Double.parseDouble(txtDanhgia.getText());
+
+        if(service.danhGiaMonAn(monHienTai.getMaMon(), sao)){
+
+            JOptionPane.showMessageDialog(this,"Đánh giá thành công");
+
+        }else{
+
+            JOptionPane.showMessageDialog(this,"Đánh giá thất bại");
+        }
+
+    }catch(NumberFormatException ex){
+
+        JOptionPane.showMessageDialog(this,
+                "Điểm đánh giá phải từ 1 đến 5");
+    }
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
@@ -281,7 +305,7 @@ jTextArea1.setWrapStyleWord(true);
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
     public void hienThiMonAn(MonAn mon){
-
+ this.monHienTai = mon;
     txtTenmon.setText(mon.getTenMon());
 
     txtNguyenlieu.setText(mon.getNguyenLieu());

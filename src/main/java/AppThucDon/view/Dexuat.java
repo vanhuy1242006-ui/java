@@ -20,47 +20,54 @@ public class Dexuat extends javax.swing.JPanel {
 
     /**
      * Creates new form Goiyct
-     */
+     */private Dexuatto dexuatto;
     public Dexuat() {
         initComponents();
-        Dexuatto dexuatto = new Dexuatto(this);
-        
-        this.add(jScrollPane1, "DEXUAT");
-        this.add(dexuatto, "PHONGTO");
-        CardLayout cl = (CardLayout) this.getLayout();
-        cl.show(this, "DEXUAT");
-        
-        MonAnService monanservice = new MonAnService();
-        List<MonAn> danhsach = monanservice.getGoiYMonAn(10);
-        
-        for(MonAn i:danhsach){
-             thunho card = new thunho(
-                     i.getTenMon(),
-            "Tác giả " + i.getTenNguoiTao(),
-            "4." + i.getDanhGia() + "⭐",
-            " " + i.getThoiGian(),
-              i.getLinkAnh()
-            
-            );
-            
 
+dexuatto = new Dexuatto(this);
 
-card.addMouseListener(new MouseAdapter() {
-    @Override
-    public void mouseClicked(MouseEvent e) {
-         dexuatto.hienThiMonAn(i);
-        
-        CardLayout cl = (CardLayout) Dexuat.this.getLayout();
-            cl.show(Dexuat.this, "PHONGTO");
+    this.add(jScrollPane1, "DEXUAT");
+    this.add(dexuatto, "PHONGTO");
+
+    CardLayout cl = (CardLayout) this.getLayout();
+    cl.show(this, "DEXUAT");
+    taiDuLieu();
+
     }
-            });
-    panelDexuat.add(card);
+    public void taiDuLieu() {
+
+    panelDexuat.removeAll();
+
+    MonAnService monanservice = new MonAnService();
+    List<MonAn> danhsach = monanservice.getGoiYMonAn(10);
+
+    for (MonAn i : danhsach) {
+
+        thunho card = new thunho(
+                i.getTenMon(),
+                "Tác giả " + i.getTenNguoiTao(),
+                i.getDanhGia() + " Sao",
+                i.getThoiGian() + " phút",
+                i.getLinkAnh()
+        );
+
+        card.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                dexuatto.hienThiMonAn(i);
+
+                CardLayout cl = (CardLayout) Dexuat.this.getLayout();
+                cl.show(Dexuat.this, "PHONGTO");
+            }
+        });
+
+        panelDexuat.add(card);
+    }
+
+    panelDexuat.revalidate();
+    panelDexuat.repaint();
 }
-panelDexuat.revalidate();
-panelDexuat.repaint();
-
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
