@@ -31,33 +31,18 @@ public class Congthuccuatoito extends javax.swing.JPanel {
     
     private MonAn monAnHienTai;
     private Congthuccuatoi parent;
+    private boolean isEditing = false;
 private MonAnService service = new MonAnService();
 
     public Congthuccuatoito() {
     initComponents();
-    
-    
-txtNguyenlieu.setLineWrap(true);
-txtNguyenlieu.setWrapStyleWord(true);
 
-jTextArea1.setLineWrap(true);
-jTextArea1.setWrapStyleWord(true);
-
-jScrollPane3.setViewportView(txtNguyenlieu);
-jScrollPane2.setViewportView(jTextArea1);
-
-txtNguyenlieu.setMinimumSize(new Dimension(0, 0));
-jTextArea1.setMinimumSize(new Dimension(0, 0));
-
-jScrollPane2.setPreferredSize(new Dimension(0, 120));
-jScrollPane3.setPreferredSize(new Dimension(0, 120));
-    txtNguyenlieu.setColumns(1);
-jTextArea1.setColumns(1);
+initUI();
 }
     public Congthuccuatoito(Congthuccuatoi parent) {
         initComponents();
         this.parent = parent;
-
+initUI();
     }
 
     /**
@@ -82,10 +67,12 @@ jTextArea1.setColumns(1);
         btnXoact = new PillButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNguyenlieu = new javax.swing.JTextArea();
+        btnXacNhan = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(253, 246, 237));
 
-        jLabel4.setText("Mô tả công thức");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Công thức");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -97,14 +84,20 @@ jTextArea1.setColumns(1);
 
         jLabel1.setText("xem ảnh");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Đây là loại món ăn :");
 
-        jLabel5.setText("Thời gian cook :");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        btnSuact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSuact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSuact.setText("Sửa công thức");
+        btnSuact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuactActionPerformed(evt);
+            }
+        });
 
-        btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXuatfile.setText("Xuất file");
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +105,7 @@ jTextArea1.setColumns(1);
             }
         });
 
-        btnXoact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXoact.setText("Xóa công thức");
         btnXoact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +116,14 @@ jTextArea1.setColumns(1);
         txtNguyenlieu.setColumns(20);
         txtNguyenlieu.setRows(5);
         jScrollPane3.setViewportView(txtNguyenlieu);
+
+        btnXacNhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnXacNhan.setText("Xác nhận ");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -151,11 +152,13 @@ jTextArea1.setColumns(1);
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnXoact, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSuact, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
+                                .addComponent(btnXoact, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSuact, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnXacNhan, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -181,10 +184,11 @@ jTextArea1.setColumns(1);
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSuact, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnXoact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(btnSuact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXoact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXacNhan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -247,8 +251,29 @@ jTextArea1.setColumns(1);
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnXoactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoactActionPerformed
-        btnXoact.addActionListener(e -> xoaCongThuc());
+        xoaCongThuc();
     }//GEN-LAST:event_btnXoactActionPerformed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+ if (monAnHienTai == null) return;
+
+    monAnHienTai.setTenMon(txtTenmon.getText());
+    monAnHienTai.setNguyenLieu(txtNguyenlieu.getText());
+    monAnHienTai.setMoTa(jTextArea1.getText());
+
+    boolean ok = service.capNhatMonAn(monAnHienTai);
+
+    if (ok) {
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+        setEditMode(false);
+    } else {
+        JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
+    }
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnSuactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuactActionPerformed
+        setEditMode(true);
+    }//GEN-LAST:event_btnSuactActionPerformed
     
     
     public void setData(MonAn mon) {
@@ -258,14 +283,14 @@ txtNguyenlieu.setWrapStyleWord(true);
 jTextArea1.setLineWrap(true);
 jTextArea1.setWrapStyleWord(true);
 
-// ⭐ QUAN TRỌNG
-
         this.monAnHienTai = mon;
     txtTenmon.setText(mon.getTenMon());
     txtNguyenlieu.setText(mon.getNguyenLieu()); // nếu có field này
     jTextArea1.setText(mon.getMoTa()); // mô tả
     jLabel5.setText("Thời gian cook: " + mon.getThoiGian() + " phút");
     jLabel3.setText("Loại món: " + mon.getLoaiMon());
+    
+    setEditMode(false);
  String path = "images/" + mon.getLinkAnh();
 
     java.net.URL url =
@@ -319,8 +344,50 @@ jTextArea1.setWrapStyleWord(true);
     }
 }
 
+    
+    private void setEditMode(boolean editing) {
+    isEditing = editing;
+
+    txtTenmon.setEditable(editing);
+    txtNguyenlieu.setEditable(editing);
+    jTextArea1.setEditable(editing);
+
+    btnSuact.setVisible(!editing);
+    btnXacNhan.setVisible(editing); // nút mới bạn sẽ thêm
+}
+    
+    private void initUI() {
+
+    setEditMode(false);
+
+    btnXacNhan.setVisible(false);
+
+    txtTenmon.setEditable(false);
+    txtNguyenlieu.setEditable(false);
+    jTextArea1.setEditable(false);
+
+    txtNguyenlieu.setLineWrap(true);
+    txtNguyenlieu.setWrapStyleWord(true);
+
+    jTextArea1.setLineWrap(true);
+    jTextArea1.setWrapStyleWord(true);
+
+    jScrollPane3.setViewportView(txtNguyenlieu);
+    jScrollPane2.setViewportView(jTextArea1);
+
+    txtNguyenlieu.setMinimumSize(new Dimension(0, 0));
+    jTextArea1.setMinimumSize(new Dimension(0, 0));
+
+    jScrollPane2.setPreferredSize(new Dimension(0, 120));
+    jScrollPane3.setPreferredSize(new Dimension(0, 120));
+
+    txtNguyenlieu.setColumns(1);
+    jTextArea1.setColumns(1);
+}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSuact;
+    private javax.swing.JButton btnXacNhan;
     private javax.swing.JButton btnXoact;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;

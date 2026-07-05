@@ -113,7 +113,8 @@ private boolean liked = false;
 
         setBackground(new java.awt.Color(253, 246, 237));
 
-        jLabel4.setText("Mô tả công thức");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Công thức");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -125,8 +126,10 @@ private boolean liked = false;
 
         jLabel1.setText("xem ảnh");
 
-        jLabel3.setText("Đây là loại món ăn :");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setText("Loại món ăn :");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setText("Thời gian nấu ăn :");
 
         btnLuuyeuthich.setText("Lưu yêu thích");
@@ -136,6 +139,7 @@ private boolean liked = false;
             }
         });
 
+        btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXuatfile.setText("Xuất file");
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,8 +147,7 @@ private boolean liked = false;
             }
         });
 
-        txtDanhgia.setText("jTextField1");
-
+        btnLuudanhgia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLuudanhgia.setText("Đánh giá ct");
         btnLuudanhgia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

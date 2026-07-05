@@ -183,6 +183,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnXuatfile">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t file"/>
       </Properties>
       <Events>
@@ -193,12 +196,12 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDanhgia">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLuudanhgia">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#x110;&#xe1;nh gi&#xe1; ct"/>
       </Properties>
       <Events>

@@ -88,16 +88,19 @@ public thunho(String tenMon, String tacGia, String sao, String thoiGian, String 
 
         lblAnh.setText("Ảnh");
 
-        lblTenct.setText("Tên món");
+        lblTenct.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTenct.setText("Tên món:");
         lblTenct.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        lblTacgia.setText("Ten tac gia");
+        lblTacgia.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTacgia.setText("Ten tac gia: ");
         lblTacgia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
+        lblSao.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblSao.setText("Sao");
         lblSao.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        lblThoigian.setText("Thòi gian");
+        lblThoigian.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblThoigian.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         btnTraitim.setText("jButton1");

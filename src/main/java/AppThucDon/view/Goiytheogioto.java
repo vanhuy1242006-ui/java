@@ -96,6 +96,7 @@ public class Goiytheogioto extends javax.swing.JPanel {
             }
         });
 
+        btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXuatfile.setText("Xuất file");
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,8 +104,7 @@ public class Goiytheogioto extends javax.swing.JPanel {
             }
         });
 
-        txtDanhgia.setText("jTextField1");
-
+        btnLuudanhgia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLuudanhgia.setText("Đánh giá ct");
         btnLuudanhgia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
