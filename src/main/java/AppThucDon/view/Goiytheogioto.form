@@ -111,12 +111,17 @@
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnXuatfile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnLuudanhgia" alignment="3" pref="51" max="32767" attributes="0"/>
-                  <Component id="txtDanhgia" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnLuudanhgia" pref="59" max="32767" attributes="0"/>
+                          <Component id="txtDanhgia" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="btnXuatfile" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -5,6 +5,7 @@
 package AppThucDon.view;
 
 import AppThucDon.model.MonAn;
+import AppThucDon.view.icon.IconTraitim;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -14,6 +15,7 @@ import java.io.FileWriter;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -23,12 +25,25 @@ public class Goiytheogioto extends javax.swing.JPanel {
 
     /**
      * Creates new form Goiytheogioto
-     */
+     */private boolean liked = false;
     private javax.swing.JPanel parent;
 
     public Goiytheogioto(javax.swing.JPanel parent) {
         initComponents();
         this.parent = parent;
+                liked = false; // mặc định chưa thích
+
+    IconTraitim.setHeart(btnLuuyeuthich, liked); // ⭐ QUAN TRỌNG
+
+    btnLuuyeuthich.setText("");
+    
+    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    jScrollPane3.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    txtNguyenlieu.setLineWrap(true);
+    txtNguyenlieu.setWrapStyleWord(true);
+    jTextArea1.setLineWrap(true);
+    jTextArea1.setWrapStyleWord(true);
+    
     }
 
     /**
@@ -180,11 +195,14 @@ public class Goiytheogioto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(txtDanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                            .addComponent(txtDanhgia)))
+                    .addComponent(btnXuatfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,7 +279,9 @@ if (parent instanceof Goiytheogio) {
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-        // TODO add your handling code here:
+                    liked = !liked;
+
+    IconTraitim.setHeart(btnLuuyeuthich, liked);
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
     public void hienThiMonAn(MonAn mon) {

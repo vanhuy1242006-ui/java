@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.util.List;
 import javax.swing.BoxLayout;
 import AppThucDon.view.Congthuccuatoito;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -24,6 +25,8 @@ public class Congthuccuatoi extends javax.swing.JPanel {
     public Congthuccuatoi(int maNguoiTao) {
         initComponents();
          jScrollPane1.setBorder(null);
+         jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+         
     pnlDaydu.setLayout(new BoxLayout(pnlDaydu, BoxLayout.Y_AXIS));
 
     List<MonAn> danhSach = service.layDanhSachMonDaTao(maNguoiTao);

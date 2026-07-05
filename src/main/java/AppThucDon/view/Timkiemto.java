@@ -4,6 +4,7 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.view.icon.IconTraitim;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -22,12 +24,24 @@ public class Timkiemto extends javax.swing.JPanel {
     /**
      * Creates new form Goiyto
      */
-
+private boolean liked = false;
     public Timkiemto() {
         initComponents();
             // chiều rộng có thể thay đổi, nhưng chiều cao phải cố định
     setPreferredSize(new Dimension(760, 610));
     System.out.println(getPreferredSize());
+            liked = false; // mặc định chưa thích
+
+    IconTraitim.setHeart(btnLuuyeuthich, liked); // ⭐ QUAN TRỌNG
+
+    btnLuuyeuthich.setText("");
+    
+        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    jScrollPane3.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    txtNguyenlieu.setLineWrap(true);
+    txtNguyenlieu.setWrapStyleWord(true);
+    jTextArea1.setLineWrap(true);
+    jTextArea1.setWrapStyleWord(true);
     }
   
     public void setMonAn(AppThucDon.model.MonAn monAn) {
@@ -284,7 +298,9 @@ public class Timkiemto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-        // TODO add your handling code here:
+                    liked = !liked;
+
+    IconTraitim.setHeart(btnLuuyeuthich, liked);
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
 
