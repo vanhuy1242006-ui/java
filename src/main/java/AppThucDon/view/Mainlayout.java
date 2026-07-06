@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -127,7 +128,7 @@ public class Mainlayout extends javax.swing.JFrame {
         menu1.setBackground(new java.awt.Color(253, 246, 237));
         menu1.setForeground(new java.awt.Color(255, 102, 102));
 
-        btnCuatoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCuatoi.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnCuatoi.setForeground(new java.awt.Color(153, 153, 153));
         btnCuatoi.setText("Công thức của tôi");
         btnCuatoi.setBorder(null);
@@ -139,7 +140,7 @@ public class Mainlayout extends javax.swing.JFrame {
             }
         });
 
-        btnThemct.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThemct.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnThemct.setForeground(new java.awt.Color(153, 153, 153));
         btnThemct.setText("Thêm công thức");
         btnThemct.setBorder(null);
@@ -151,8 +152,8 @@ public class Mainlayout extends javax.swing.JFrame {
             }
         });
 
-        btnsetting.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnsetting.setText("Đăng xuất");
+        btnsetting.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnsetting.setText("Tài khoản");
         btnsetting.setBorder(null);
         btnsetting.setContentAreaFilled(false);
         btnsetting.setFocusPainted(false);
@@ -178,9 +179,9 @@ public class Mainlayout extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(153, 153, 153));
-        jButton2.setText("  Nấu gì bây giờ?");
+        jButton2.setText("Nấu gì ?");
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
         jButton2.setFocusPainted(false);
@@ -203,6 +204,8 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        btnTimkiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTimkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
         btnTimkiem.setText("tìm kiếm");
         btnTimkiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +213,7 @@ public class Mainlayout extends javax.swing.JFrame {
             }
         });
 
-        btnDexuat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDexuat.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDexuat.setText("Đề xuất");
         btnDexuat.setBorder(null);
         btnDexuat.setFocusPainted(false);
@@ -220,7 +223,7 @@ public class Mainlayout extends javax.swing.JFrame {
             }
         });
 
-        btnYeuthich.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnYeuthich.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnYeuthich.setText("Yêu thích");
         btnYeuthich.setBorder(null);
         btnYeuthich.setFocusPainted(false);
@@ -237,6 +240,15 @@ public class Mainlayout extends javax.swing.JFrame {
             .addGroup(menu1Layout.createSequentialGroup()
                 .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menu1Layout.createSequentialGroup()
+                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menu1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(menu1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnCuatoi, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(menu1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1)
@@ -245,20 +257,14 @@ public class Mainlayout extends javax.swing.JFrame {
                                 .addComponent(btnsetting, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(menu1Layout.createSequentialGroup()
                                 .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btnThemct, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(btnYeuthich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnCuatoi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                                            .addComponent(btnTimkiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(btnDexuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(menu1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(btnDexuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnYeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         menu1Layout.setVerticalGroup(
@@ -269,15 +275,15 @@ public class Mainlayout extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(btnDexuat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCuatoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnYeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCuatoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThemct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
@@ -303,15 +309,35 @@ public class Mainlayout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuatoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuatoiActionPerformed
-        card.show(content2, "Luuct");
-        resetMenu();
-        setSelected(btnCuatoi);
+    if (CurrentUser.AccountType.equalsIgnoreCase("User")) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Chỉ Chef hoặc Admin mới được xem danh sách công thức đã tạo.",
+                "Không có quyền",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    card.show(content2, "Luuct");
+    resetMenu();
+    setSelected(btnCuatoi);
     }//GEN-LAST:event_btnCuatoiActionPerformed
 
     private void btnThemctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemctActionPerformed
-        card.show(content2, "Ctmoi");
-        resetMenu();
-        setSelected(btnThemct);
+ if (CurrentUser.AccountType.equalsIgnoreCase("User")) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Chỉ Chef hoặc Admin mới được phép thêm công thức.",
+                "Không có quyền",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    card.show(content2, "Ctmoi");
+    resetMenu();
+    setSelected(btnThemct);
     }//GEN-LAST:event_btnThemctActionPerformed
 
     private void btnsettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsettingActionPerformed

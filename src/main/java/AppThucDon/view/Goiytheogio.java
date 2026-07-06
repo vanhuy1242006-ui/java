@@ -56,7 +56,7 @@ private Goiytheogioto pnlPhongto;
         thunhotheogio card = new thunhotheogio(
                 mon.getTenMon(),
                 mon.getTenNguoiTao(),
-                mon.getDanhGia() + "Sao",
+                mon.getDanhGia() + " Sao",
                 mon.getThoiGian() + " phút",
                 mon.getLinkAnh()
         );

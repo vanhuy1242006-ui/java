@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import AppThucDon.service.MonAnService;
 /**
  *
  * @author loan phuong
@@ -248,9 +249,12 @@ public class Congthucmoi extends javax.swing.JPanel {
 
 monMoi.setMaNguoiTao(CurrentUser.userId);
 
-        // 3. Gọi DAO thực hiện lưu vào SQL Server
-        MonAnDAO dao = new MonAnDAO(); // Viết ngắn gọn như này thôi là sạch lỗi!
-        boolean isSuccess = dao.insert(monMoi);
+        MonAnService service = new MonAnService();
+
+boolean isSuccess = service.themMoiMonAn(
+        monMoi,
+        CurrentUser.AccountType   // hoặc CurrentUser.role tùy biến của bạn
+);
 
         if (isSuccess) {
 

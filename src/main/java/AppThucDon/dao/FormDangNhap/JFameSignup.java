@@ -391,7 +391,7 @@ public class JFameSignup extends javax.swing.JFrame {
 
             ps.setString(3, email);
             
-            ps.setString(4, "Chef");
+            ps.setString(4, "User");
 
             ps.executeUpdate();
 

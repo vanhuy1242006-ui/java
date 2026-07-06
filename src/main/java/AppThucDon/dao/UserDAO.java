@@ -77,5 +77,29 @@ public class UserDAO {
 
         return null;
     }
+    
+    public static boolean nangCapChef(int userId) {
+
+    String sql = """
+        UPDATE Users
+        SET AccountType = 'Chef'
+        WHERE UserID = ?
+    """;
+
+    try (
+        Connection conn = Database.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql)
+    ) {
+
+        ps.setInt(1, userId);
+
+        return ps.executeUpdate() > 0;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return false;
+}
 
 }

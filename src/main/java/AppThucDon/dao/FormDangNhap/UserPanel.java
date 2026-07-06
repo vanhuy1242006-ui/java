@@ -6,6 +6,7 @@ package AppThucDon.dao.FormDangNhap;
 
 import AppThucDon.dao.FormDangNhap.EditProfileFirstTime;
 import AppThucDon.dao.FormDangNhap.JFrameLoginForm;
+import AppThucDon.dao.UserDAO;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -243,6 +244,7 @@ public class UserPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,8 +299,12 @@ public class UserPanel extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(230, 210, 170));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 443, 420, 20));
 
+        jButton2.setText("Nâng cấp tài khoản");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 140, 60));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nen.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -346,10 +352,52 @@ public class UserPanel extends javax.swing.JPanel {
                 .dispose();
     }//GEN-LAST:event_btnEditActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         // Đã là Chef
+    if ("CHEF".equalsIgnoreCase(CurrentUser.AccountType)) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Bạn đã là Chef!",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        return;
+    }
+
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Bạn có muốn nâng cấp tài khoản lên Chef?",
+            "Xác nhận",
+            JOptionPane.YES_NO_OPTION);
+
+    if (confirm == JOptionPane.YES_OPTION) {
+
+        boolean ok = UserDAO.nangCapChef(CurrentUser.userId);
+
+        if (ok) {
+
+            CurrentUser.AccountType = "CHEF";
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Chúc mừng! Tài khoản của bạn đã được nâng cấp lên Chef.");
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Nâng cấp thất bại!");
+
+        }
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
