@@ -85,6 +85,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         jLabel3.setText("Thời gian nấu");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
@@ -116,6 +117,7 @@ public class Congthucmoi extends javax.swing.JPanel {
         });
 
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 

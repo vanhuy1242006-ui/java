@@ -52,7 +52,7 @@ public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, 
                 ImageIcon icon = new ImageIcon(url);
                 
                 // Lấy kích thước mong muốn thiết kế (185x210), phòng khi lblAnh chưa render (bằng 0)
-                int targetWidth = lblAnh.getWidth() > 0 ? lblAnh.getWidth() : 361;
+                int targetWidth = lblAnh.getWidth() > 0 ? lblAnh.getWidth() : 350;
                 int targetHeight = lblAnh.getHeight() > 0 ? lblAnh.getHeight() : 214;
 
                 Image img = icon.getImage().getScaledInstance(
@@ -68,7 +68,7 @@ public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, 
             }
         }
         
-        IconTraitim.setHeart(btnTraitim, daYeuThich);
+
     }
 
 
@@ -86,9 +86,8 @@ public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, 
         lblTacgia = new javax.swing.JLabel();
         lblSao = new javax.swing.JLabel();
         lblThoigian = new javax.swing.JLabel();
-        btnTraitim = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 153, 0));
+        setBackground(new java.awt.Color(243, 191, 63));
         setForeground(new java.awt.Color(255, 204, 153));
 
         lblAnh.setText("Ảnh");
@@ -106,13 +105,6 @@ public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, 
 
         lblThoigian.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblThoigian.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-
-        btnTraitim.setText("jButton1");
-        btnTraitim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTraitimActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,9 +125,7 @@ public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, 
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTacgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblThoigian, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblThoigian, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
@@ -150,22 +140,13 @@ public thunhotheogio(String tenMon, String tacGia, String sao, String thoiGian, 
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblThoigian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTraitimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraitimActionPerformed
-    daYeuThich = !daYeuThich;
-
-    IconTraitim.setHeart(btnTraitim, daYeuThich);
-    }//GEN-LAST:event_btnTraitimActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTraitim;
     private javax.swing.JLabel lblAnh;
     private javax.swing.JLabel lblSao;
     private javax.swing.JLabel lblTacgia;

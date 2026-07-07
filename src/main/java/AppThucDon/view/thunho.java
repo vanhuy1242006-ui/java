@@ -49,7 +49,7 @@ public thunho(int maMon, String tenMon, String tacGia, String sao, String thoiGi
                 ImageIcon icon = new ImageIcon(url);
                 
                 // Lấy kích thước mong muốn thiết kế (185x210), phòng khi lblAnh chưa render (bằng 0)
-                int targetWidth = lblAnh.getWidth() > 0 ? lblAnh.getWidth() : 361;
+                int targetWidth = lblAnh.getWidth() > 0 ? lblAnh.getWidth() : 350;
                 int targetHeight = lblAnh.getHeight() > 0 ? lblAnh.getHeight() : 214;
 
                 Image img = icon.getImage().getScaledInstance(
@@ -90,6 +90,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
         lblThoigian = new javax.swing.JLabel();
         btnTraitim = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(243, 191, 63));
         setForeground(new java.awt.Color(255, 204, 153));
 
         lblAnh.setText("Ảnh");
@@ -124,6 +125,9 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTenct, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,10 +139,7 @@ IconTraitim.setHeart(btnTraitim, daYeuThich);
                                 .addComponent(lblThoigian, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnTraitim, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

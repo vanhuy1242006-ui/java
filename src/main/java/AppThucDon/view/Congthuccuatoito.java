@@ -75,6 +75,8 @@ initUI();
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Công thức");
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 191, 63)));
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -83,6 +85,7 @@ initUI();
         jLabel2.setText("Tên món ăn");
         jLabel2.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("xem ảnh");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -115,7 +118,9 @@ initUI();
         });
 
         txtNguyenlieu.setColumns(20);
+        txtNguyenlieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNguyenlieu.setRows(5);
+        txtNguyenlieu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 191, 63)));
         jScrollPane3.setViewportView(txtNguyenlieu);
 
         btnXacNhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -302,7 +307,7 @@ jTextArea1.setWrapStyleWord(true);
     txtTenmon.setText(mon.getTenMon());
     txtNguyenlieu.setText(mon.getNguyenLieu()); // nếu có field này
     jTextArea1.setText(mon.getMoTa()); // mô tả
-    jLabel5.setText("Thời gian cook: " + mon.getThoiGian() + " phút");
+    jLabel5.setText("Thời gian nấu: " + mon.getThoiGian() + " phút");
     jLabel3.setText("Loại món: " + mon.getLoaiMon());
     txtDanhgia.setText(String.format("%.1f", mon.getDanhGia()));
     setEditMode(false);

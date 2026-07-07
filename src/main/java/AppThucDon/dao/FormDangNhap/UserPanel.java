@@ -353,7 +353,18 @@ public class UserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         // Đã là Chef
+             if ("ADMIN".equalsIgnoreCase(CurrentUser.AccountType)) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Admin không thể nâng cấp lên Chef!",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        return;
+    }
+             
+// Đã là Chef
     if ("CHEF".equalsIgnoreCase(CurrentUser.AccountType)) {
 
         JOptionPane.showMessageDialog(

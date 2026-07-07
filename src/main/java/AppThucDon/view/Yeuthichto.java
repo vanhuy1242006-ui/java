@@ -62,7 +62,7 @@ private YeuThichService yeuThichService = new YeuThichService();
         jLabel3.setText("loại món ăn : " + monAn.getLoaiMon());
         
         // 3. Hiển thị thời gian nấu vào JLabel
-        jLabel5.setText("Thời gian nấu ăn : " + monAn.getThoiGian() + " phút");
+        jLabel5.setText("Thời gian nấu : " + monAn.getThoiGian() + " phút");
         
         // 4. Hiển thị nguyên liệu vào JTextArea
         txtNguyenlieu.setText(monAn.getNguyenLieu());
@@ -135,7 +135,10 @@ IconTraitim.setHeart(btnLuuyeuthich, daThich);
 
         jLabel4.setText("Mô tả công thức");
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 191, 63)));
+
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
@@ -170,6 +173,8 @@ IconTraitim.setHeart(btnLuuyeuthich, daThich);
                 txtDanhgiaActionPerformed(evt);
             }
         });
+
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 191, 63)));
 
         txtNguyenlieu.setColumns(20);
         txtNguyenlieu.setRows(5);

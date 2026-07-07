@@ -82,6 +82,8 @@ dexuatto = new Dexuatto(this);
         jScrollPane1 = new javax.swing.JScrollPane();
         panelDexuat = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(255, 0, 0));
+        setForeground(new java.awt.Color(255, 0, 0));
         setLayout(new java.awt.CardLayout());
 
         panelDexuat.setLayout(new java.awt.GridLayout(0, 2, 5, 40));

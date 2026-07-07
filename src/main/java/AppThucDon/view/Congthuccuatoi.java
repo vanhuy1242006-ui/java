@@ -36,7 +36,7 @@ public class Congthuccuatoi extends javax.swing.JPanel {
     }
 
     public void loadDanhSach() {
-
+ System.out.println("===== LOAD DANH SACH =====");
     pnlDaydu.removeAll(); // ⭐ quan trọng: xóa UI cũ
 
     List<MonAn> danhSach = service.layDanhSachMonDaTao(maNguoiTao);

@@ -30,6 +30,7 @@ public class Mainlayout extends javax.swing.JFrame {
     private Goiytheogio panelGoiy;
     private Dexuat panelDexuat;
     private Yeuthich panelYeuthich;
+    private Congthuccuatoi panelCongthucCuaToi;
     /**
      * Creates new form lamlayout
      */
@@ -88,7 +89,8 @@ public class Mainlayout extends javax.swing.JFrame {
         panelGoiy = new Goiytheogio();
         content2.add(panelGoiy, "Goiy");
         int maNguoiDangNhap = CurrentUser.userId;
-        content2.add(new Congthuccuatoi(maNguoiDangNhap), "Luuct");
+        panelCongthucCuaToi = new Congthuccuatoi(maNguoiDangNhap);
+        content2.add(panelCongthucCuaToi, "Luuct");
         panelDexuat = new Dexuat();
         content2.add(panelDexuat, "Dexuat");
         panelYeuthich = new Yeuthich();
@@ -320,7 +322,13 @@ public class Mainlayout extends javax.swing.JFrame {
         return;
     }
 
+    panelCongthucCuaToi.loadDanhSach();
+
     card.show(content2, "Luuct");
+
+    content2.revalidate();
+    content2.repaint();
+
     resetMenu();
     setSelected(btnCuatoi);
     }//GEN-LAST:event_btnCuatoiActionPerformed

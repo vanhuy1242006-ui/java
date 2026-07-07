@@ -36,9 +36,7 @@ private MonAnService service = new MonAnService();
         this.parent = parent;
                 liked = false; // mặc định chưa thích
 
-    IconTraitim.setHeart(btnLuuyeuthich, liked); // ⭐ QUAN TRỌNG
 
-    btnLuuyeuthich.setText("");
     
     jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     jScrollPane3.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -66,7 +64,6 @@ private MonAnService service = new MonAnService();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnLuuyeuthich = new javax.swing.JButton();
         btnXuatfile = new PillButton();
         txtDanhgia = new javax.swing.JTextField();
         btnLuudanhgia = new PillButton();
@@ -76,9 +73,13 @@ private MonAnService service = new MonAnService();
 
         setBackground(new java.awt.Color(253, 246, 237));
 
-        jLabel4.setText("Mô tả công thức");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Công thức");
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 191, 63)));
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
@@ -91,13 +92,6 @@ private MonAnService service = new MonAnService();
         jLabel3.setText("Đây là loại món ăn :");
 
         jLabel5.setText("Thời gian nấu ăn :");
-
-        btnLuuyeuthich.setText("Lưu yêu thích");
-        btnLuuyeuthich.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuuyeuthichActionPerformed(evt);
-            }
-        });
 
         btnXuatfile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXuatfile.setText("Xuất file");
@@ -122,7 +116,10 @@ private MonAnService service = new MonAnService();
             }
         });
 
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 191, 63)));
+
         txtNguyenlieu.setColumns(20);
+        txtNguyenlieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNguyenlieu.setRows(5);
         jScrollPane3.setViewportView(txtNguyenlieu);
 
@@ -155,16 +152,12 @@ private MonAnService service = new MonAnService();
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtDanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -187,17 +180,11 @@ private MonAnService service = new MonAnService();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -299,12 +286,6 @@ private MonAnService service = new MonAnService();
     }
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
-    private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-                    liked = !liked;
-
-    IconTraitim.setHeart(btnLuuyeuthich, liked);
-    }//GEN-LAST:event_btnLuuyeuthichActionPerformed
-
     public void hienThiMonAn(MonAn mon) {
  this.monHienTai = mon;
     txtTenmon.setText(mon.getTenMon());
@@ -348,7 +329,6 @@ private MonAnService service = new MonAnService();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuudanhgia;
-    private javax.swing.JButton btnLuuyeuthich;
     private javax.swing.JButton btnQuaylai;
     private javax.swing.JButton btnXuatfile;
     private javax.swing.JLabel jLabel1;

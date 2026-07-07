@@ -57,7 +57,7 @@ private Goiytheogioto pnlPhongto;
                 mon.getTenMon(),
                 mon.getTenNguoiTao(),
                 mon.getDanhGia() + " Sao",
-                mon.getThoiGian() + " phút",
+                mon.getThoiGian() + " Phút",
                 mon.getLinkAnh()
         );
 
@@ -97,6 +97,7 @@ private Goiytheogioto pnlPhongto;
         jScrollPane1 = new javax.swing.JScrollPane();
         panelGoiy = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(253, 246, 237));
         setLayout(new java.awt.CardLayout());
 
         panelGoiy.setLayout(new javax.swing.BoxLayout(panelGoiy, javax.swing.BoxLayout.LINE_AXIS));
