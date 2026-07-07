@@ -7,13 +7,15 @@ import AppThucDon.view.Yeuthichto;
 import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.Box;
-
+import AppThucDon.dao.FormDangNhap.CurrentUser;
+import AppThucDon.service.YeuThichService;
+import AppThucDon.model.MonAn;
 /**
  *
  * @author loan phuong
  */
 public class Yeuthich extends javax.swing.JPanel {
-
+private YeuThichService yeuThichService = new YeuThichService();
     /**
      * Creates new form Yeuthich
      */
@@ -29,24 +31,35 @@ panelYeuthich.setLayout(
         )
     );
 
-for (int i = 0; i < 10; i++) {
-        Yeuthichto p = new Yeuthichto();
+    taiDuLieu();
 
-        p.setAlignmentX(Component.LEFT_ALIGNMENT);
+    }
+    
+    public void taiDuLieu() {
 
-        Dimension d = p.getPreferredSize();
-        p.setMaximumSize(
-                new Dimension(Integer.MAX_VALUE, d.height));
+    panelYeuthich.removeAll();
+
+    java.util.List<MonAn> ds =
+            yeuThichService.layDanhSachMonYeuThich(CurrentUser.userId);
+
+    for (MonAn mon : ds) {
+
+        Yeuthichto p = new Yeuthichto(this);
+
+        p.setMonAn(mon);
+
+        p.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
+
+        java.awt.Dimension d = p.getPreferredSize();
+
 
         panelYeuthich.add(p);
-        panelYeuthich.add(Box.createVerticalStrut(20));
-        jScrollPane1.setHorizontalScrollBarPolicy(
-    javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        panelYeuthich.add(javax.swing.Box.createVerticalStrut(20));
     }
 
-panelYeuthich.revalidate();
-panelYeuthich.repaint();
-    }
+    panelYeuthich.revalidate();
+    panelYeuthich.repaint();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

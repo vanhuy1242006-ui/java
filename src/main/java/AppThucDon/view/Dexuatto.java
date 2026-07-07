@@ -15,6 +15,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import AppThucDon.service.MonAnService;
+import AppThucDon.dao.FormDangNhap.CurrentUser;
+import AppThucDon.service.YeuThichService;
 /**
  *
  * @author loan phuong
@@ -23,12 +25,12 @@ public class Dexuatto extends javax.swing.JPanel {
 
     /**
      * Creates new form Goiyto
-     */private boolean liked = false;
+     */
     private javax.swing.JPanel parent;
 
 private MonAn monHienTai;
 private MonAnService service = new MonAnService();
-
+private YeuThichService yeuThichService = new YeuThichService();
     public Dexuatto(javax.swing.JPanel parent) {
         initComponents();
         this.parent = parent;
@@ -38,9 +40,7 @@ txtNguyenlieu.setWrapStyleWord(true);
 jTextArea1.setLineWrap(true);
 jTextArea1.setWrapStyleWord(true);
 
-                liked = false; // mặc định chưa thích
 
-    IconTraitim.setHeart(btnLuuyeuthich, liked); // ⭐ QUAN TRỌNG
 
     btnLuuyeuthich.setText("");
     
@@ -160,14 +160,14 @@ jTextArea1.setWrapStyleWord(true);
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
+                                .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtDanhgia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLuudanhgia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -180,16 +180,14 @@ jTextArea1.setWrapStyleWord(true);
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnQuaylai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -269,9 +267,6 @@ jTextArea1.setWrapStyleWord(true);
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnQuaylaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuaylaiActionPerformed
- if(parent instanceof Dexuat){
-    ((Dexuat) parent).taiDuLieu();
-}
 
 CardLayout cl = (CardLayout) parent.getLayout();
 cl.show(parent, "DEXUAT");
@@ -299,9 +294,30 @@ cl.show(parent, "DEXUAT");
     }//GEN-LAST:event_btnLuudanhgiaActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-                    liked = !liked;
+int result = yeuThichService.YeuThichMonAn(
+            CurrentUser.userId,
+            monHienTai.getMaMon()
+    );
 
-    IconTraitim.setHeart(btnLuuyeuthich, liked);
+    if (result == 1 || result == 2) {
+
+        boolean daYeuThich = yeuThichService.isDaYeuThich(
+                CurrentUser.userId,
+                monHienTai.getMaMon()
+        );
+
+        IconTraitim.setHeart(btnLuuyeuthich, daYeuThich);
+
+    } else if (result == -2) {
+
+        JOptionPane.showMessageDialog(this,
+                "Vui lòng đăng nhập");
+
+    } else {
+
+        JOptionPane.showMessageDialog(this,
+                "Có lỗi xảy ra");
+    }
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
 
     public void hienThiMonAn(MonAn mon){
@@ -339,7 +355,7 @@ cl.show(parent, "DEXUAT");
                 icon.getImage()
                 .getScaledInstance(
                         494,
-                        291,
+                        300,
                         Image.SCALE_SMOOTH);
 
         jLabel1.setIcon(
@@ -347,6 +363,13 @@ cl.show(parent, "DEXUAT");
 
         jLabel1.setText("");
     }
+    
+    boolean daThich = yeuThichService.isDaYeuThich(
+        CurrentUser.userId,
+        mon.getMaMon()
+);
+
+IconTraitim.setHeart(btnLuuyeuthich, daThich);
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

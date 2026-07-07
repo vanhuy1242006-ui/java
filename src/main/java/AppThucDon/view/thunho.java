@@ -19,14 +19,15 @@ public class thunho extends javax.swing.JPanel {
 
 
     
-private boolean daYeuThich = false;
+private int maMon;
+private YeuThichService yeuThichService = new YeuThichService();
     /**
      * Creates new form thunho
 
      */
-public thunho(String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
+public thunho(int maMon, String tenMon, String tacGia, String sao, String thoiGian, String linkAnh) {
         initComponents();
-        
+        this.maMon = maMon;
         // 1. Gán text trước
         lblTenct.setText(tenMon);
         lblTacgia.setText(tacGia);
@@ -64,7 +65,12 @@ public thunho(String tenMon, String tacGia, String sao, String thoiGian, String 
             }
         }
         
-        IconTraitim.setHeart(btnTraitim, daYeuThich);
+        boolean daYeuThich = yeuThichService.isDaYeuThich(
+        CurrentUser.userId,
+        maMon
+);
+
+IconTraitim.setHeart(btnTraitim, daYeuThich);
     }
 
 
@@ -154,9 +160,34 @@ public thunho(String tenMon, String tacGia, String sao, String thoiGian, String 
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTraitimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraitimActionPerformed
-    daYeuThich = !daYeuThich;
+int result = yeuThichService.YeuThichMonAn(
+        CurrentUser.userId,
+        maMon
+);
+
+if (result == 1 || result == 2) {
+
+    boolean daYeuThich = yeuThichService.isDaYeuThich(
+            CurrentUser.userId,
+            maMon
+    );
 
     IconTraitim.setHeart(btnTraitim, daYeuThich);
+
+} else if (result == -2) {
+
+    javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Vui lòng đăng nhập."
+    );
+
+} else {
+
+    javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Có lỗi xảy ra."
+    );
+}
     }//GEN-LAST:event_btnTraitimActionPerformed
 
     

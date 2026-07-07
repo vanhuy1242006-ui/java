@@ -23,15 +23,15 @@ public class YeuThichService {
         }
 
         //Check trạng thái hiện tại dưới DB xem đã thích chưa để quyết định hành động
-        boolean isExisted = yeuThichDAO.checkYeuThichExists(userID, monAnID);
+        boolean isExisted = yeuThichDAO.isYeuThichExisted(userID, monAnID);
         
         if (isExisted) {
             // Nếu thích rồi thì tiến hành XÓA THÍCH
-            boolean result = yeuThichDAO.deleteYeuThich(userID, monAnID);
+            boolean result = yeuThichDAO.removeYeuThich(userID, monAnID);
             return result ? 2 : -1;
         } else {
             // Nếu chưa thích thì tiến hành THÊM THÍCH
-            boolean result = yeuThichDAO.insertYeuThich(userID, monAnID);
+            boolean result = yeuThichDAO.addYeuThich(userID, monAnID);
             return result ? 1 : -1;
         }
     }
@@ -41,7 +41,7 @@ public class YeuThichService {
         if (userID == -1 || monAnID <= 0) {
             return false;
         }
-        return yeuThichDAO.checkYeuThichExists(userID, monAnID);
+        return yeuThichDAO.isYeuThichExisted(userID, monAnID);
     }
 
     // 10.CHỨC NĂNG: LẤY DANH SÁCH MÓN ĂN ĐÃ YÊU THÍCH CỦA USER

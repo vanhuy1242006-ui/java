@@ -301,7 +301,7 @@ public class UserPanel extends javax.swing.JPanel {
 
         jButton2.setText("Nâng cấp tài khoản");
         jButton2.addActionListener(this::jButton2ActionPerformed);
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 140, 60));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 150, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nen.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));

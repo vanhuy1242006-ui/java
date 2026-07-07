@@ -44,6 +44,7 @@ dexuatto = new Dexuatto(this);
     for (MonAn i : danhsach) {
 
         thunho card = new thunho(
+                i.getMaMon(),
                 i.getTenMon(),
                 "Tác giả " + i.getTenNguoiTao(),
                 i.getDanhGia() + " Sao",

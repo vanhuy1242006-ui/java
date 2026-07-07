@@ -4,6 +4,9 @@
  */
 package AppThucDon.view;
 
+import AppThucDon.dao.FormDangNhap.CurrentUser;
+import AppThucDon.model.MonAn;
+import AppThucDon.service.YeuThichService;
 import AppThucDon.view.icon.PillButton;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -17,6 +20,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
+
 /**
  *
  * @author loan phuong
@@ -26,34 +30,36 @@ public class Yeuthichto extends javax.swing.JPanel {
     /**
      * Creates new form Goiyto
      */
-private boolean liked = false;
+private MonAn monHienTai;
+private Yeuthich yeuThichPanel;
+private YeuThichService yeuThichService = new YeuThichService();
 
-    public Yeuthichto() {
-        initComponents();
-            // chiều rộng có thể thay đổi, nhưng chiều cao phải cố định
-    setPreferredSize(new Dimension(760, 610));
-        liked = false; // mặc định chưa thích
+    public Yeuthichto(Yeuthich panel) {
+    this.yeuThichPanel = panel;
 
-    IconTraitim.setHeart(btnLuuyeuthich, liked); // ⭐ QUAN TRỌNG
+    initComponents();
 
     btnLuuyeuthich.setText("");
-    
-        jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     jScrollPane3.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
     txtNguyenlieu.setLineWrap(true);
     txtNguyenlieu.setWrapStyleWord(true);
+
     jTextArea1.setLineWrap(true);
     jTextArea1.setWrapStyleWord(true);
     }
   
     public void setMonAn(AppThucDon.model.MonAn monAn) {
+        this.monHienTai = monAn;
         if (monAn == null) return; // Nếu không có dữ liệu thì bỏ qua
 
         // 1. Hiển thị tên món ăn vào JTextField
         txtTenmon.setText(monAn.getTenMon());
         
         // 2. Hiển thị loại món ăn vào JLabel
-        jLabel3.setText("Đây là loại món ăn : " + monAn.getLoaiMon());
+        jLabel3.setText("loại món ăn : " + monAn.getLoaiMon());
         
         // 3. Hiển thị thời gian nấu vào JLabel
         jLabel5.setText("Thời gian nấu ăn : " + monAn.getThoiGian() + " phút");
@@ -65,28 +71,41 @@ private boolean liked = false;
         jTextArea1.setText(monAn.getMoTa());
         
         // 6. Hiển thị đánh giá hiện tại (nếu bạn muốn)
-        txtDanhgia.setText(String.valueOf(monAn.getDanhGia()) + " Sao");
+        txtDanhgia.setText("Công thức này được đánh giá: " +String.valueOf(monAn.getDanhGia()) + " Sao");
 
         // 7. Xử lý hiển thị ảnh (Vẽ ảnh lên jLabel1)
-        if (monAn.getLinkAnh() != null && !monAn.getLinkAnh().trim().isEmpty()) {
-            try {
-                // Đọc file ảnh từ đường dẫn lưu trong DB
-                javax.swing.ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource(monAn.getLinkAnh()));
-                
-                // Thu nhỏ ảnh cho vừa với khung jLabel1 (300x300 pixel)
-                java.awt.Image img = icon.getImage().getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
-                
-                // Đặt ảnh đã thu nhỏ vào jLabel1
-                jLabel1.setText(""); // Xóa chữ "xem ảnh" mặc định
-                jLabel1.setIcon(new javax.swing.ImageIcon(img));
-                
-            } catch (Exception e) {
-                // Nếu đường dẫn ảnh bị lỗi (không tìm thấy file), in ra lỗi để debug
-                System.out.println("Không thể tải ảnh cho món " + monAn.getTenMon() + ": " + e.getMessage());
-                jLabel1.setText("Lỗi hiển thị ảnh");
-                jLabel1.setIcon(null);
-            }
-        }
+if (monAn.getLinkAnh() != null && !monAn.getLinkAnh().trim().isEmpty()) {
+
+    String path = "images/" + monAn.getLinkAnh();
+
+    java.net.URL url = getClass().getClassLoader().getResource(path);
+
+    if (url != null) {
+
+        javax.swing.ImageIcon icon = new javax.swing.ImageIcon(url);
+
+        java.awt.Image img = icon.getImage().getScaledInstance(
+                494,
+                300,
+                java.awt.Image.SCALE_SMOOTH);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(img));
+        jLabel1.setText("");
+
+    } else {
+
+        System.out.println("Không tìm thấy ảnh: " + path);
+
+        jLabel1.setIcon(null);
+        jLabel1.setText("Không có ảnh");
+    }
+}
+        
+        boolean daThich = yeuThichService.isDaYeuThich(
+        CurrentUser.userId,
+        monAn.getMaMon());
+
+IconTraitim.setHeart(btnLuuyeuthich, daThich);
     }
 
     /**
@@ -127,10 +146,8 @@ private boolean liked = false;
         jLabel1.setText("xem ảnh");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setText("Loại món ăn :");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel5.setText("Thời gian nấu ăn :");
 
         btnLuuyeuthich.setText("Lưu yêu thích");
         btnLuuyeuthich.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +165,11 @@ private boolean liked = false;
         });
 
         txtDanhgia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtDanhgia.setText("Công thức này được đánh giá: ");
+        txtDanhgia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDanhgiaActionPerformed(evt);
+            }
+        });
 
         txtNguyenlieu.setColumns(20);
         txtNguyenlieu.setRows(5);
@@ -164,34 +185,31 @@ private boolean liked = false;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDanhgia)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLuuyeuthich, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtDanhgia)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnXuatfile, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(16, 16, 16))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)
+                            .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,17 +218,15 @@ private boolean liked = false;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -289,10 +305,35 @@ private boolean liked = false;
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnLuuyeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuyeuthichActionPerformed
-            liked = !liked;
+    int result = yeuThichService.YeuThichMonAn(
+            CurrentUser.userId,
+            monHienTai.getMaMon());
 
-    IconTraitim.setHeart(btnLuuyeuthich, liked);
+    if (result == 1 || result == 2) {
+
+        boolean daThich = yeuThichService.isDaYeuThich(
+                CurrentUser.userId,
+                monHienTai.getMaMon());
+
+        IconTraitim.setHeart(btnLuuyeuthich, daThich);
+
+        if (yeuThichPanel != null) {
+            yeuThichPanel.taiDuLieu();
+        }
+
+    } else if (result == -2) {
+
+        JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập");
+
+    } else {
+
+        JOptionPane.showMessageDialog(this, "Có lỗi xảy ra");
+    }
     }//GEN-LAST:event_btnLuuyeuthichActionPerformed
+
+    private void txtDanhgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDanhgiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDanhgiaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

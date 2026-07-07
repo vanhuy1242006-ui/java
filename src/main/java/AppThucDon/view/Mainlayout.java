@@ -29,7 +29,7 @@ public class Mainlayout extends javax.swing.JFrame {
     private Timkiem panelTimkiem;
     private Goiytheogio panelGoiy;
     private Dexuat panelDexuat;
-
+    private Yeuthich panelYeuthich;
     /**
      * Creates new form lamlayout
      */
@@ -91,7 +91,8 @@ public class Mainlayout extends javax.swing.JFrame {
         content2.add(new Congthuccuatoi(maNguoiDangNhap), "Luuct");
         panelDexuat = new Dexuat();
         content2.add(panelDexuat, "Dexuat");
-        content2.add(new Yeuthich(), "Yeuthich");
+        panelYeuthich = new Yeuthich();
+        content2.add(panelYeuthich, "Yeuthich");
         panelTimkiem = new Timkiem();
         content2.add(panelTimkiem, "Timkiem");
 
@@ -298,9 +299,7 @@ public class Mainlayout extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,9 +383,15 @@ public class Mainlayout extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDexuatActionPerformed
 
     private void btnYeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYeuthichActionPerformed
-        card.show(content2, "Yeuthich");
-        resetMenu();
-        setSelected(btnYeuthich);
+    panelYeuthich.taiDuLieu();   // hoặc ten hàm load của bạn
+
+    card.show(content2, "Yeuthich");
+
+    content2.revalidate();
+    content2.repaint();
+
+    resetMenu();
+    setSelected(btnYeuthich);
     }//GEN-LAST:event_btnYeuthichActionPerformed
 
     private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
