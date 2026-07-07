@@ -28,6 +28,7 @@ public class Mainlayout extends javax.swing.JFrame {
     private AppThucDon.service.MonAnService monAnService = new AppThucDon.service.MonAnService();
     private Timkiem panelTimkiem;
     private Goiytheogio panelGoiy;
+    private Dexuat panelDexuat;
 
     /**
      * Creates new form lamlayout
@@ -85,10 +86,11 @@ public class Mainlayout extends javax.swing.JFrame {
                 "setting"
         );
         panelGoiy = new Goiytheogio();
-        content2.add(new Goiytheogio(), "Goiy");
+        content2.add(panelGoiy, "Goiy");
         int maNguoiDangNhap = CurrentUser.userId;
         content2.add(new Congthuccuatoi(maNguoiDangNhap), "Luuct");
-        content2.add(new Dexuat(), "Dexuat");
+        panelDexuat = new Dexuat();
+        content2.add(panelDexuat, "Dexuat");
         content2.add(new Yeuthich(), "Yeuthich");
         panelTimkiem = new Timkiem();
         content2.add(panelTimkiem, "Timkiem");
@@ -205,7 +207,7 @@ public class Mainlayout extends javax.swing.JFrame {
         );
 
         btnTimkiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnTimkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
+        btnTimkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/huy.png"))); // NOI18N
         btnTimkiem.setText("tìm kiếm");
         btnTimkiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -370,9 +372,15 @@ public class Mainlayout extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnDexuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDexuatActionPerformed
-        card.show(content2, "Dexuat");
-        resetMenu();
-        setSelected(btnDexuat);
+    panelDexuat.taiDuLieu();      // reload dữ liệu
+
+    card.show(content2, "Dexuat");
+
+    content2.revalidate();
+    content2.repaint();
+
+    resetMenu();
+    setSelected(btnDexuat);
     }//GEN-LAST:event_btnDexuatActionPerformed
 
     private void btnYeuthichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYeuthichActionPerformed

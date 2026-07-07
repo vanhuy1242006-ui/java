@@ -269,9 +269,6 @@ private MonAnService service = new MonAnService();
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
     private void btnQuaylaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuaylaiActionPerformed
-if (parent instanceof Goiytheogio) {
-        ((Goiytheogio) parent).taiDuLieu();
-    }
 
     CardLayout cl = (CardLayout) parent.getLayout();
     cl.show(parent, "card2");
